@@ -1,0 +1,292 @@
+# ---------------------------------------------------------------------- #
+# Welcome to my tcsh configuration. These files are provide in the hope  #
+# that they'll help people getting started with tcsh. You may do with    #
+# them whatever you want, but please note that they come WITHOUT ANY     #
+# WARRANTY!                                                              #
+#                                                                        #
+# This file should be saved as ~./tcshrc. It just contains the basic     #
+# configuration, everything else is is configured in files in ~/.tcsh/.  #
+# The directory layout is:                                               #
+#  - ~/.tcsh/config/  -> Configuration files                             #
+#  - ~/.tcsh/run/     -> Runtime files                                   #
+#  - ~/.tcsh/scripts/ -> Scripts sourced / used by this configuration    #
+#                                                                        #
+# It's highly recommended to install my ~/.login and ~/.logout scripts.  #
+# At least the backup section of ~/.logout should be kept, because tcsh  #
+# may scramble your history at logout due to races between several       #
+# shells.                                                                #
+#                                                                        #
+# This configuration is designed around my workflow. It may not suit     #
+# yours. Since I'm a FreeBSD guy it's designed with FreeBSD in mind. It  #
+# should work on Linux and even OS X, but those platforms do not have    #
+# all aliases and completions available. Some may be even plainly wrong. #
+# Do not hesitate to reports bugs and suggest improvements to yamagi     #
+# [at] yamagi [dot] org.                                                 #
+#                                                                        #
+#  -- Yamagi                                                             #
+# ---------------------------------------------------------------------- #
+
+# Startup
+# -------
+
+# Things and options, that should be set early in the startup
+# process. No options here, just scripts and command to be
+# executed once.
+
+# No setup if not an interactive shell
+if ($?USER == 0 || $?prompt == 0) then
+	exit
+endif
+
+# Create directory for runtime config
+# if it doesn't exists.
+if (! -d ~/.tcsh/run ) then
+	mkdir -p ~/.tcsh/run
+endif
+
+# Load the directory stack, even if we are not an
+# login shell. Limiting this to login shells is
+# unsufficient when tcsh is used as interactive
+# shells in xterms.
+if !(${?loginsh}) then
+	dirs -L
+endif
+
+# Force an umask of "077" for unprivileged users.
+# root must have the standard umask, otherwise
+# packet installations and the like will f*ck up.
+if ($LOGNAME != "root") then
+	umask 077
+endif
+
+# ---------------------------------------------------------------------- #
+
+# Special Variables
+# -----------------
+
+# Some special variables that define the user interface.
+# Please note, that at least on FreeBSD the locale should
+# be set in ~/.login_conf.
+
+# vim as default editor
+setenv EDITOR vim
+
+# less as pager
+setenv PAGER less
+
+# ---------------------------------------------------------------------- #
+
+# Prompt
+# ------
+
+# tcsh has es very configurable prompt. All levels of the
+# left prompt are configured and the right prompt is set
+# to display further information. Values displayed in the
+# promped are NOT generated in realtime, but only when the
+# prompt is printed.
+
+# Abriviate pathes by "..."
+set ellipsis
+
+# End character for root (>) and unprivileged users (:)
+set promptchars=":>"
+
+# Left prompt (user@host:pty path:)
+set prompt="%n@%m:%l %c02%# "
+
+# Right prompt ([hour:min:sec])
+set rprompt="[%P]"
+
+# Prompt level 2 (multiline editing, e.g loops)
+set prompt2="%R?"
+
+# Prompt level 2 (autocorrections)
+set prompt3="CORRECT> %B%R%b (y|n|e)?"
+
+# ---------------------------------------------------------------------- #
+
+# Command History
+# ---------------
+
+# tcsh features a sophisticated persistant command history.
+# At startup the history is read into memory, at shutdown
+# the in memory copy and the hard copy are merged. The max
+# number of lines merged into the hard copy is the difference
+# between the "history" and "savehist" values. Therefor
+# "history" must be greater than "savehist", otherwise the
+# persistant history will not work as expected! At this time
+# the history merge is racy between several tcsh instances
+# shutdown at the same time. The next version will feature
+# code to serialize the merging between several instances.
+
+# History length
+set history=6144
+
+# Save 4096 lines to hard disk and merge the in
+# memory history with the existing hard copy.
+set savehist=( 4096 merge )
+
+# File to save the history to
+set histfile=~/.tcsh/run/history
+
+# Do not save duplicate commands
+set histdup=erase
+
+# ---------------------------------------------------------------------- #
+
+# Directory Stack
+# ---------------
+
+# The directory stack functionality allows the in memory
+# directory stack (maintained with pushd and popd) to be
+# saved to disc and reloaded at startup.
+
+# Save up to 256 directories
+set savedirs=256
+
+# File to save to
+set dirsfile=~/.tcsh/run/dirstack
+
+# ---------------------------------------------------------------------- #
+
+# Key Bindings
+# ------------
+
+# By default tcsh uses emacs bindings. Most of them are
+# okay, just a few adaptations are necessary. There is
+# an optional vi mode, but it's hard to use since the
+# mode is often changed by tcsh and the user loses track
+# which mode is currently active.
+
+# History up and down on "up" and "down"
+# cursor keys. This is the default on
+# FreeBSD, but not on Linux.
+bindkey -k up history-search-backward
+bindkey -k down history-search-forward
+
+# 'ctrl-n' runs 'man' on the fist word in
+# the current input buffer.
+bindkey ^n run-help
+
+# Delete on 'del'
+bindkey "\e[3~" delete-char-or-eof
+
+# Magic history completion on 'space'
+bindkey ' ' magic-space
+
+# Search history on ctrl-r
+bindkey ^r i-search-back
+bindkey ^R i-search-fwd
+
+# ---------------------------------------------------------------------- #
+
+# External Files
+# --------------
+
+# As said above, some more complicated things are configured
+# in indiviual files. Read them. Further directories / files
+# should be added to the "cfiles" variable. Note that sub-
+# directories are traversed too!
+
+# Must be empty
+set cfiles= ()
+
+# List of directories or files
+set cfiles = (~/.tcsh/config/* $cfiles)
+
+# Source them
+foreach f ( $cfiles)
+	if ( -d $f) then
+		foreach fd ( `find $f -print0 | xargs echo`)
+			if ( -f $fd) then
+				source $fd
+			endif
+		end
+	else
+		if (-f $f) then
+			source $f
+		endif
+	endif
+end
+
+# ---------------------------------------------------------------------- #
+
+# Options
+# -------
+
+# These are the global configuration options. All of them
+# are explained in the manpage. Note that older versions
+# of the tcsh may not support all options and print error
+# messages or even abort. Options should be set last.
+
+# Autolisting of options only when
+# no new characters could be added
+set autolist=ambiguous
+
+# Autocorrection, but only for
+# commands and nothing else
+set autocorrect
+set correct=cmd
+
+# Use the command history to find
+# completions
+set autoexpand
+
+# Never ever autologout
+unset autologout
+
+# Automatic rebuild the path hashtable.
+# (no more "rehash" necesarry with this)
+set autorehash=always
+
+# Enables colored output for embedded commands
+set color
+
+# Enables color setting via escape sequences
+# (Those must be supported by the terminal)
+set colorcat
+
+# Autocompletion
+set complete
+
+# Let 'pushd' remove all instances of the pushed
+# directory of the stack before pushing
+set dunique
+
+# Support both BSD and SysV echo style
+set echo_style=both
+
+# * matches files starting with a .
+set globdot
+
+# Allow the wildcard '**' to recurse into subdirectories
+set globstar
+
+# List all jobs after ctrl-z
+set listjobs=long
+
+# Never ever beep
+set nobeep
+
+# Hours are always printed with
+# 2 digits (07 instead of 7)
+set padhour
+
+# Print exitcode if it's non-zero
+set printexitvalue
+
+# pushd without arguments changed to $HOME
+set pushdtohome
+
+# Ask before "rm *". Can be overriden with "-f"
+set rmstar
+
+# Chase symlinks
+set symlinks=chase
+
+# Display 'time' for commands that took
+# longer than 5 seconds (Smaller values
+# may lead to problems with subshells
+# used for completions)
+set time=5
+
