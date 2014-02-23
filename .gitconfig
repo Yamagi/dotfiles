@@ -1,0 +1,16 @@
+[alias]
+	ci = commit
+	co = checkout
+[user]
+	name = Yamagi Burmeister
+	email = yamagi@yamagi.org
+[core]
+	safecrlf = true
+	autocrlf = input
+	excludesfile = ~/.gitignore
+[color]
+	ui = true
+[merge]
+	tool = gvimdiff
+[push]
+	default = upstream
