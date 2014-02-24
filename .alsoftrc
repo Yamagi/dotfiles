@@ -1,0 +1,22 @@
+# Surround
+#channels = surround51
+channels = stereo
+
+# Cubic resampling
+resampler = cubic
+
+# Dublicate stereo sampes behind
+# the user if surround output is
+# active
+stereodup = true
+
+# Better spatialization for
+# headphones. (Bad for speakers)
+hrtf = true
+
+# OSS output
+drivers = oss
+
+[oss]
+device = /dev/dsp
+capture = /dev/dsp
