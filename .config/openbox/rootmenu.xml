@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://openbox.org/
+	file:///usr/local/share/openbox/menu.xsd">
+
+	<!-- Office software -->
+	<menu id="buero" label="Buero">
+
+		<!-- Evince -->
+		<item label="evince">
+			<action name="Execute">
+				<execute>
+					evince
+				</execute>
+			</action>
+		</item>
+
+		<!-- LibreOffice -->
+		<item label="LibreOffice">
+			<action name="Execute">
+				<execute>
+					libreoffice
+				</execute>
+			</action>
+		</item>
+	</menu>
+
+	<!-- Development stuff -->
+	<menu id="devel" label="Development">
+
+		<!-- GHex -->
+		<item label="GHex">
+			<action name="Execute">
+				<execute>
+					ghex2
+				</execute>
+			</action>
+		</item>
+		
+		<!-- Vim -->
+		<item label="Vim">
+			<action name="Execute">
+				<execute>
+					gvim
+				</execute>
+			</action>
+		</item>
+	</menu>
+
+	<!-- Graphics software -->
+	<menu id="grafik" label="Grafik">
+
+		<!-- Comix -->
+		<item label="Comix">
+			<action name="Execute">
+				<execute>
+					comix
+				</execute>
+			</action>
+		</item>
+
+		<!-- Geeqie -->
+		<item label="Geeqie">
+			<action name="Execute">
+				<execute>
+					geeqie
+				</execute>
+			</action>
+		</item>
+
+		<!-- Inkscape -->
+		<item label="Inkscape">
+			<action name="Execute">
+				<execute>
+					inkscape
+				</execute>
+			</action>
+		</item>
+
+		<!-- The GIMP -->
+		<item label="The GIMP">
+			<action name="Execute">
+				<execute>
+					gimp
+				</execute>
+			</action>
+		</item>
+	</menu>
+
+	<!-- Internet software -->
+	<menu id="internet" label="Internet">
+ 
+		<!-- Chrome -->
+		<item label="Chrome">
+			<action name="Execute">
+				<execute>
+					chrome
+				</execute>
+			</action>
+		</item>
+  
+		<!-- Skype -->
+		<item label="Skype">
+			<action name="Execute">
+				<execute>
+					skype
+				</execute>
+			</action>
+		</item>
+
+		<!-- Sylpheed -->
+		<item label="Sylpheed">
+			<action name="Execute">
+				<execute>
+					sylpheed
+				</execute>
+			</action>
+		</item>
+	</menu>
+
+	<!-- Multimedia -->
+	<menu id="multimedia" label="Multimedia">
+
+		<!-- Easytag -->
+		<item label="Easytag">
+			<action name="Execute">
+				<execute>
+					easytag
+				</execute>
+			</action>
+		</item>
+
+		<!-- Higan -->
+ 		<item label="Higan">
+			<action name="Execute">
+				<execute>
+					higan
+				</execute>
+			</action>
+		</item>
+	</menu>
+
+	<!-- Misc. stuff -->
+	<menu id="zubehoer" label="Sonstiges">
+
+		<!-- Nitrogen -->
+		<item label="Nitrogen">
+			<action name="Execute">
+				<execute>
+					nitrogen
+				</execute>
+			</action>
+		</item>
+
+		<!-- Nvidia Settings -->
+		<item label="Nvidia Settings">
+			<action name="Execute">
+				<execute>
+					nvidia-settings
+				</execute>
+			</action>
+		</item>
+
+		<!-- VirtualBox -->
+		<item label="VirtualBox">
+			<action name="Execute">
+				<execute>
+					VirtualBox
+				</execute>
+			</action>
+		</item>
+	</menu>
+
+	<!-- The root menu -->
+	<menu id="root-menu" label="Openbox">
+
+		<separator label="FreeBSD"/>
+
+		<!-- urxvtc -->
+		<item label="Terminal">
+			<action name="Execute">
+				<execute>
+					urxvtc
+				</execute>
+			</action>
+		</item>
+
+		<!-- Worker -->
+		<item label="Worker">
+			<action name="Execute">
+				<execute>
+					worker
+				</execute>
+			</action>
+		</item>
+
+		<!-- XKill -->
+		<item label="XKill">
+			<action name="Execute">
+				<execute>
+					xkill
+				</execute>
+			</action>
+		</item>
+
+		<!-- XRefresh -->
+		<item label="XRefresh">
+			<action name="Execute">
+				<execute>
+					xrefresh
+				</execute>
+			</action>
+		</item>
+
+		<separator/>
+		<menu id="buero"/>
+		<menu id="grafik"/>
+		<menu id="devel"/>
+		<menu id="internet"/>
+		<menu id="multimedia"/>
+		<menu id="zubehoer"/>
+		<separator/>
+
+		<!-- Reconfigurate -->
+		<item label="Neu konfigurieren">
+			<action name="Reconfigure"/>
+		</item>
+
+		<!-- Lock screen -->
+		<item label="Sperren">
+			<action name="Execute">
+				<execute>
+					/usr/local/bin/xscreensaver-command -lock
+				</execute>
+			</action>
+		</item>
+
+		<!-- Restart -->
+		<item label="Neu starten">
+			<action name="Restart"/>
+		</item>
+
+		<!-- Quit -->
+		<item label="Beenden">
+			<action name="Exit">
+				<prompt>no</prompt>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>

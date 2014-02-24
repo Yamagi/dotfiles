@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Openbox configuration file. (c) 19.08.2012 by
+	 Yamagi Burmeister <yamagi@yamagi.org> -->
+
+<openbox_config xmlns="http://openbox.org/3.4/rc"
+	xmlns:xi="http://www.w3.org/2001/XInclude">
+
+	<!-- How many pixel resistance is there
+		 between two pixels until they'll
+		 overlap. -->
+	<resistance>
+
+		<!-- 10 pixel between normal windows -->
+		<strength>10</strength>
+
+		<!-- 20 pxiel between windows
+			 and the screen edge -->
+		<screen_edge_strength>20</screen_edge_strength>
+	</resistance>
+
+	<!-- How to focus windows? -->
+	<focus>
+
+		<!-- Always focus new windows -->
+		<focusNew>yes</focusNew>
+
+		<!-- The focus follows the mouse -->
+		<followMouse>yes</followMouse>
+
+		<!-- When changing to a new desktop, focus
+			 the window under the mouse instead of
+			 the last focused window. -->
+		<focusLast>no</focusLast>
+
+		<!-- Move focus under the mouse, even
+			 when the mouse is not moving -->
+		<underMouse>yes</underMouse>
+
+		<!-- When followMouse is enabled, the mouse
+			 must be inside the window for this many
+			 milliseconds (1000 = 1 sec) before moving
+			 focus to it -->
+		<focusDelay>0</focusDelay>
+
+		<!-- When followMouse is enabled, and a window is
+			 given focus by moving the mouse into it, also
+			 raise the window -->
+		<raiseOnFocus>no</raiseOnFocus>
+	</focus>
+
+	<!-- Windows placement rules -->
+	<placement>
+
+		<!-- Smart windows placement instead
+			 of stupid "under the mouse" -->
+		<policy>Smart</policy>
+
+		<!-- Whether to place windows in the center
+			 of the free area found or the top left
+			 corner -->
+		<center>no</center>
+
+		<!-- With Smart placement on a multi-monitor
+			 system, try to place new windows on
+			 the monitor where the mouse is -->
+		<monitor>Mouse</monitor>
+
+		<!-- Openbox should place popups on the
+			 monitor where the mouse is, the
+			 monitor with the mouse is the
+			 primary one. -->
+		<primaryMonitor>Mouse</primaryMonitor>
+	</placement>
+
+	<!-- The theme to use -->
+	<theme>
+
+		<!-- Name of the Theme to use. -->
+		<name>yamagi</name>
+
+		<!-- Layout of the window title bar. Available
+			 characters are NDSLIMC, each can occur at
+			 most once:
+		      N: window icon
+			  L: window label (AKA title).
+			  I: iconify
+			  M: maximize
+			  C: close
+			  S: shade (roll up/down)
+			  D: omnipresent (on all desktops). -->
+		<titleLayout>CMILN</titleLayout>
+
+		<!-- Draw the window border even if
+			 the decoration is switched of -->
+		<keepBorder>yes</keepBorder>
+
+		<!-- Do not animate the iconify -->
+		<animateIconify>no</animateIconify>
+
+		<!-- Font in which the title of an
+			 active window is drawn -->
+		<font place="ActiveWindow">
+			<name>Bitstream Vera Sans</name>
+			<size>8</size>
+			<weight>normal</weight>
+			<slant>normal</slant>
+		</font>
+
+         <!-- Font in which the title of an
+			  active window is drawn -->
+		<font place="InactiveWindow">
+			<name>Bitstream Vera Sans</name>
+			<size>8</size>
+			<weight>normal</weight>
+			<slant>normal</slant>
+		</font>
+
+		<!-- Font in which the menu
+			 header is drawn -->
+		<font place="MenuHeader">
+			<name>Bitstream Vera Sans</name>
+			<size>8</size>
+			<weight>normal</weight>
+			<slant>normal</slant>
+		</font>
+
+		<!-- Font in which menu
+			 items are drawn -->
+		<font place="MenuItem">
+			<name>Bitstream Vera Sans</name>
+			<size>9</size>
+			<weight>normal</weight>
+			<slant>normal</slant>
+		</font>
+
+		<!-- Font which used in the OSD -->
+		<font place="OnScreenDisplay">
+			<name>Bitstream Vera Sans</name>
+			<size>9</size>
+			<weight>normal</weight>
+			<slant>normal</slant>
+		</font>
+	</theme>
+
+	<!-- Desktop configuration. Can be altered
+		 at runtime by using pager. -->
+	<desktops>
+
+		<!-- Number of desktops -->
+		<number>8</number>
+
+		<!-- The first desktop -->
+		<firstdesk>1</firstdesk>
+
+		<!-- The names of the desktops -->
+		<names>
+			<name>1</name>
+			<name>2</name>
+			<name>3</name>
+			<name>4</name>
+			<name>5</name>
+			<name>6</name>
+			<name>7</name>
+			<name>8</name>
+		</names>
+
+		<!-- Time in miliseconds to show the
+			 desktop change popup -->
+		<popupTime>875</popupTime>
+	</desktops>
+
+	<!-- Window resizing -->
+	<resize>
+
+		<!-- Always draw the window content -->
+		<drawContents>yes</drawContents>
+
+		<!-- Always show the window size popup -->
+		<popupShow>Always</popupShow>
+
+		<!-- And place it at the window center -->
+		<popupPosition>Center</popupPosition>
+	</resize>
+
+	<!-- Reserved space, not covered by
+		 maximized windows. All values
+		 in pixel. -->
+	<margins>
+
+		<!-- Top -->
+		<top>0</top>
+
+		<!-- Bottom -->
+		<bottom>0</bottom>
+
+		<!-- Left -->
+		<left>0</left>
+
+		<!-- Right -->
+		<right>0</right>
+	</margins>
+
+	<!-- Setting for the dock, e.g. the space
+		 where dock apps are kept -->
+	<dock>
+
+		<!-- Positon the dock at the center of
+			 the right screen border -->
+		<position>CenterRight</position>
+
+		<!-- Do not stop windows from
+			 maximizing over the dock -->
+		<noStrut>Yes</noStrut>
+
+		<!-- Put dock apps in the normal layer -->
+		<stacking>Normal</stacking>
+
+		<!-- Order dock apps in vertical direction -->
+		<direction>Vertical</direction>
+
+		<!-- Do not auto hide the dock -->
+		<autoHide>No</autoHide>
+
+		<!-- Move dock apps by pressing
+			 the middle mouse button -->
+		<moveButton>Middle</moveButton>
+	</dock>
+
+	<!-- Keyboard settings, e.g. shortcuts -->
+	<keyboard>
+
+		<!-- Move to left desktop -->
+		<keybind key="W-Left">
+			<action name="DesktopLeft">
+
+				<!-- Wrap from last to first desktop -->
+				<wrap>yes</wrap>
+			</action>
+		</keybind>
+
+		<!-- Move to right desktop -->
+		<keybind key="W-Right">
+			<action name="DesktopRight">
+
+				<!-- Wrap from last to first desktop -->
+				<wrap>yes</wrap>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 1 -->
+		<keybind key="W-F1">
+			<action name="Desktop">
+				<desktop>1</desktop>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 2 -->
+		<keybind key="W-F2">
+			<action name="Desktop">
+				<desktop>2</desktop>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 3 -->
+		<keybind key="W-F3">
+			<action name="Desktop">
+				<desktop>3</desktop>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 4 -->
+		<keybind key="W-F4">
+			<action name="Desktop">
+				<desktop>4</desktop>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 5 -->
+		<keybind key="W-F5">
+			<action name="Desktop">
+				<desktop>5</desktop>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 6 -->
+		<keybind key="W-F6">
+			<action name="Desktop">
+				<desktop>6</desktop>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 7 -->
+		<keybind key="W-F7">
+			<action name="Desktop">
+				<desktop>7</desktop>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 8 -->
+		<keybind key="W-F8">
+			<action name="Desktop">
+				<desktop>8</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 1 -->
+		<keybind key="A-F1">
+			<action name="SendToDesktop">
+				<desktop>1</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 2 -->
+		<keybind key="A-F2">
+			<action name="SendToDesktop">
+				<desktop>2</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 3 -->
+		<keybind key="A-F3">
+			<action name="SendToDesktop">
+				<desktop>3</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 4 -->
+		<keybind key="A-F4">
+			<action name="SendToDesktop">
+				<desktop>4</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 5 -->
+		<keybind key="A-F5">
+			<action name="SendToDesktop">
+				<desktop>5</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 6 -->
+		<keybind key="A-F6">
+			<action name="SendToDesktop">
+				<desktop>6</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 7 -->
+		<keybind key="A-F7">
+			<action name="SendToDesktop">
+				<desktop>7</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 8 -->
+		<keybind key="A-F8">
+			<action name="SendToDesktop">
+				<desktop>8</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to monitor 1 -->
+ 		<keybind key="A-KP_9">
+			<action name="MoveResizeTo">
+				<monitor>1</monitor>
+			</action>
+		</keybind>
+ 
+		<!-- Send current window to monitor 2 -->
+		<keybind key="A-KP_7">
+			<action name="MoveResizeTo">
+				<monitor>2</monitor>
+			</action>
+		</keybind>
+ 
+		<!-- Current window always on top -->
+		<keybind key="A-Prior">
+			<action name="ToggleAlwaysOnTop"/>
+		</keybind>
+
+		<!-- Current window always on bottom -->
+		<keybind key="A-Next">
+			<action name="ToggleAlwaysOnBottom"/>
+		</keybind>
+
+		<!-- Maximize current window (Num block 0) -->
+		<keybind key="A-KP_0">
+			<action name="ToggleMaximize"/>
+		</keybind>
+
+		<!-- Move window to the horizontal
+			 upper 50% of the monitor -->
+		<keybind key="A-KP_8">
+			<action name="MoveResizeTo">
+				<x>+-0</x>
+				<y>+-0</y>
+				<width>100%</width>
+				<height>50%</height>
+			</action>
+		</keybind>
+
+		<!-- Move window to the horizontal
+			 lower 50% of the monitor -->
+		<keybind key="A-KP_2">
+			<action name="MoveResizeTo">
+				<x>+-0</x>
+				<y>-0</y>
+				<width>100%</width>
+				<height>50%</height>
+			</action>
+		</keybind>
+
+		<!-- Move window to the vertical
+			 left 50% of the monitor -->
+		<keybind key="A-KP_4">
+			<action name="MoveResizeTo">
+				<x>+-0</x>
+				<y>+-0</y>
+				<width>50%</width>
+				<height>100%</height>
+			</action>
+		</keybind>
+
+ 		<!-- Move window to the vertical
+			 right 50% of the monitor -->
+		<keybind key="A-KP_6">
+			<action name="MoveResizeTo">
+				<x>-0</x>
+				<y>+-0</y>
+				<width>50%</width>
+				<height>100%</height>
+			</action>
+		</keybind>
+
+		<!-- Center the window -->
+		<keybind key="A-KP_5">
+			<action name="MoveResizeTo">
+				<x>center</x>
+				<y>center</y>
+				<width>50%</width>
+				<height>50%</height>
+			</action>
+		</keybind>
+
+		<!-- Toogle "show desktop" -->
+		<keybind key="W-space">
+			<action name="ToggleShowDesktop"/>
+		</keybind>
+
+		<!-- Window switching by alt-tab -->
+		<keybind key="A-Tab">
+			<action name="NextWindow"/>
+		</keybind>
+
+		<!-- Execute terminal on win-t -->
+		<keybind key="W-t">
+			<action name="Execute">
+				<execute>/usr/local/bin/urxvtc</execute>
+			</action>
+		</keybind>
+ 
+		<!-- Execute terminal with tmux on win-r -->
+		<keybind key="W-r">
+			<action name="Execute">
+				<execute>/usr/local/bin/urxvtc -e tmux -2</execute>
+			</action>
+		</keybind>
+ 
+		<!-- Lock screen by ctrl-alt-del -->
+		<keybind key="C-A-Delete">
+			<action name="Execute">
+				<execute>/usr/local/bin/xscreensaver-command -lock</execute>
+			</action>
+		</keybind>
+
+		<!-- Toggle music playback on alt-space -->
+		<keybind key="A-space">
+			<action name="Execute">
+				<execute>/usr/local/bin/ncmpcpp toggle</execute>
+			</action>
+		</keybind>
+
+		<!-- Lower sound volume by 1 on F3 -->
+		<keybind key="F3">
+			<action name="Execute">
+				<execute>/usr/sbin/mixer vol -1</execute>
+			</action>
+		</keybind>
+
+		<!-- Raise sound volume by 1 on F4 -->
+		<keybind key="F4">
+			<action name="Execute">
+				<execute>/usr/sbin/mixer vol +1</execute>
+			</action>
+		</keybind>
+	</keyboard>
+
+	<!-- Mouse settings -->
+	<mouse>
+
+		<!-- Number of pixels to move before
+			 dragging wof windows starts -->
+		<dragThreshold>8</dragThreshold>
+
+		<!-- Double click interval -->
+		<doubleClickTime>200</doubleClickTime>
+
+		<!-- Never change desktops when a window
+			 is pushed against the screen edge -->
+		<screenEdgeWarpTime>0</screenEdgeWarpTime>
+
+		<!-- Actions to be performed somewhere in the
+			 window, including the decoration -->
+		<context name="Frame">
+
+			<!-- Gain focus and raise to top on win-left + press -->
+			<mousebind button="W-Left" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Gain focus and raise to top on win-right + press -->
+			<mousebind button="W-Right" action="Press">
+				<action name="Focus"/>
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Move on win-left + drag -->
+			<mousebind button="W-Left" action="Drag">
+				<action name="Move"/>
+			</mousebind>
+
+			<!-- Resize on win-right + drag -->
+			<mousebind button="W-Right" action="Drag">
+				<action name="Resize"/>
+			</mousebind>
+
+			<!-- Previous workspace on alt + mousewheel down -->
+			<mousebind button="A-Down" action="Click">
+				<action name="DesktopPrevious"/>
+			</mousebind>
+
+		    <!-- Next workspace on alt + mousewheel up -->
+			<mousebind button="A-Up" action="Click">
+				<action name="DesktopNext"/>
+			</mousebind>
+		</context>
+
+		<!-- Actions to be performed somewhere
+			 in the window, excluding decoration -->
+		<context name="Client">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+		</context>
+
+		<!-- Action to be performed
+			 in the titlebar -->
+		<context name="Titlebar">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Drag on left + drag -->
+			<mousebind button="Left" action="Drag">
+				<action name="Move"/>
+			</mousebind>
+
+			<!-- Toogle maximize on double click -->
+			<mousebind button="Left" action="DoubleClick">
+				<action name="ToggleMaximizeFull"/>
+			</mousebind>
+
+			<!-- Shade window on wheel up -->
+			<mousebind button="Up" action="Click">
+				<action name="Shade"/>
+			</mousebind>
+
+			<!-- Unshade window on wheel down -->
+			<mousebind button="Down" action="Click">
+				<action name="Unshade"/>
+			</mousebind>
+
+			<!-- Show client menu on right + press -->
+			<mousebind button="Right" action="Press">
+				<action name="ShowMenu">
+					<menu>client-menu</menu>
+				</action>
+			</mousebind>
+		</context>
+
+		<!-- Top edge of the window -->
+		<context name="Top">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Resize on left + drag -->
+			<mousebind button="Left" action="Drag">
+				<action name="Resize">
+					<edge>top</edge>
+				</action>
+			</mousebind>
+		</context>
+
+		<!-- Left edge of the window -->
+		<context name="Left">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Resize on left + drag -->
+			<mousebind button="Left" action="Drag">
+				<action name="Resize">
+					<edge>left</edge>
+				</action>
+			</mousebind>
+		</context>
+
+		<!-- Right edge of the window -->
+		<context name="Right">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Resize on left + drag -->
+			<mousebind button="Left" action="Drag">
+				<action name="Resize">
+					<edge>right</edge>
+				</action>
+			</mousebind>
+		</context>
+
+		<!-- Bottom edge of the window -->
+		<context name="Bottom">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Resize on left + drag -->
+			<mousebind button="Left" action="Drag">
+				<action name="Resize">
+					<edge>bottom</edge>
+				</action>
+			</mousebind>
+		</context>
+
+		<!-- Bottom left corner -->
+		<context name="BLCorner">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Resize on left + drag -->
+			<mousebind button="Left" action="Drag">
+				<action name="Resize"/>
+			</mousebind>
+		</context>
+
+		<!-- Bottom right corner -->
+		<context name="BRCorner">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Resize on left + drag -->
+			<mousebind button="Left" action="Drag">
+				<action name="Resize"/>
+			</mousebind>
+		</context>
+
+		<!-- Top left corner -->
+		<context name="TLCorner">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Resize on left + drag -->
+			<mousebind button="Left" action="Drag">
+				<action name="Resize"/>
+			</mousebind>
+		</context>
+
+		<!-- Top right corner -->
+		<context name="TRCorner">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Resize on left + drag -->
+			<mousebind button="Left" action="Drag">
+				<action name="Resize"/>
+			</mousebind>
+		</context>
+
+		<!-- The window icon in the title bar -->
+		<context name="Icon">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Client menu on right + press -->
+			<mousebind button="Right" action="Press">
+				<action name="ShowMenu">
+					<menu>client-menu</menu>
+				</action>
+			</mousebind>
+		</context>
+
+		<!-- The iconify button in the title bar -->
+		<context name="Iconify">
+
+			<!-- Iconify on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Iconify"/>
+			</mousebind>
+		</context>
+
+		<!-- The maximize button in the title bar -->
+		<context name="Maximize">
+
+			<!-- Raise on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Raise"/>
+			</mousebind>
+
+			<!-- Maximize full on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="ToggleMaximizeFull"/>
+			</mousebind>
+
+			<!-- Maximize vertical on middle + click -->
+			<mousebind button="Middle" action="Click">
+				<action name="ToggleMaximizeVert"/>
+			</mousebind>
+
+			<!-- Maximize horizontal on right + click -->
+			<mousebind button="Right" action="Click">
+				<action name="ToggleMaximizeHorz"/>
+			</mousebind>
+		</context>
+
+		<!-- The close button in the title bar -->
+		<context name="Close">
+
+			<!-- Close on left + click -->
+			<mousebind button="Left" action="Click">
+				<action name="Close"/>
+			</mousebind>
+		</context>
+
+		<!-- The desktop -->
+		<context name="Desktop">
+
+			<!-- Previous workspace on mousewheel down -->
+			<mousebind button="Down" action="Click">
+				<action name="DesktopPrevious"/>
+			</mousebind>
+
+			<!-- Previous workspace on alt + mousewheel down -->
+			<mousebind button="A-Down" action="Click">
+				<action name="DesktopPrevious"/>
+			</mousebind>
+
+		    <!-- Next workspace on mousewheel up -->
+			<mousebind button="Up" action="Click">
+				<action name="DesktopNext"/>
+			</mousebind>
+
+		    <!-- Next workspace on alt + mousewheel up -->
+			<mousebind button="A-Up" action="Click">
+				<action name="DesktopNext"/>
+			</mousebind>
+		</context>
+
+		<!-- The desktop without any invisible
+			 application (like file managers)
+			 over it -->
+		<context name="Root">
+
+			<!-- Window list on middle + press -->
+			<mousebind button="Middle" action="Press">
+				<action name="ShowMenu">
+					<menu>client-list-combined-menu</menu>
+				</action>
+			</mousebind>
+
+			<!-- Root window on right + press -->
+			<mousebind button="Right" action="Press">
+				<action name="ShowMenu">
+					<menu>root-menu</menu>
+				</action>
+			</mousebind>
+		</context>
+	</mouse>
+
+	<!-- Menu settings -->
+	<menu>
+
+		<!-- Read the root menu from rootmenu.xml -->
+		<file>rootmenu.xml</file>
+
+		<!-- Do not center submenu relativ
+			 to their parent -->
+		<middle>no</middle>
+
+		<!-- Show a sub menu after 0 milliseconds -->
+		<submenuShowDelay>0</submenuShowDelay>
+
+		<!-- Display icons in the window list menu -->
+		<applicationIcons>yes</applicationIcons>
+
+		<!-- Do not manage Desktops in
+			 the window list menu -->
+		<manageDesktops>no</manageDesktops>
+	</menu>
+</openbox_config>
+
