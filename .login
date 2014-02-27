@@ -43,6 +43,10 @@ endif
 
 if ( $? != 0 ) then
 	if (( -s /usr/local/bin/musicpd ) && ( -s ~/.mpdconf )) then
+		if ( ! -e ~/.musicpd/playlists ) then
+			mkdir -p ~/.musicpd/playlists
+		endif
+
 		/usr/local/bin/musicpd
 		setenv MUSICPD 1
 	endif
