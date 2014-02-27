@@ -1,0 +1,270 @@
+# Minimale Kernelkonfiguration fuer FreeBSD.
+# Der gebaute Kernel enthaelt das absolute
+# Minimum an Funktionalitaet, alles weitere
+# muss per Modul geladen werden.
+
+# ------------------------------------------ #
+
+# 1. Allgemeine Dinge
+# -------------------
+
+# Der Kernelname. Taucht u.a. in der dmesg
+# und in der Ausgabe von uname(1) auf.
+ident       HAPPY
+
+# Architektur.
+machine     amd64
+
+# CPU-Typ.
+cpu         HAMMER
+
+# Wir wollen einen SMP-Kernel bauen.
+options     SMP
+
+# Diese Konfiguration (ohne Kommentare)
+# ins Kernel-Image einbinden.
+options     INCLUDE_CONFIG_FILE
+
+# ------------------------------------------ #
+
+# 2. Fest in den Kernel gebaute Features
+# --------------------------------------
+
+# ULE als Scheduler.
+options     SCHED_ULE
+
+# Das System soll sich preemtiv verhalten.
+options     PREEMPTION
+
+# IPv4 Netzwerkstack.
+options     INET
+
+# IPv6 Netzwerkstack.
+options     INET6
+
+# SCTP Layer 4 Protokoll.
+options     SCTP
+
+# IPSEC Unterstützung.
+options     IPSEC
+
+# Unterstützung für IPSEC NAT Traversal.
+options		IPSEC_NAT_T
+
+# Stealth-Forwarding von IP-Paketen.
+options		IPSTEALTH
+
+# bpf(4) mit JIT-Compiler bauen. Kann
+# alle darauf ausbauenden Anwendungen
+# sehr beschleunigen.
+options		BPF_JITTER
+
+# TCP Offload Engine
+options     TCP_OFFLOAD
+
+# Das AUDIT-Framework, damit OpenBSM
+# Audit-Events aus dem Kernel ziehen
+# kann.
+options     AUDIT
+
+# Das MAC-Framework fuer Mandandory
+# Access Controls.
+options     MAC
+
+# Resource Accounting. Notwendig fuer
+# Resource Limits.
+options     RACCT
+
+# Unterstuetzung fuer Resource Limits.
+options     RCTL
+
+# kbd(4) soll fuer jedes Keyboard ein
+# Device in /dev erstellen. Notwendig
+# fuer X11.
+options     KBD_INSTALL_CDEV
+
+# Neuer PCI-Bus Code.
+options     NEW_PCIB
+
+# Erlaubt hwpmc(4) auch Kernelaufrufe
+# zu tracen. De facto fuer sinnvolle
+# Ergebnisse notwendig.
+options     HWPMC_HOOKS 
+
+# Alle Kernel-Ausgaben puffern, damit
+# sie sich nicht untereinander mischen.
+options     PRINTF_BUFR_SIZE=256
+
+# Capsicum Capabilities Framework.
+options     CAPABILITY_MODE
+options     CAPABILITIES
+
+# Process Descriptors (File Descriptoren
+# fuer Prozesse, u.a. von Capsicum genutzt).
+options     PROCDESC
+
+# ------------------------------------------ #
+
+# 3. Debug-Optionen
+# -----------------
+
+# Den Kernel mit Debug-Symbolen bauen. Die
+# Symbole werden in einzelnen Dateien 
+# gespeichert und koennen bei Bedarf einfach
+# geloescht werden.
+makeoptions DEBUG=-g
+
+# CTF Data fuer DTrace
+makeoptions WITH_CTF=1
+
+# Kernel-Debugger Framework. Notwendig, um
+# sinnvolle panic()-Ausgaben zu bekommen.
+options     KDB
+
+# Bei panic() einen Stack-Trace ausgeben.
+options     KDB_TRACE 
+ 
+# STACK erlaubt es, auf den Kernelstack 
+# zuzugreifen. Notwendig fuer einige
+# Debuging-Tools.
+options     STACK
+
+# Unterstuetzung fuer die ktrace(2) Syscalls.
+options     KTRACE
+
+# Kernel-DTrace Unterstuetzung.
+options     KDTRACE_FRAME
+options     KDTRACE_HOOKS
+
+# Wenn Kernelmodule CTF enthalten, wird dies
+# geladen. Andernfalls waere DTrace sinnlos.
+options     DDB_CTF
+
+# USB-Debugging ist notwendig, um Quirks 
+# setzen zu koennen. In der Praxis kaum zu
+# vermeiden.
+options		USB_DEBUG
+
+# ------------------------------------------ #
+
+# 4. Spezielle Optionen fuer UFS
+# ------------------------------
+
+# Softupdates aktivieren.
+options     SOFTUPDATES
+
+# Unterstuetzung fuer ACL.
+options     UFS_ACL
+
+# Dirhash-Code, beschleunigt die Sache sehr.
+options     UFS_DIRHASH
+
+# gjournal(8) Unterstuetzung.
+options     UFS_GJOURNAL
+
+# Extended Attributs Unterstuetzung.
+# U.a. fuer ACL genutzt.
+options     UFS_EXTATTR
+options     UFS_EXTATTR_AUTOSTART
+
+# Disk Quotas
+options     QUOTA
+
+# ------------------------------------------ #
+
+# 5. Rueckkompatiblitaet
+# ----------------------
+
+# Syscalls und In-Kernel Structs aelterer
+# FreeBSD-Versionen. Nicht jede Version
+# aenderte das Interface!
+options     COMPAT_FREEBSD4
+options     COMPAT_FREEBSD5
+options     COMPAT_FREEBSD6
+options     COMPAT_FREEBSD7
+
+# Unterstuetzung fuer 4.3BSD Interfaces.
+# Auch fuer FreeBSD 1 bis 3 Binaries
+# notwendig.
+options		COMPAT_43
+
+# Unterstuetzung fuer das alte 4.3BSD
+# TTY-Interface. Wird (leider) noch immer
+# haeufig genutzt.
+options     COMPAT_43TTY
+
+# Unterstuetzung fuer 32-Bit Binaries auf
+# 64 Bit Hosts.
+options     COMPAT_FREEBSD32
+
+# SysV Interfaces
+options     SYSVSHM 
+options     SYSVMSG
+options     SYSVSEM
+
+# POSIX Realtime Scheduling Interfaces.
+options     _KPOSIX_PRIORITY_SCHEDULING
+
+# ------------------------------------------ #
+
+# 6. Devices
+# ----------
+ 
+# syscons(4) Systemkonsolenrenderer
+device      sc
+options     SC_PIXEL_MODE
+options     SC_DISABLE_REBOOT
+ 
+# vga(4), damit syscons(4) auf VGA-Karten
+# rendern kann. Zwingend notwendig, sonst
+# gibt es kein Bild.
+device      vga
+
+# Unterstuetzung von Splash-Screens.
+device      splash
+
+# Minimale Netzwerk-Unterstuetzung.
+#  - ether(4): Ethernet Netzwerke
+#  - loop(4):  Loopback-Devices
+#  - bpf(4):   Berkeley Packet Filter
+device      ether
+device      loop
+device      bpf
+
+# Pseudo-TTYs
+device      pty
+
+# Klassisches AT und PS/2 Keyboard.
+#  - atkbdc(4): Keyboard- und Mouse-Controller
+#  - atkbd(4):  Keyboard-Treiber
+#  - psm(4):    Mouse-Treiber
+device      atkbdc
+device      atkbd
+device      psm
+
+# System-Interfaces.
+#  - isa(4):  ISA und LPC Unterstuetzung
+#  - eisa(4): Extended ISA und LPC
+#  - pci(4):  PCI und seine Abarten
+#  - acpi(4): ACPI Unterstuetzung
+device      isa
+device      eisa
+device      pci
+device      acpi
+
+# crypto(4) Framework, Abhaengigkeit zu IPSEC. 
+#  - crypto(4): Das Framework
+#  - enc(4):    IPSEC Pseudo Device
+device      crypto
+device		enc
+ 
+# altq(4) Unterstuetzung.
+options     ALTQ
+options     ALTQ_CBQ
+options     ALTQ_RED
+options     ALTQ_RIO
+options     ALTQ_HFSC
+options     ALTQ_CDNR
+options     ALTQ_PRIQ
+
+# ------------------------------------------ #

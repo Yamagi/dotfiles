@@ -1,0 +1,6 @@
+[user=10]
+add path cd* mode 0660
+add path pass* mode 0660
+add path xpt* mode 0660
+add path da* mode 0660
+add path 'usb/*' mode 0660 group operator
