@@ -1,0 +1,23 @@
+# Unsere Ports
+port_range = 6093-6093
+
+# Ein zufälliger Port
+port_random = no
+
+# Zielverzeichnis
+directory = ~/torrents
+
+# Sessions
+session = ~/torrents/sessions
+
+# Verschlüsselung soll erlaubt sein
+encryption = allow_incoming
+
+# Upload begrenzen
+upload_rate = 80
+
+# Port für trackerloses Torrent
+dht_port = 6100
+
+# UDP
+use_udp_trackers = yes
