@@ -1,0 +1,2 @@
+set ssl:verify-certificate false
+set ftp:ssl-protect-data true
