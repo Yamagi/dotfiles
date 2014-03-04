@@ -26,12 +26,14 @@ if ( -f $tmpFile ) then
 		if (( $? != 0 ) && ( -x "$sshAgent" )) then
 			$sshAgent $sshAgentArgs | head -2 > $tmpFile
 			source $tmpFile
+			setenv SSH_AGENT_THIS 1
 		endif
 	endif
 else
 	if ( -x "$sshAgent" ) then
 		$sshAgent $sshAgentArgs | head -2 > $tmpFile
 		source $tmpFile
+		setenv SSH_AGENT_THIS 1
 	endif
 endif
 

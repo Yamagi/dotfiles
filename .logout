@@ -8,18 +8,21 @@ unset set time
 
 # --------------------------------------------------------------------- #
 
-# Stop ssh-agent if running
-if ( $?SSH_AGENT_PID ) then
+# Stop ssh-agent if it's running
+# and was started by this session
+if ( $?SSH_AGENT_THIS) then
+	if ( $?SSH_AGENT_PID ) then
 
-	# Delete all keys
-	ssh-add -D >& /dev/null
+		# Delete all keys
+		ssh-add -D >& /dev/null
 
-	# Kill the daemon
-	kill $SSH_AGENT_PID
+		# Kill the daemon
+		kill $SSH_AGENT_PID
 
-	# Clean the environment
-	unset SSH_AGENT_PID
-	unset SSH_AUTH_SOCK
+		# Clean the environment
+		unset SSH_AGENT_PID
+		unset SSH_AUTH_SOCK
+	endif
 endif
 
 # --------------------------------------------------------------------- #
