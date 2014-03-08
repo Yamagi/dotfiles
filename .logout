@@ -77,5 +77,5 @@ set printexitvalue
 
 # Reenable printing
 # of the timing
-set time=0
+set time=5
 
