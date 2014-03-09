@@ -28,6 +28,24 @@ case "FreeBSD":
 
 	breaksw
 
+case "linux":
+
+	# Make ls colorfull
+	alias ls '/bin/ls --color'
+
+	# Force su to a clean login environment
+	alias su '/usr/bin/su -l'
+	alias suc '/usr/bin/su'
+
+	# Force 256 colors in tmux
+	alias tmux '/usr/bin/tmux -2'
+
+	# Start X.org in retro mode
+	alias startx '/usr/bin/startx -- -retro'
+	alias X	'/usr/bin/X -retro'
+
+	breaksw
+
 endsw
 
 # Git for our dotfiles
