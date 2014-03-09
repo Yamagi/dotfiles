@@ -55,8 +55,16 @@ endif
 # Force an umask of "077" for unprivileged users.
 # root must have the standard umask, otherwise
 # packet installations and the like will f*ck up.
-if ($LOGNAME != "root") then
+if ($LOGNAME == "root") then
+	umask 022
+else
 	umask 077
+endif
+
+# On Linux the LANG variable must be set at
+# shell level. login(8) is unable to do it.
+if ($OSTYPE == "linux") then
+	setenv LANG de_DE.UTF-8
 endif
 
 # ---------------------------------------------------------------------- #
