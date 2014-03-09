@@ -456,28 +456,28 @@
 		<!-- Execute terminal on win-t -->
 		<keybind key="W-t">
 			<action name="Execute">
-				<execute>/usr/local/bin/urxvtc</execute>
+				<execute>urxvtc</execute>
 			</action>
 		</keybind>
  
 		<!-- Execute terminal with tmux on win-r -->
 		<keybind key="W-r">
 			<action name="Execute">
-				<execute>/usr/local/bin/urxvtc -e tmux -2</execute>
+				<execute>urxvtc -e tmux -2</execute>
 			</action>
 		</keybind>
  
 		<!-- Lock screen by ctrl-alt-del -->
 		<keybind key="C-A-Delete">
 			<action name="Execute">
-				<execute>/usr/local/bin/xscreensaver-command -lock</execute>
+				<execute>xscreensaver-command -lock</execute>
 			</action>
 		</keybind>
 
 		<!-- Toggle music playback on alt-space -->
 		<keybind key="A-space">
 			<action name="Execute">
-				<execute>/usr/local/bin/ncmpcpp toggle</execute>
+				<execute>ncmpcpp toggle</execute>
 			</action>
 		</keybind>
 
