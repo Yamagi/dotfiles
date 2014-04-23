@@ -189,24 +189,24 @@ colorscheme yamagi256
 " ---------------
 
 " Spellchecker umschalten
+nmap <F2> :setlocal spell! spelllang=en_us<cr>
 nmap <F5> :setlocal spell! spelllang=de_de<cr>
-nmap <F6> :setlocal spell! spelllang=en_us<cr>
 
 " Tagsfile neubauen
-nmap <F7> :!/usr/local/bin/exctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
-" Druck auf F9 hebt alle Vorkommen
+nmap <F6> :!/usr/local/bin/exctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+ 
+" Paste-Mode
+:nmap <F7> :set paste!<CR>
+ 
+" Druck auf F8 hebt alle Vorkommen
 " des Wortes unter dem Cursor hervor
-nmap <F9> :set hls<CR>:exec "let @/='\\<".expand("<cword>")."\\>'"<CR>
+nmap <F8> :set hls<CR>:exec "let @/='\\<".expand("<cword>")."\\>'"<CR>
 
-" F10 hebt Markierungen auf
-nmap <F10> :nohls<CR>
+" F9 hebt Markierungen auf
+nmap <F9> :nohls<CR>
 
-" F11 zeigt die Bufferliste
-:nmap <F11> :buffers<CR>:buffer<Space>
-
-" Paste-Mode auf F8
-:nmap <F8> :set paste!<CR>
+" F10 zeigt die Bufferliste
+:nmap <F10> :buffers<CR>:buffer<Space>
 
 " -------------------------------------------------------------------- "
 
@@ -240,6 +240,13 @@ au FileType c,cpp setlocal comments-=://
 " 4. Plugins
 " ----------
 
+" Pathogen laden, was wiederum die
+" Plugins reinzieht.
+call pathogen#infect()
+call pathogen#helptags()
+
+" ----------
+
 " SuperTab wählt nach dem Druck einer
 " Tastenkombination anhand von auf den
 " bereits getippten Text angewandten 
@@ -250,13 +257,6 @@ au FileType c,cpp setlocal comments-=://
 " der genutzten Vervollständigungsmethode.
 let g:SuperTabDefaultCompletionType="context"
 
-" <ctrl-space> für Vorwärtsvervollständigung
-" und <shift-strl-space> für Rückwärtsver-
-" vollständigung. Wie in Eclipse und co.
-" Versagt u.U. auf der Konsole!
-let g:SuperTabMappingForward='<c-space>'
-let g:SuperTabMappingBackward='<s-c-space>'
-
 " Vorauswahl des ersten Treffers
 let g:SuperTabLongestHighlight=1
 
@@ -266,9 +266,57 @@ let g:SuperTabRetainCompletionDuration ='completion'
 
 " ----------
 
+" clang_complete ist ein komplexes Plugin,
+" was mittels Clang Autovervollständigung
+" für C, C++ und ObjC implementiert.
+
+" Pfad zu libclang.so
+let g:clang_library_path="/usr/opt/clang/lib"
+
+" Completions immer explizit starten.
+let g:clang_complete_auto=0
+
+" Clang errors anzeigen.
+let g:clang_complete_copen=1
+
+" Das Fenster mit den Fehlern
+" automatisch aktualisieren.
+let g:clang_periodic_quickfix=1
+
+" Das Fehlerfenster aktualisieren
+" wenn der Insert-Mode verlassen
+" wird oder für einige Zeit
+" nichts eingegeben wird.
+autocmd InsertLeave *.c,*.cpp,*.cxx,*.cc call g:ClangUpdateQuickFix()
+autocmd CursorHoldI *.c,*.cpp,*.cxx,*.cc call g:ClangUpdateQuickFix()
+
+" Preview-Fenster automatisch
+" schließen.
+let g:clang_close_preview=1
+
+" Auch Präprozessor-Kram soll
+" vervollständigt werden.
+let g:clang_complete_macros=1
+
+" Auch Pattern (wie z.B. Schleifen)
+" sollen vervollständigt werden.
+let g:clang_complete_patterns=1
+
+" Ersten Treffer selektieren
+let g:clang_auto_select=1 
+
+" ----------
+
+" gundo ist ein Plugin, welches den
+" Undo-Tree visualisiert.
+map <F11> :GundoToggle<CR>
+
+" ----------
+
 " NERDTree ist ein sehr praktischer
 " Dateibrowser. Hier in der bugfreien
 " Version von Github.
 
 " Ein- und ausschalten auf F12
 map <F12> :NERDTreeToggle<CR>
+
