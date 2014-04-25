@@ -183,6 +183,10 @@ set t_Co=256
 " Unser Farbschema
 colorscheme yamagi256
 
+" .vimrc nach dem Editieren automagisch
+" neu einlesen.
+autocmd BufWritePost .vimrc source %
+
 " -------------------------------------------------------------------- "
 
 " 2. Key mappings
