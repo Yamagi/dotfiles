@@ -55,7 +55,7 @@ set incsearch
 
 " Virtuelles editieren bedeutet, dass wir den
 " Cursor an stellen positionieren können, wo
-" sich noch kein Zeichen befindet. Wir wollen 
+" sich noch kein Zeichen befindet. Wir wollen
 " dies in allen Modi.
 set virtualedit=all
 
@@ -63,12 +63,12 @@ set virtualedit=all
 " Versuch zu piepen.
 set visualbell
 
-" Zeilen automagisch zur 
+" Zeilen automagisch zur
 " Darstellung umbrechen
 set wrap
 
 " Marker für umgebrochene Zeile
-set showbreak=->\ \ \ 
+set showbreak=->\ \ \
 
 " Breche immer am vollen Wort oder
 " anderem Trennzeichen um
@@ -105,7 +105,7 @@ set foldmethod=indent
 " Wir wollen Backspace über
 "  - Einrückungen
 "  - End of line
-"  - Zeilenanfang 
+"  - Zeilenanfang
 " hinweg nutzen können
 set backspace=indent,eol,start
 
@@ -113,26 +113,26 @@ set backspace=indent,eol,start
 "  r - Das Kommentarzeichen in einer neuen
 "      Kommentarzeile automatisch anfügen.
 "
-"  o - Das gleiche wie bei r, nachdem wir 
-"      mit o oder O den Modus gewechselt 
+"  o - Das gleiche wie bei r, nachdem wir
+"      mit o oder O den Modus gewechselt
 "      haben.
-"  
+"
 "  c - Kommentare automatisch auf 'textwidth'
 "      umbrechen, das Kommentarzeichen von
 "      sich aus einfügen.
-"  
+"
 "  t - Automatischer Zeilenumbruch, wenn
-"      'textwidth' erlaubt ist.        
-"  
+"      'textwidth' erlaubt ist.
+"
 "  q - Auch Kommentare können mit 'gq'
-"      neu formatiert werden.    
+"      neu formatiert werden.
 set formatoptions=roctq
 
 " Maus nicht automatisch ausblenden,
 " denn das nervt gewaltig
 set nomousehide
 
-" Bereits 7 Zeilen über Fensterende mit 
+" Bereits 7 Zeilen über Fensterende mit
 " dem Scrollen beginnen
 set so=7
 
@@ -142,6 +142,9 @@ set guifont=Terminus\ 12
 " Kein Scratchwindow
 set completeopt=menu,menuone,longest
 
+" Kein Timeout auf Mappings
+set notimeout
+
 " Die Swapfile 2 Sekunden schreiben
 set updatetime=2000
 
@@ -149,11 +152,11 @@ set updatetime=2000
 " den Status des Editors auch
 " über Neustarts hinweg.
 "  % - Wir merken uns die Bufferlist
-"  
+"
 "  '128 - Marken der letzten 128 Dateien
 "         speichern
-"  
-"  /128 - Die letzten 128 Suchbegriffe       
+"
+"  /128 - Die letzten 128 Suchbegriffe
 "
 "  :128 - Die letzten 128 Befehle
 "
@@ -176,10 +179,10 @@ set sessionoptions=blank,buffers,curdir,folds,localoptions,options,resize,tabpag
 
 " Blowfish als Verschluesselung
 set cm=blowfish
-  
+
 " Unterstuetzung fuer 256 Farben auf dem Terminal
 set t_Co=256
- 
+
 " Unser Farbschema
 colorscheme yamagi256
 
@@ -198,10 +201,10 @@ nmap <F5> :setlocal spell! spelllang=de_de<cr>
 
 " Tagsfile neubauen
 nmap <F6> :!/usr/local/bin/exctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
- 
+
 " Paste-Mode
 :nmap <F7> :set paste!<CR>
- 
+
 " Druck auf F8 hebt alle Vorkommen
 " des Wortes unter dem Cursor hervor
 nmap <F8> :set hls<CR>:exec "let @/='\\<".expand("<cword>")."\\>'"<CR>
@@ -237,7 +240,57 @@ filetype plugin indent on
 
 " In C-Code sollen // Kommentare nicht
 " fortgesetzt werden, da dies stoert.
-au FileType c,cpp setlocal comments-=://
+autocmd FileType c,cpp setlocal comments-=://
+
+" ------------------------------------------------------------------- "
+
+" 4. Cscope
+" ---------
+
+" Bei weitem nicht jeder Vim
+" hat cscope. Daher nur als
+" optionales Feature.
+if has("cscope")
+
+	" cscope fuer Tags nutzen
+	set cscopetag
+
+	" Aber nur als Fallback
+	set csto=1
+
+	" Wenn im aktuellen Verzeichnis
+	" eine Datenbank ist, fuegen wir
+	" sie ein.
+	if filereadable("cscope.out")
+		cs add cscope.out
+	endif
+
+	" Wenn neue Datenbank geladen,
+	" kommentiere es bitte.
+	set cscopeverbose
+
+	" Einfuegen einer Datenbank
+	nmap <C-\>a :cs add cscope.out<CR><CR>
+
+	" Neubau der Datenbank
+	nmap <C-\>r :!cscope -Rb<CR>:cs reset<CR><CR>
+
+	" Alle Vorkommen eines Symbols
+	nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+
+	" Globale Definitionen eines Symbols
+	nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+
+	" Alle Aufrufe eines Symbols
+	nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+
+	" Funktionen, die durch das Symbol aufgerufen werden
+	nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+	" Oeffnet die Datei unter dem Cursor
+	nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+
+endif
 
 " ------------------------------------------------------------------- "
 
@@ -253,7 +306,7 @@ call pathogen#helptags()
 
 " SuperTab wählt nach dem Druck einer
 " Tastenkombination anhand von auf den
-" bereits getippten Text angewandten 
+" bereits getippten Text angewandten
 " Heuristiken automatisch die korrekte
 " Vervollständigungsmethode aus.
 
@@ -311,7 +364,7 @@ let g:clang_complete_macros=1
 let g:clang_complete_patterns=1
 
 " Ersten Treffer selektieren
-let g:clang_auto_select=1 
+let g:clang_auto_select=1
 
 " ----------
 
