@@ -268,6 +268,10 @@ let g:SuperTabLongestHighlight=1
 let g:SuperTabContextDefaultCompletionType='<c-N><c-P>'
 let g:SuperTabRetainCompletionDuration ='completion'
 
+" Suche auf strg-space
+let g:SuperTabMappingForward = '<c-@>'
+let g:SuperTabMappingBackward = '<s-c-@>'
+
 " ----------
 
 " clang_complete ist ein komplexes Plugin,
