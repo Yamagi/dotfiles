@@ -294,7 +294,7 @@ endif
 
 " ------------------------------------------------------------------- "
 
-" 4. Plugins
+" 5. Plugins
 " ----------
 
 " Pathogen laden, was wiederum die
@@ -322,8 +322,13 @@ let g:SuperTabContextDefaultCompletionType='<c-N><c-P>'
 let g:SuperTabRetainCompletionDuration ='completion'
 
 " Suche auf strg-space
-let g:SuperTabMappingForward = '<c-@>'
-let g:SuperTabMappingBackward = '<s-c-@>'
+if has("gui_running")
+	let g:SuperTabMappingForward = '<C-Space>'
+	let g:SuperTabMappingBackward = '<S-C-Space>'
+else
+	let g:SuperTabMappingForward = '<C-@>'
+	let g:SuperTabMappingBackward = '<S-C-@>'
+endif
 
 " ----------
 
