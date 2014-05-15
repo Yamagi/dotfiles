@@ -5,10 +5,10 @@ port_range = 6093-6093
 port_random = no
 
 # Zielverzeichnis
-directory = ~/torrents
+directory = /mnt/data/nfs/download/
 
 # Sessions
-session = ~/torrents/sessions
+session = /mnt/data/nfs/download/sessions
 
 # Verschlüsselung soll erlaubt sein
 encryption = allow_incoming
