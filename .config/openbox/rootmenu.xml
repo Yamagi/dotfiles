@@ -135,7 +135,16 @@
 
 	<!-- Misc. stuff -->
 	<menu id="zubehoer" label="Sonstiges">
-
+ 
+		<!-- Galculator-->
+		<item label="Galculator">
+			<action name="Execute">
+				<execute>
+					galculator
+				</execute>
+			</action>
+		</item>
+ 
 		<!-- Nitrogen -->
 		<item label="Nitrogen">
 			<action name="Execute">
