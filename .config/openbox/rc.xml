@@ -481,19 +481,31 @@
 			</action>
 		</keybind>
 
-		<!-- Lower sound volume by 1 on F3 -->
+		<!-- Lower sound volume by 1 on F3 and XF86AudioLowerVolume -->
 		<keybind key="F3">
 			<action name="Execute">
-				<execute>/usr/sbin/mixer vol -1</execute>
+				<execute>~/.config/openbox/setvolume.sh quieter</execute>
 			</action>
 		</keybind>
 
-		<!-- Raise sound volume by 1 on F4 -->
-		<keybind key="F4">
+ 		<keybind key="XF86AudioLowerVolume">
 			<action name="Execute">
-				<execute>/usr/sbin/mixer vol +1</execute>
+				<execute>~/.config/openbox/setvolume.sh quieter</execute>
 			</action>
 		</keybind>
+ 
+		<!-- Raise sound volume by 1 on F4 and XF86AudioRaiseVolume-->
+		<keybind key="F4">
+			<action name="Execute">
+				<execute>~/.config/openbox/setvolume.sh louder</execute>
+			</action>
+		</keybind>
+
+ 		<keybind key="XF86AudioRaiseVolume">
+			<action name="Execute">
+				<execute>~/.config/openbox/setvolume.sh louder</execute>
+			</action>
+		</keybind> 
 	</keyboard>
 
 	<!-- Mouse settings -->
