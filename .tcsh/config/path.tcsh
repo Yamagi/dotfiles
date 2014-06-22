@@ -17,7 +17,7 @@ set localdirs = ()
 
 # /usr/opt
 if( -d /usr/opt) then
-	foreach d (`find /usr/opt -name "bin" -type d -maxdepth 2`)
+	foreach d (`find /usr/opt  -maxdepth 2 -name "bin" -type d`)
 		if( -d $d) then # This is paranoid
 			set localdirs = ($d $localdirs)
 		endif
