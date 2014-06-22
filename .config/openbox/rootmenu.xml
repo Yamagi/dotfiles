@@ -51,11 +51,11 @@
 	<!-- Graphics software -->
 	<menu id="grafik" label="Grafik">
 
-		<!-- Comix -->
-		<item label="Comix">
+		<!-- mComix -->
+		<item label="mComix">
 			<action name="Execute">
 				<execute>
-					comix
+					mcomix
 				</execute>
 			</action>
 		</item>
