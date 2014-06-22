@@ -41,15 +41,33 @@ endif
 # --------------------------------------------------------------------- #
 
 # Start MuiscPD if it's not running
-/usr/bin/pgrep musicpd > /dev/null
+switch ( "$OSTYPE" )
+
+case "FreeBSD":
+
+	set mpdbin = musicpd
+	set mpdpath = /usr/local/bin
+
+	breaksw
+
+case "linux":
+
+	set mpdbin = mpd
+	set mpdpath = /usr/bin
+
+	breaksw
+
+endsw
+
+/usr/bin/pgrep $mpdbin > /dev/null
 
 if ( $? != 0 ) then
-	if (( -s /usr/local/bin/musicpd ) && ( -s ~/.mpdconf )) then
+	if (( -s $mpdpath/$mpdbin ) && ( -s ~/.mpdconf )) then
 		if ( ! -e ~/.musicpd/playlists ) then
 			mkdir -p ~/.musicpd/playlists
 		endif
 
-		/usr/local/bin/musicpd
+		$mpdpath/$mpdbin
 		setenv MUSICPD 1
 	endif
 endif

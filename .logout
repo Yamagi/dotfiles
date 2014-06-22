@@ -28,12 +28,30 @@ endif
 # --------------------------------------------------------------------- #
 
 # Stop MusicPD
+switch ( "$OSTYPE" )
+
+case "FreeBSD":
+
+	set mpdbin = musicpd
+	set mpdpath = /usr/local/bin
+
+	breaksw
+
+case "linux":
+
+	set mpdbin = mpd
+	set mpdpath = /usr/bin
+
+	breaksw
+
+endsw
+
 if ( $?MUSICPD ) then
-	if (!"$?{TERM}" == "screen")
-		/usr/bin/pgrep musicpd > /dev/null
+	if (!("$?TERM" == "screen")) then
+		/usr/bin/pgrep $mpdbin > /dev/null
 
 		if ( $? == 0 ) then
-			/usr/local/bin/musicpd --kill
+			$mpdpath/$mpdbin --kill
 		endif
 	endif
 endif
