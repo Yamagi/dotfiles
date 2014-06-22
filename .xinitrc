@@ -1,40 +1,64 @@
 #!/bin/sh
 
-# Xdefaults einsaugen
-/usr/local/bin/xrdb -merge ~/.Xsettings
+case $OSTYPE in
 
-# Mausgeschwindigkeit
-/usr/local/bin/xset m 1 0
+	FreeBSD)
+		# Settings
+		/usr/local/bin/xrdb -merge ~/.Xsettings
+		/usr/local/bin/xset m 1 0
+		/usr/local/bin/nvidia-settings --load-config-only
 
-# numlockx
-/usr/local/bin/numlockx & 
+		# Tools
+		/usr/local/bin/numlockx &
+		/usr/local/bin/xscreensaver -no-splash &
+		/usr/local/bin/nitrogen --restore
+		/usr/local/bin/tint2 &
+		/usr/local/bin/urxvtd -q -o -f &
 
-# Nvidia
-/usr/local/bin/nvidia-settings --load-config-only
+		# Openbox
+		/usr/local/bin/openbox &
+		WMPID=$!
 
-# Xscreensaver
-/usr/local/bin/xscreensaver -no-splash &
+		# Wait for Openbox to exit
+		wait $WMPID
+
+		# Kill XScreensaver
+		/usr/local/bin/xscreensaver-command -exit
+
+		# Wait 2 Seconds and quit
+		sleep 2
+		clear
+
+		;;
+
+	linux)
+		# Settings
+		/usr/bin/xrdb -merge ~/.Xsettings
+		/usr/bin/xset m 1 0
+		/usr/bin/nvidia-settings --load-config-only
+
+		# Tools
+		/usr/bin/numlockx &
+		/usr/bin/xscreensaver -no-splash &
+		/usr/bin/nitrogen --restore
+		/usr/bin/tint2 &
+		/usr/bin/urxvtd -q -o -f &
+
+		# Openbox
+		/usr/bin/openbox &
+		WMPID=$!
+
+		# Wait for Openbox to exit
+		wait $WMPID
+
+		# Kill XScreensaver
+		/usr/bin/xscreensaver-command -exit
+
+		# Wait 2 Seconds and quit
+		sleep 2
+		clear
+
+		;;
  
-# Hintergrund
-/usr/local/bin/nitrogen --restore
-
-# Tint
-/usr/local/bin/tint2 &
-
-# Terminal
-/usr/local/bin/urxvtd -q -o -f &
-
-# Openbox
-/usr/local/bin/openbox &
-WMPID=$!
-
-# Auf das Ende der Sitzung warten
-wait $WMPID
-
-# XScreensaver töten
-/usr/local/bin/xscreensaver-command -exit
-
-# 2 Sek warten und schluss
-sleep 2
-clear
+esac
 
