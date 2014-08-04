@@ -40,10 +40,6 @@ case "linux":
 	# Force 256 colors in tmux
 	alias tmux '/usr/bin/tmux -2'
 
-	# Start X.org in retro mode
-	alias startx '/usr/bin/startx -- -retro'
-	alias X	'/usr/bin/X -retro'
-
 	breaksw
 
 endsw
