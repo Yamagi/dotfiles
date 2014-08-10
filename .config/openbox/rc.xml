@@ -361,19 +361,19 @@
 		</keybind>
 
 		<!-- Send current window to monitor 1 -->
- 		<keybind key="A-KP_9">
+		<keybind key="A-Right">
 			<action name="MoveResizeTo">
 				<monitor>1</monitor>
 			</action>
 		</keybind>
- 
+
 		<!-- Send current window to monitor 2 -->
-		<keybind key="A-KP_7">
+		<keybind key="A-Left">
 			<action name="MoveResizeTo">
 				<monitor>2</monitor>
 			</action>
 		</keybind>
- 
+
 		<!-- Current window always on top -->
 		<keybind key="A-Prior">
 			<action name="ToggleAlwaysOnTop"/>
@@ -400,6 +400,28 @@
 			</action>
 		</keybind>
 
+		<!-- Move window to the upper left
+			 corner of the monitor -->
+		<keybind key="A-KP_7">
+			<action name="MoveResizeTo">
+				<x>+-0</x>
+				<y>+-0</y>
+				<width>50%</width>
+				<height>50%</height>
+			</action>
+		</keybind>
+
+		<!-- Move window to the upper right
+			 corner of the monitor -->
+		<keybind key="A-KP_9">
+			<action name="MoveResizeTo">
+				<x>-0</x>
+				<y>+-0</y>
+				<width>50%</width>
+				<height>50%</height>
+			</action>
+		</keybind>
+
 		<!-- Move window to the horizontal
 			 lower 50% of the monitor -->
 		<keybind key="A-KP_2">
@@ -407,6 +429,28 @@
 				<x>+-0</x>
 				<y>-0</y>
 				<width>100%</width>
+				<height>50%</height>
+			</action>
+		</keybind>
+
+		<!-- Move window to the lower left
+			 corner of the monitor -->
+		<keybind key="A-KP_1">
+			<action name="MoveResizeTo">
+				<x>+-0</x>
+				<y>-0</y>
+				<width>50%</width>
+				<height>50%</height>
+			</action>
+		</keybind>
+
+		<!-- Move window to the lower right
+			 corner of the monitor -->
+		<keybind key="A-KP_3">
+			<action name="MoveResizeTo">
+				<x>-0</x>
+				<y>-0</y>
+				<width>50%</width>
 				<height>50%</height>
 			</action>
 		</keybind>
@@ -459,14 +503,14 @@
 				<execute>urxvtc</execute>
 			</action>
 		</keybind>
- 
+
 		<!-- Execute terminal with tmux on win-r -->
 		<keybind key="W-r">
 			<action name="Execute">
 				<execute>urxvtc -e tmux -2</execute>
 			</action>
 		</keybind>
- 
+
 		<!-- Lock screen by ctrl-alt-del -->
 		<keybind key="C-A-Delete">
 			<action name="Execute">
@@ -481,8 +525,8 @@
 			</action>
 		</keybind>
 
-		<!-- Lower sound volume by 1 on F3 and XF86AudioLowerVolume -->
-		<keybind key="F3">
+		<!-- Lower sound volume by 1 -->
+		<keybind key="A-KP_Subtract">
 			<action name="Execute">
 				<execute>~/.config/openbox/setvolume.sh quieter</execute>
 			</action>
@@ -493,9 +537,9 @@
 				<execute>~/.config/openbox/setvolume.sh quieter</execute>
 			</action>
 		</keybind>
- 
-		<!-- Raise sound volume by 1 on F4 and XF86AudioRaiseVolume-->
-		<keybind key="F4">
+
+		<!-- Raise sound volume by 1-->
+		<keybind key="A-KP_Add">
 			<action name="Execute">
 				<execute>~/.config/openbox/setvolume.sh louder</execute>
 			</action>
@@ -505,7 +549,7 @@
 			<action name="Execute">
 				<execute>~/.config/openbox/setvolume.sh louder</execute>
 			</action>
-		</keybind> 
+		</keybind>
 	</keyboard>
 
 	<!-- Mouse settings -->
