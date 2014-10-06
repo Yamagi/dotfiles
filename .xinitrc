@@ -6,6 +6,7 @@ case $OSTYPE in
 		# Settings
 		/usr/local/bin/xrdb -merge ~/.Xsettings
 		/usr/local/bin/xset m 1 0
+		/usr/local/bin/xset b off
 		/usr/local/bin/nvidia-settings --load-config-only
 
 		# Tools
