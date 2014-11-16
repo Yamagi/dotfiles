@@ -521,7 +521,7 @@
 		<!-- Toggle music playback on alt-space -->
 		<keybind key="A-space">
 			<action name="Execute">
-				<execute>ncmpcpp toggle</execute>
+				<execute>mpc -h serioussam@/usr/home/yamagi/.musicpd/socket toggle</execute>
 			</action>
 		</keybind>
 
