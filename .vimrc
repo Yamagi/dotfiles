@@ -190,6 +190,14 @@ colorscheme yamagi256
 " neu einlesen.
 autocmd BufWritePost .vimrc source %
 
+" Springe beim Öffnen einer Datei zur letzten 
+" bekannten Cursor-Position
+autocmd BufReadPost *
+	\ if line("'\"") > 1 && line("'\"") <= line("$") |
+	\   exe "normal! g`\"" |
+	\ endif
+
+
 " -------------------------------------------------------------------- "
 
 " 2. Key mappings
