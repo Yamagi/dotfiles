@@ -58,4 +58,4 @@ alias settitle 'printf "\033]0;\!^\007"'
 
 # Force Vim to ignore system wide configs
 alias vim 'vim -u ~/.vimrc'
-alias gvim 'gvim -u ~/.vimrc'
+alias gvim 'gvim -U ~/.vimrc'
