@@ -1,10 +1,27 @@
+" 1. Startup
+" ----------
+
+" Eventuell angepassten Runtime-Pfad
+" speichern.
+let s:save_runtimepath = &runtimepath
+let s:save_diff = &diff
+
+" Alle Optionen auf Standard
+set all&
+
+" Und wiederherstellen
+let &runtimepath = s:save_runtimepath
+let &diff = s:save_diff
+unlet s:save_runtimepath
+unlet s:save_diff
+
 " 1. Allgemeine Einstellungen
 " ---------------------------
 
 " Wir wollen nicht mit dem klassischen vi
 " kompatibel sein, sprich nicht seine Bugs
-" emulieren. Das kˆnnten wir allerdings sogar
-" gleich f¸r verschiedene Versionen ;)
+" emulieren. Das k√∂nnten wir allerdings sogar
+" gleich f√ºr verschiedene Versionen ;)
 set nocompatible
 
 " Unsere Shell, die wir allerdings recht
@@ -12,14 +29,14 @@ set nocompatible
 set shell=/bin/tcsh
 
 " Zeigt kurz an, welche Klammer durch eine
-" neueingef¸gte Klammer gerade geschlossen wurde.
-" Recht gut, um unvollst‰ndige Klammerung
-" auszuschlieﬂen.
+" neueingef√ºgte Klammer gerade geschlossen wurde.
+" Recht gut, um unvollst√§ndige Klammerung
+" auszuschlie√üen.
 set showmatch
 
 " Zeigt in der Kommandozeile an, in welchem Mode
 " wir uns aktuell befinden. Recht praktisch um den
-" ‹berblick zu behalten.
+" √úberblick zu behalten.
 set showmode
 
 " Zeigt Zeilennummern an.
@@ -40,21 +57,21 @@ set showcmd
 " Ein Tabstop sind vier Leerzeichen.
 set tabstop=4
 
-" Automatische Einr¸ckung von exakt
+" Automatische Einr√ºckung von exakt
 " vier Leerzeichen.
 set shiftwidth=4
 
 " Statt vier Leerzeichen nimmt er
 " jeweils einen Tabstop. Dieser Wert sollte
 " gleich 'tabstop' und 'shiftwidth' sein,
-" sonst verh‰lt er sich komisch.
+" sonst verh√§lt er sich komisch.
 set softtabstop=4
 
-" Schon suchen, w‰hrend wir noch tippen.
+" Schon suchen, w√§hrend wir noch tippen.
 set incsearch
 
 " Virtuelles editieren bedeutet, dass wir den
-" Cursor an stellen positionieren kˆnnen, wo
+" Cursor an stellen positionieren k√∂nnen, wo
 " sich noch kein Zeichen befindet. Wir wollen
 " dies in allen Modi.
 set virtualedit=all
@@ -67,15 +84,15 @@ set visualbell
 " Darstellung umbrechen
 set wrap
 
-" Marker f¸r umgebrochene Zeile
+" Marker f√ºr umgebrochene Zeile
 set showbreak=->\ \ \
 
 " Breche immer am vollen Wort oder
 " anderem Trennzeichen um
 set linebreak
 
-" L‰nge einer Zeile, automatischer harter
-" Umbruch, wenn dies ¸berschritten wird.
+" L√§nge einer Zeile, automatischer harter
+" Umbruch, wenn dies √ºberschritten wird.
 set textwidth=72
 
 " Im Titel des Fensters oder des Terminal
@@ -83,7 +100,7 @@ set textwidth=72
 set title
 
 " Schnelle TTY-Updates nutzen.
-" Sollte jedes Terminal kˆnnen.
+" Sollte jedes Terminal k√∂nnen.
 set ttyfast
 
 " Suchbegriffe hervorheben
@@ -93,25 +110,25 @@ set hlsearch
 " in der Datei wir uns befinden.
 set ruler
 
-" Versteckte Buffer kˆnnen noch ungesicherte
-" ƒnderungen enthalten. Ohne diese Option
-" m¸ssten wir sie immer speichern.
+" Versteckte Buffer k√∂nnen noch ungesicherte
+" √Ñnderungen enthalten. Ohne diese Option
+" m√ºssten wir sie immer speichern.
 set hidden
 
-" Nach der Einr¸ckung des Textes automatisch
+" Nach der Einr√ºckung des Textes automatisch
 " Foldings erstellen.
 set foldmethod=indent
 
-" Wir wollen Backspace ¸ber
-"  - Einr¸ckungen
+" Wir wollen Backspace √ºber
+"  - Einr√ºckungen
 "  - End of line
 "  - Zeilenanfang
-" hinweg nutzen kˆnnen
+" hinweg nutzen k√∂nnen
 set backspace=indent,eol,start
 
 " Wie soll er den Text automatisch formatieren?
 "  r - Das Kommentarzeichen in einer neuen
-"      Kommentarzeile automatisch anf¸gen.
+"      Kommentarzeile automatisch anf√ºgen.
 "
 "  o - Das gleiche wie bei r, nachdem wir
 "      mit o oder O den Modus gewechselt
@@ -119,12 +136,12 @@ set backspace=indent,eol,start
 "
 "  c - Kommentare automatisch auf 'textwidth'
 "      umbrechen, das Kommentarzeichen von
-"      sich aus einf¸gen.
+"      sich aus einf√ºgen.
 "
 "  t - Automatischer Zeilenumbruch, wenn
 "      'textwidth' erlaubt ist.
 "
-"  q - Auch Kommentare kˆnnen mit 'gq'
+"  q - Auch Kommentare k√∂nnen mit 'gq'
 "      neu formatiert werden.
 set formatoptions=roctq
 
@@ -132,7 +149,7 @@ set formatoptions=roctq
 " denn das nervt gewaltig
 set nomousehide
 
-" Bereits 7 Zeilen ¸ber Fensterende mit
+" Bereits 7 Zeilen √ºber Fensterende mit
 " dem Scrollen beginnen
 set so=7
 
@@ -150,7 +167,7 @@ set updatetime=2000
 
 " Die Viminfo-Datei speichert
 " den Status des Editors auch
-" ¸ber Neustarts hinweg.
+" √ºber Neustarts hinweg.
 "  % - Wir merken uns die Bufferlist
 "
 "  '128 - Marken der letzten 128 Dateien
@@ -164,10 +181,10 @@ set updatetime=2000
 "         Zeilen
 "
 "  s1024 - Alle Register bis 1 Megabyte
-"          Grˆﬂe speichern.
+"          Gr√∂√üe speichern.
 set viminfo=%,'128,/128,:128,@128,s1024
 
-" Wir wollen uns Undo ¸ber Sessions hinweg merken
+" Wir wollen uns Undo √ºber Sessions hinweg merken
 set undodir=~/.vim/undo
 set undofile
 set undolevels=1000
@@ -190,7 +207,7 @@ colorscheme yamagi256
 " neu einlesen.
 autocmd BufWritePost .vimrc source %
 
-" Springe beim ÷ffnen einer Datei zur letzten 
+" Springe beim √ñffnen einer Datei zur letzten 
 " bekannten Cursor-Position
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -232,15 +249,15 @@ nmap <F9> :nohls<CR>
 syntax on
 
 " Vim soll versuchen die Art der
-" korrekten Einr¸ckung automagisch
+" korrekten Einr√ºckung automagisch
 " anhand des Dateityps (sprich der
 " Dateiendung) zu ermitteln. Klappt
 " recht gut.
 filetype indent on
 
-" Wenn es ein Indent-Plugin f¸r einen
+" Wenn es ein Indent-Plugin f√ºr einen
 " Syntax gibt, soll dies anstelle der
-" generischen Indent-Mechanismen f¸r
+" generischen Indent-Mechanismen f√ºr
 " C- und Wirth-Syntax genutzt werden.
 " Funktioniert eigentlich immer viel
 " besser.
@@ -312,20 +329,20 @@ call pathogen#helptags()
 
 " ----------
 
-" SuperTab w‰hlt nach dem Druck einer
+" SuperTab w√§hlt nach dem Druck einer
 " Tastenkombination anhand von auf den
 " bereits getippten Text angewandten
 " Heuristiken automatisch die korrekte
-" Vervollst‰ndigungsmethode aus.
+" Vervollst√§ndigungsmethode aus.
 
-" Kontextabh‰ngige, heuristische Auswahl
-" der genutzten Vervollst‰ndigungsmethode.
+" Kontextabh√§ngige, heuristische Auswahl
+" der genutzten Vervollst√§ndigungsmethode.
 let g:SuperTabDefaultCompletionType="context"
 
 " Vorauswahl des ersten Treffers
 let g:SuperTabLongestHighlight=1
 
-" Stichwort-Erg‰nzung als Standard
+" Stichwort-Erg√§nzung als Standard
 let g:SuperTabContextDefaultCompletionType='<c-N><c-P>'
 let g:SuperTabRetainCompletionDuration ='completion'
 
@@ -341,8 +358,8 @@ endif
 " ----------
 
 " clang_complete ist ein komplexes Plugin,
-" was mittels Clang Autovervollst‰ndigung
-" f¸r C, C++ und ObjC implementiert.
+" was mittels Clang Autovervollst√§ndigung
+" f√ºr C, C++ und ObjC implementiert.
 
 " Pfad zu libclang.so
 let g:clang_library_path="/usr/opt/clang/lib"
@@ -359,21 +376,21 @@ let g:clang_periodic_quickfix=1
 
 " Das Fehlerfenster aktualisieren
 " wenn der Insert-Mode verlassen
-" wird oder f¸r einige Zeit
+" wird oder f√ºr einige Zeit
 " nichts eingegeben wird.
 autocmd InsertLeave *.c,*.cpp,*.cxx,*.cc call g:ClangUpdateQuickFix()
 autocmd CursorHoldI *.c,*.cpp,*.cxx,*.cc call g:ClangUpdateQuickFix()
 
 " Preview-Fenster automatisch
-" schlieﬂen.
+" schlie√üen.
 let g:clang_close_preview=1
 
-" Auch Pr‰prozessor-Kram soll
-" vervollst‰ndigt werden.
+" Auch Pr√§prozessor-Kram soll
+" vervollst√§ndigt werden.
 let g:clang_complete_macros=1
 
 " Auch Pattern (wie z.B. Schleifen)
-" sollen vervollst‰ndigt werden.
+" sollen vervollst√§ndigt werden.
 let g:clang_complete_patterns=1
 
 " Ersten Treffer selektieren
