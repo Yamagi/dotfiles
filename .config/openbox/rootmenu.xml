@@ -7,11 +7,11 @@
 	<!-- Office software -->
 	<menu id="buero" label="Buero">
 
-		<!-- Evince -->
-		<item label="evince">
+		<!-- Atril -->
+		<item label="Atril">
 			<action name="Execute">
 				<execute>
-					evince
+					atril
 				</execute>
 			</action>
 		</item>
