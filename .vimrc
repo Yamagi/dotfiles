@@ -1,6 +1,20 @@
 " 1. Startup
 " ----------
 
+" Dreckiger Hack: Wenn wir im GUI-Modus laufen,
+" source diese Datei NICHT als .vimrc, sondern
+" nur als .gvimrc. Damit kann ein Symlink von
+" .vimrc -> .gvimrc gesetzt werden und dennoch
+" wird die Config nur einmal durchlaufen.
+if has("gui_running")
+	if exists("g:gvimrc")
+		unlet g:gvimrc
+	else
+		let g:gvimrc = 1
+		finish
+	endif
+endif
+
 " Eventuell angepassten Runtime-Pfad
 " speichern.
 let s:save_runtimepath = &runtimepath
@@ -8,6 +22,7 @@ let s:save_diff = &diff
 
 " Alle Optionen auf Standard
 set all&
+highlight clear
 
 " Und wiederherstellen
 let &runtimepath = s:save_runtimepath
@@ -145,9 +160,12 @@ set backspace=indent,eol,start
 "      neu formatiert werden.
 set formatoptions=roctq
 
-" Maus nicht automatisch ausblenden,
-" denn das nervt gewaltig
-set nomousehide
+" Maus automatisch ausblenden
+set mousehide
+
+" Selektieren mit der Maus schaltet
+" in visual Mode
+set mouse=a
 
 " Bereits 7 Zeilen über Fensterende mit
 " dem Scrollen beginnen
