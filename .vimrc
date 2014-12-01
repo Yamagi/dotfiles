@@ -163,9 +163,12 @@ set formatoptions=roctq
 " Maus automatisch ausblenden
 set mousehide
 
-" Selektieren mit der Maus schaltet
-" in visual Mode
-set mouse=a
+" Selektieren mit der Maus schaltet in den visual
+" Mode. Aber nur im GUI, auf dem Terminal moechten
+" wir dem Terminal-Emulator die Wiese überlassen.
+if has("gui_running")
+	set mouse=a
+endif
 
 " Bereits 7 Zeilen über Fensterende mit
 " dem Scrollen beginnen
@@ -256,7 +259,11 @@ nmap <F8> :set hls<CR>:exec "let @/='\\<".expand("<cword>")."\\>'"<CR>
 nmap <F9> :nohls<CR>
 
 " F10 zeigt die Bufferliste
-:nmap <F10> :buffers<CR>:buffer<Space>
+nmap <F10> :buffers<CR>:buffer<Space>
+
+" Buffer Navigation auf bn und bp
+nmap bn :bn<CR>
+nmap bp :bp<CR>
 
 " -------------------------------------------------------------------- "
 
