@@ -1,9 +1,9 @@
 " Vim color file
 
-" These are the colors of the "desert" theme by Hans Fugal with a few small
-" modifications (namely that I lowered the intensity of the normal white and
-" made the normal and nontext backgrounds black), modified to work with 88-
-" and 256-color xterms.
+" These are the colors of the "desert" theme by Hans Fugal with a few
+" small modifications (namely that I lowered the intensity of the
+" standard normal white and made the standard and nontext backgrounds
+" black), modified to work with 88- and 256-color xterms.
 "
 " The original "desert" theme is available as part of the vim distribution or
 " at http://hans.fugal.net/vim/colors/.

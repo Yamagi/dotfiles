@@ -1,392 +1,428 @@
+" ----------
 " 1. Startup
 " ----------
 
-" Dreckiger Hack: Wenn wir im GUI-Modus laufen,
-" source diese Datei NICHT als .vimrc, sondern
-" nur als .gvimrc. Damit kann ein Symlink von
-" .vimrc -> .gvimrc gesetzt werden und dennoch
-" wird die Config nur einmal durchlaufen.
+" Wenn wir im GUI-Mode laufen, source diese Datei nur beim zweiten
+" Aufruf. Damit können wir einen Symlink vimrc -> gvimrc setzen und
+" eventuelle Änderungen der systemweiten gvimrc wieder rückgängig
+" machen. Denn leider kann man das Sourcen das systemweitem gvimrc
+" nicht auf Ebene der Konfigurationsdateien verhindern. Und ein
+" Shell-Alias gvim -> 'gvim -U ~/.gvimrc' ist nicht immer möglich.
 if has("gui_running")
 	if exists("g:gvimrc")
-		unlet g:gvimrc
-	else
-		let g:gvimrc = 1
-		finish
-	endif
+	   unlet g:gvimrc
+   else
+	   let g:gvimrc = 1
+	   finish
+  endif
 endif
 
-" Eventuell angepassten Runtime-Pfad
-" speichern.
+" Eventuell angepassten Runtime-Pfad speichern.
 let s:save_runtimepath = &runtimepath
 let s:save_diff = &diff
 
 " Alle Optionen auf Standard
 set all&
+
+" Systemweite highlights löschen
 highlight clear
 
-" Und wiederherstellen
+" Systemweite autocmd löschen. Hoffentlich hält sich der Admin an die
+" Konventionen und setzt sie in der Gruppe 'vimrcEx'. Sonst haben wir
+" leider schlechte Karten. Wir müssen innerhalb einer Gruppe löschen,
+" da das explizite Löschen einer Gruppe zu Fehlern führt, wenn diese
+" Gruppe leer ist. Für Vim also nicht existiert. Alles klar? ;)
+augroup vimrcEx
+	autocmd!
+augroup END
+
+" Und den Runtime-Pfad wiederherstellen
 let &runtimepath = s:save_runtimepath
 let &diff = s:save_diff
 unlet s:save_runtimepath
 unlet s:save_diff
 
-" 1. Allgemeine Einstellungen
+" =====================================================================
+
+" ---------------------------
+" 2. Allgemeine Einstellungen
 " ---------------------------
 
-" Wir wollen nicht mit dem klassischen vi
-" kompatibel sein, sprich nicht seine Bugs
-" emulieren. Das könnten wir allerdings sogar
-" gleich für verschiedene Versionen ;)
+" Normalerweise ist Vim 'compatible', emuliert also den klassischen vi.
+" Wir wollen dies natürlich nicht, schließlich nutzen wir Vim statt vi.
+" Schaltet die meisten folgenden Optionen erst frei.
 set nocompatible
 
-" Unsere Shell, die wir allerdings recht
-" selten bis nie brauchen.
+" Neue und sichere Blowfish-Implementerung zur Verschlüsselung.
+set cryptmethod=blowfish2
+
+" Buffer können sich im Hintergrund befinden, müssen also nicht zwingend
+" einem Window zugeordnet sein. Damit verhält Vim sich wie die meisten
+" Multi-File-Editors.
+set hidden
+
+" Das Kommando, welches der 'shell' Befehl startet.
 set shell=/bin/tcsh
 
-" Zeigt kurz an, welche Klammer durch eine
-" neueingefügte Klammer gerade geschlossen wurde.
-" Recht gut, um unvollständige Klammerung
-" auszuschließen.
-set showmatch
+" Den Terminal-Titel auf den Namen der aktuellen Datei setzen.
+set title
 
-" Zeigt in der Kommandozeile an, in welchem Mode
-" wir uns aktuell befinden. Recht praktisch um den
-" Überblick zu behalten.
-set showmode
+" Visuelle Benachrichtigung anstatt piepen.
+set visualbell
 
-" Zeigt Zeilennummern an.
+" ----
+
+" Zeige Zeilennummern am linken Rand.
 set number
 
-" Setzt nach Bewegungskommandos den Cursor auf das
-" erste Zeichen der Zeile und NICHT an deren
-" Beginn.
-set nostartofline
+" Wenn eine Klammer geschlossen wird, blinkt die öffnende Klammer kurz
+" auf. Sehr sinvoll, um auch in komplexeren Strukturen den Überblick zu
+" behalten.
+set showmatch
 
-" Zeigt die Statuszeile unten immer an.
-set ls=2
+" ----
 
-" Zeigt wie der Name schon sagt das letzte
-" Kommando in der Statuszeile an.
+" Zeigt die Statuszeile immer am unteren Rand des Fensters. Ohne diese
+" Option wird sie nur in einigen Situationen gezeigt.
+set laststatus=2
+
+" Zeige die aktuelle Cursorposition in der Statuszeile.
+set ruler
+
+" Zeigt das letzte Kommando in der Statuszeile an, bis dies durch eine
+" andere Ausgabe dort überschrieben wird.
 set showcmd
+
+" Zeigt in der Kommandozeile an, in welchem Mode wir sind.
+set showmode
+
+" ----
 
 " Ein Tabstop sind vier Leerzeichen.
 set tabstop=4
 
-" Automatische Einrückung von exakt
-" vier Leerzeichen.
+" Automatische Einrückung aus 'tabstop' bestimmen.
 set shiftwidth=4
 
-" Statt vier Leerzeichen nimmt er
-" jeweils einen Tabstop. Dieser Wert sollte
-" gleich 'tabstop' und 'shiftwidth' sein,
-" sonst verhält er sich komisch.
-set softtabstop=4
+" Nehme alle 'tabstop" Leerzeichen einen Tab statt der Leerzeichen.
+set softtabstop=-1
 
-" Schon suchen, während wir noch tippen.
-set incsearch
+" ----
 
-" Virtuelles editieren bedeutet, dass wir den
-" Cursor an stellen positionieren können, wo
-" sich noch kein Zeichen befindet. Wir wollen
-" dies in allen Modi.
+" Setzen den Cursor auf den Zeilenbeginn, nicht das erste Zeichen.
+set nostartofline
+
+" Erlaube in allen Modi freie Cursorpositionierung, unabhängig der
+" Bereits eingegeben Zeichen.
 set virtualedit=all
 
-" Visuelle Benachrichtigung anstatt der
-" Versuch zu piepen.
-set visualbell
-
-" Zeilen automagisch zur
-" Darstellung umbrechen
+" Überlange Zeilen zur Darstellung umbrechen.
 set wrap
 
-" Marker für umgebrochene Zeile
-set showbreak=->\ \ \
-
-" Breche immer am vollen Wort oder
-" anderem Trennzeichen um
+" Breche nur in Leerzeichen um, nicht innerhalb eines Wortes.
 set linebreak
 
-" Länge einer Zeile, automatischer harter
-" Umbruch, wenn dies überschritten wird.
-set textwidth=72
+" Marker für umgebrochene Zeilen.
+set showbreak=->\
 
-" Im Titel des Fensters oder des Terminal
-" anzeigen, was wir gerade editieren.
-set title
+" ----
 
-" Schnelle TTY-Updates nutzen.
-" Sollte jedes Terminal können.
-set ttyfast
-
-" Suchbegriffe hervorheben
+" Alle gefundenen Suchbegriffe hervorheben, nicht nur die Fundstelle.
 set hlsearch
 
-" Die Statuszeile unten zeigt an, wo
-" in der Datei wir uns befinden.
-set ruler
+" Bereits suchen, während wir noch tippen.
+set incsearch
 
-" Versteckte Buffer können noch ungesicherte
-" Änderungen enthalten. Ohne diese Option
-" müssten wir sie immer speichern.
-set hidden
+" ----
 
-" Nach der Einrückung des Textes automatisch
-" Foldings erstellen.
-set foldmethod=indent
-
-" Wir wollen Backspace über
-"  - Einrückungen
-"  - End of line
-"  - Zeilenanfang
-" hinweg nutzen können
+" Backspace soll über Einrückungen, Zeilenanfänge und Zeilenende hinweg
+" laufen. Damit verhält es sich wie in einem normalen Editor.
 set backspace=indent,eol,start
 
-" Wie soll er den Text automatisch formatieren?
-"  r - Das Kommentarzeichen in einer neuen
-"      Kommentarzeile automatisch anfügen.
+" Anhand der Einrückung Foldings erstellen. Funktioniert in der Praxis
+" von allen Methoden am besten.
+set foldmethod=indent
+
+" Defintion, wie Text automatisch formatiert werden soll:
 "
-"  o - Das gleiche wie bei r, nachdem wir
-"      mit o oder O den Modus gewechselt
-"      haben.
+"  r - Das Kommentarzeichen in einer neuen Kommentarzeile automatisch
+"      anfügen.
 "
-"  c - Kommentare automatisch auf 'textwidth'
-"      umbrechen, das Kommentarzeichen von
-"      sich aus einfügen.
+"  o - Kommentarzeichen einfügen, wenn man mit o odr O in den Insert
+"      Mode wechselt.
 "
-"  t - Automatischer Zeilenumbruch, wenn
-"      'textwidth' erlaubt ist.
+"  c - Kommentare automatisch auf 'textwidth' umbrechen, die Kommentare
+"      automatisch einfügen.
 "
-"  q - Auch Kommentare können mit 'gq'
-"      neu formatiert werden.
+"  t - Automatischer Zeilenumbruch auf 'textwidth'.
+"
+"  q - Auch Kommentare können mit 'gq' neu formatiert werden.
 set formatoptions=roctq
 
-" Maus automatisch ausblenden
-set mousehide
+" Maximale Zeilenlänge, automatischer Umbruch wenn diese überschritten
+" wird.
+set textwidth=72
 
-" Selektieren mit der Maus schaltet in den visual
-" Mode. Aber nur im GUI, auf dem Terminal moechten
-" wir dem Terminal-Emulator die Wiese überlassen.
+" ----
+
+" Die folgenden Dinge nur im GUI. Auf dem Terminal sind sie sinnlos,
+" da technisch nicht umzusetzen oder da wir dem Terminal Emulator ins
+" Handwerk pfuschen würden.
 if has("gui_running")
+
+	" Die von gvim genutzte Schriftart.
+	set guifont=Terminus\ 12
+
+	" Maus beim Tippen automatisch ausblenden.
+	set mousehide
+
+	" Selektieren mit der Maus schaltet in den Visual Mode.
 	set mouse=a
+
+" Die folgenden Dinge nur im Terminal. Im GUI sind sie sinnlos.
+else
+
+	" Erzwinge 256 Farben. Theoretisch sollte Vim dies automatisch
+	" anhand der Terminfo / Termcap Einträge setzen. Praktisch hat
+	" es noch nie so wirklich funktioniert, insbesondere nicht unter
+	" FreeBSD.
+	set t_Co=256
+
 endif
 
-" Bereits 7 Zeilen über Fensterende mit
-" dem Scrollen beginnen
-set so=7
+" Unser Farbschema. Ein abgewandeltes desert-Schema.
+colorscheme yamagi256
 
-" Die von gvim genutzte Schriftart.
-set guifont=Terminus\ 12
+" Kein Scratchwindow, alle Informationen stattdessen inline anzeigen.
+set completeopt=menu,menuone,longest,preview
 
-" Kein Scratchwindow
-set completeopt=menu,menuone,longest
+" Bereits 5 Zeilen vor dem Fensterende zu scrollen beginnen.
+set scrolloff=5
 
-" Kein Timeout auf Mappings
+" Kein Timeout auf Mappings, ewig darauf warten dass sie entweder
+" zuende getippt oder Escape gedrückt wird.
 set notimeout
 
-" Die Swapfile 2 Sekunden schreiben
+" ----
+
+" Die Swapfile bereits nach 2 Sekunden Inaktivität schreiben. Es
+" benötigt geringfügig mehr IO als der Standardwert von 4 Sekunden,
+" aber man kann nie genug Wiederherstellungsinformationen haben.
 set updatetime=2000
 
-" Die Viminfo-Datei speichert
-" den Status des Editors auch
-" über Neustarts hinweg.
-"  % - Wir merken uns die Bufferlist
+"  Mit Hilfe der ~/.viminfo Datei merkt sich Vim Dinge über mehrere
+"  Sessions hinweg. Wir speichern in ihr:
 "
-"  '128 - Marken der letzten 128 Dateien
-"         speichern
+"  % - Wir merken uns die Bufferliste, öffnen sie beim Start wieder,
+"      sofern keine Datei an Vim übergeben wurde.
 "
-"  /128 - Die letzten 128 Suchbegriffe
+"  '128 - Marken der letzten 128 Dateien speichern.
 "
-"  :128 - Die letzten 128 Befehle
+"  /128 - Die letzten 128 Suchbegriffe.
 "
-"  @128 - Die letzten 128 eingegebenen
-"         Zeilen
+"  :128 - Die letzten 128 History-Befehle.
 "
-"  s1024 - Alle Register bis 1 Megabyte
-"          Größe speichern.
+"  @128 - Die letzten 128 eingegebenen Zeilen.
+"
+"  s1024 - Alle Register bis 1 Megabyte Größe speichern.
 set viminfo=%,'128,/128,:128,@128,s1024
 
-" Wir wollen uns Undo über Sessions hinweg merken
-set undodir=~/.vim/undo
+" Die Undo-Datei merkt sich Undo-Daten für einzelne Dateien über mehrere
+" Sessions hinweg. Wir speichern diese Daten in ~/.vim/undo. Maximal
+" 1.000 Änderungen können rückgängig gemacht werden, bis zu 10.000
+" Zeilen werden beim erneuten laden einer (extern geänderten) Datei
+" im RAM gehalten. Dies erlaubt es, die externen Änderungen per Undo
+" rückgängig zu machen.
 set undofile
+set undodir=~/.vim/undo
 set undolevels=1000
 set undoreload=10000
 
-" Gibt an, was in automatisch erstellte
-" Session-Scripte gespeichert wird.
+" Gibt an, was in automatisch erstellte Session-Scripte gespeichert wird.
 set sessionoptions=blank,buffers,curdir,folds,localoptions,options,resize,tabpages,unix,winsize,winpos
 
-" Blowfish als Verschluesselung
-set cm=blowfish
+" ----
 
-" Unterstuetzung fuer 256 Farben auf dem Terminal
-set t_Co=256
+" Wir wollen automatisches Syntaxhighlighting.
+syntax on
 
-" Unser Farbschema
-colorscheme yamagi256
+" Erkenne Dateitypen.
+filetype on
 
-" .vimrc nach dem Editieren automagisch
-" neu einlesen.
-autocmd BufWritePost .vimrc source %
+" Wähle Einrückstil anhand des erkannten Dateityps.
+filetype indent on
 
-" Springe beim Öffnen einer Datei zur letzten 
-" bekannten Cursor-Position
-autocmd BufReadPost *
-	\ if line("'\"") > 1 && line("'\"") <= line("$") |
-	\   exe "normal! g`\"" |
-	\ endif
+" Vim hat zwar mehrere eingebaute Indent-Styles und kann den Stil wenn
+" nötig automagisch ermitteln, aber oft recht es nicht aus. Wenn es ein
+" Plugin für den entsprechenden Dateityp gibt, wollen wir dies daher
+" nutzen.
+filetype plugin indent on
 
+" =====================================================================
 
-" -------------------------------------------------------------------- "
+" ----------------
+" 3. Auto-Commands
+" ----------------
 
-" 2. Key mappings
+" Alle von uns definierten Auto-Commands kommen in die kanonische Gruppe
+" vimrcEx, wodurch wir sie später einfach wieder entfernen können.
+augroup vimrcEx
+
+	" Eine veränderte .vimrc nach dem Speichern neu einlesen.
+	autocmd BufWritePost .vimrc source %
+
+	" Springe beim Öffnen einer Datei zur letzten bekannten Cursor-
+	" Position. Nutzt Daten aus der ~/.viminfo.
+	autocmd BufReadPost *
+				\ if line("'\"") > 1 && line("'\"") <= line("$") |
+				\   exe "normal! g`\"" |
+				\ endif
+
+	" Wenn wir allerdings eine git Commit Message editieren, springe
+	" gleich wieder zurück an den Start. Es ist ein wenig unschön, aber
+	" leider kann Vim keine Excludes auf Auto-Commands anwenden.
+	autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
+
+	" Im Falle von C und C++ sollen //-Kommentare nicht fortgesetzt
+	" werden, wenn die Zeile umgebrochen wird. Es sind halt einzeilige
+	" Kommentare.
+	autocmd FileType c,cpp setlocal comments-=://
+
+augroup END
+
+" =====================================================================
+
+" ---------------
+" 4. Key mappings
 " ---------------
 
-" Spellchecker umschalten
+" Spellchecker umschalten.
 nmap <F2> :setlocal spell! spelllang=en_us<cr>
-nmap <F5> :setlocal spell! spelllang=de_de<cr>
+nmap <F3> :setlocal spell! spelllang=de_de<cr>
 
-" Tagsfile neubauen
+" Auf F5 die Zeile highlighten, an welcher der Text umbricht.
+function! g:ToggleColorColumn()
+	if &colorcolumn != ''
+		setlocal colorcolumn&
+	else
+		setlocal colorcolumn=+1
+	endif
+endfunction
+nmap <F5> :call g:ToggleColorColumn()<CR>
+
+" Tagfile neubauen.
 nmap <F6> :!/usr/local/bin/exctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-" Paste-Mode
-:nmap <F7> :set paste!<CR>
+" Paste-Mode.
+nmap <F7> :set paste!<CR>
 
-" Druck auf F8 hebt alle Vorkommen
-" des Wortes unter dem Cursor hervor
+" Druck auf F8 hebt alle Vorkommen des Wortes unter dem Cursor hervor.
 nmap <F8> :set hls<CR>:exec "let @/='\\<".expand("<cword>")."\\>'"<CR>
 
-" F9 hebt Markierungen auf
+" F9 hebt die mit F8 oder durch suchen gesetzten Markierungen auf.
 nmap <F9> :nohls<CR>
 
-" F10 zeigt die Bufferliste
+" F10 zeigt die Bufferliste.
 nmap <F10> :buffers<CR>:buffer<Space>
 
-" Buffer Navigation auf bn und bp
+" Buffer Navigation auf bn und bp.
 nmap bn :bn<CR>
 nmap bp :bp<CR>
 
-" -------------------------------------------------------------------- "
+" =====================================================================
 
-" 3. Indention
-" ------------
-
-" Automatisches Sytaxhighlighting
-syntax on
-
-" Vim soll versuchen die Art der
-" korrekten Einrückung automagisch
-" anhand des Dateityps (sprich der
-" Dateiendung) zu ermitteln. Klappt
-" recht gut.
-filetype indent on
-
-" Wenn es ein Indent-Plugin für einen
-" Syntax gibt, soll dies anstelle der
-" generischen Indent-Mechanismen für
-" C- und Wirth-Syntax genutzt werden.
-" Funktioniert eigentlich immer viel
-" besser.
-filetype plugin indent on
-
-" In C-Code sollen // Kommentare nicht
-" fortgesetzt werden, da dies stoert.
-autocmd FileType c,cpp setlocal comments-=://
-
-" ------------------------------------------------------------------- "
-
-" 4. Cscope
+" ---------
+" 5. Cscope
 " ---------
 
-" Bei weitem nicht jeder Vim
-" hat cscope. Daher nur als
-" optionales Feature.
+" Bei weitem nicht jede Vim-Installation besitzt die Cscope-Integration.
+" Daher nutzen wir sie nur als optionales Features.
 if has("cscope")
 
-	" cscope fuer Tags nutzen
+	" cscope fuer Tags nutzen. Aber nur als Fallback, wenn keine echten
+	" Tags generiert wurden.
 	set cscopetag
-
-	" Aber nur als Fallback
 	set csto=1
 
-	" Wenn im aktuellen Verzeichnis
-	" eine Datenbank ist, fuegen wir
-	" sie ein.
+	" Wenn im aktuellen Verzeichnis eine Cscope-Datenbank leigt, fuegen
+	" wir sie automadisch ein.
 	if filereadable("cscope.out")
 		cs add cscope.out
 	endif
-
-	" Wenn neue Datenbank geladen,
-	" kommentiere es bitte.
+	" Wenn neue Datenbank geladen wird, kommentiere es bitte in der
+	" Statuszeile. Es hilft, wenn der Nutzer weiß, dass sie übernommen
+	" wurde.
 	set cscopeverbose
 
-	" Einfuegen einer Datenbank
+	" Einfügen einer Datenbank.
 	nmap <C-\>a :cs add cscope.out<CR><CR>
 
-	" Neubau der Datenbank
+	" Neubau der Datenbank.
 	nmap <C-\>r :!cscope -Rb<CR>:cs reset<CR><CR>
 
-	" Alle Vorkommen eines Symbols
+	" Alle Vorkommen eines Symbols.
 	nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 
-	" Globale Definitionen eines Symbols
+	" Globale Definitionen eines Symbols.
 	nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 
-	" Alle Aufrufe eines Symbols
+	" Alle Aufrufe eines Symbols.
 	nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
 
-	" Funktionen, die durch das Symbol aufgerufen werden
+	" Funktionen, die durch das Symbol aufgerufen werden.
 	nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-	" Oeffnet die Datei unter dem Cursor
+	" Öffnet die Datei unter dem Cursor.
 	nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 
 endif
 
-" ------------------------------------------------------------------- "
+" =====================================================================
 
+" ----------
 " 5. Plugins
 " ----------
 
-" Pathogen laden, was wiederum die
-" Plugins reinzieht.
+" Pathogen laden, was wiederum die Plugins reinzieht.
 call pathogen#infect()
 call pathogen#helptags()
 
-" ----------
+" ----
 
-" SuperTab wählt nach dem Druck einer
-" Tastenkombination anhand von auf den
-" bereits getippten Text angewandten
-" Heuristiken automatisch die korrekte
-" Vervollständigungsmethode aus.
+" SuperTab wählt anhand von Heuristiken automatisch die korrekte Methode
+" zur Autovervollständigung und zur Vervollständigung aus.
 
-" Kontextabhängige, heuristische Auswahl
-" der genutzten Vervollständigungsmethode.
+" Kontextabhängige, heuristische Auswahl der genutzten
+" Vervollständigungsmethode.
 let g:SuperTabDefaultCompletionType="context"
 
-" Vorauswahl des ersten Treffers
-let g:SuperTabLongestHighlight=1
-
-" Stichwort-Ergänzung als Standard
+" Stichwort-Ergänzung als Standard.
 let g:SuperTabContextDefaultCompletionType='<c-N><c-P>'
 let g:SuperTabRetainCompletionDuration ='completion'
 
-" Suche auf strg-space
+" Vorauswahl des ersten Treffers.
+let g:SuperTabLongestHighlight=1
+
 if has("gui_running")
+
+	" Suche auf strg-space, wenn wir im GUI sind. Terminals fressen
+	" diese Tastenkombination leider.
 	let g:SuperTabMappingForward = '<C-Space>'
 	let g:SuperTabMappingBackward = '<S-C-Space>'
 else
+
+	" Daher strg-space, wenn wir im Terminal sind. Space wird von
+	" den meisten Terminals auf @ übersetzt.
 	let g:SuperTabMappingForward = '<C-@>'
 	let g:SuperTabMappingBackward = '<S-C-@>'
 endif
 
-" ----------
+" ----
 
-" clang_complete ist ein komplexes Plugin,
-" was mittels Clang Autovervollständigung
-" für C, C++ und ObjC implementiert.
+" clang_complete ist ein komplexes Plugin, was mittels Clang
+" Autovervollständigung für C, C++ und ObjC implementiert.
 
-" Pfad zu libclang.so
+" Pfad zu libclang.so.
 let g:clang_library_path="/usr/opt/clang/lib"
 
 " Completions immer explizit starten.
@@ -395,43 +431,37 @@ let g:clang_complete_auto=0
 " Clang errors anzeigen.
 let g:clang_complete_copen=1
 
-" Das Fenster mit den Fehlern
-" automatisch aktualisieren.
+" Das Fenster mit den Fehlern automatisch aktualisieren.
 let g:clang_periodic_quickfix=1
 
-" Das Fehlerfenster aktualisieren
-" wenn der Insert-Mode verlassen
-" wird oder für einige Zeit
-" nichts eingegeben wird.
-autocmd InsertLeave *.c,*.cpp,*.cxx,*.cc call g:ClangUpdateQuickFix()
-autocmd CursorHoldI *.c,*.cpp,*.cxx,*.cc call g:ClangUpdateQuickFix()
+" Das Fehlerfenster aktualisieren wenn der Insert-Mode verlassen
+" wird oder für einige Zeit nichts eingegeben wird. Wir definieren
+" diese Auto-Commands in der Gruppe clangcomplete.
+augroup clangcomplete
+	autocmd InsertLeave *.c,*.cpp,*.cxx,*.cc call g:ClangUpdateQuickFix()
+	autocmd CursorHoldI *.c,*.cpp,*.cxx,*.cc call g:ClangUpdateQuickFix()
+augroup END
 
-" Preview-Fenster automatisch
-" schließen.
+" Preview-Fenster automatisch schließen.
 let g:clang_close_preview=1
 
-" Auch Präprozessor-Kram soll
-" vervollständigt werden.
+" Auch Präprozessor-Kram soll vervollständigt werden.
 let g:clang_complete_macros=1
 
-" Auch Pattern (wie z.B. Schleifen)
-" sollen vervollständigt werden.
+" Auch Pattern (wie z.B. Schleifen) sollen vervollständigt werden.
 let g:clang_complete_patterns=1
 
-" Ersten Treffer selektieren
+" Ersten Treffer selektieren.
 let g:clang_auto_select=1
 
-" ----------
+" ----
 
-" gundo ist ein Plugin, welches den
-" Undo-Tree visualisiert.
+" gundo ist ein Plugin, welches den Undo-Tree visualisiert.
 map <F11> :GundoToggle<CR>
 
-" ----------
+" ----
 
-" NERDTree ist ein sehr praktischer
-" Dateibrowser. Hier in der bugfreien
-" Version von Github.
+" NERDTree ist ein sehr praktischer Dateibrowser.
 
 " Ein- und ausschalten auf F12
 map <F12> :NERDTreeToggle<CR>
