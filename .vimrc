@@ -2,6 +2,13 @@
 " 1. Startup
 " ----------
 
+" Pathogen manipuliert den Runtime-Pfad, muss daher so früh wie nur
+" möglich eingebunden werden. Sonst riskieren wir, dass er Plugins
+" nicht reinzieht. Pathogen ist intelligent genug, dass wir es auch
+" mehrmals einbinden können, ohne das seltsame Dinge geschehen.
+call pathogen#infect()
+call pathogen#helptags()
+
 " Wenn wir im GUI-Mode laufen, source diese Datei nur beim zweiten
 " Aufruf. Damit können wir einen Symlink vimrc -> gvimrc setzen und
 " eventuelle Änderungen der systemweiten gvimrc wieder rückgängig
@@ -382,12 +389,6 @@ endif
 " ----------
 " 5. Plugins
 " ----------
-
-" Pathogen laden, was wiederum die Plugins reinzieht.
-call pathogen#infect()
-call pathogen#helptags()
-
-" ----
 
 " SuperTab wählt anhand von Heuristiken automatisch die korrekte Methode
 " zur Autovervollständigung und zur Vervollständigung aus.
