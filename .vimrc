@@ -77,6 +77,10 @@ set title
 " Visuelle Benachrichtigung anstatt piepen.
 set visualbell
 
+" Modelines sind in vielen Installationen aus Sicherheitsgründen
+" abgeschaltet. Wir wollen sie aber parsen.
+set modeline
+
 " ----
 
 " Zeige Zeilennummern am linken Rand.
