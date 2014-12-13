@@ -9,21 +9,6 @@
 call pathogen#infect()
 call pathogen#helptags()
 
-" Wenn wir im GUI-Mode laufen, source diese Datei nur beim zweiten
-" Aufruf. Damit können wir einen Symlink vimrc -> gvimrc setzen und
-" eventuelle Änderungen der systemweiten gvimrc wieder rückgängig
-" machen. Denn leider kann man das Sourcen das systemweitem gvimrc
-" nicht auf Ebene der Konfigurationsdateien verhindern. Und ein
-" Shell-Alias gvim -> 'gvim -U ~/.gvimrc' ist nicht immer möglich.
-if has("gui_running")
-	if exists("g:gvimrc")
-	   unlet g:gvimrc
-   else
-	   let g:gvimrc = 1
-	   finish
-  endif
-endif
-
 " Eventuell angepassten Runtime-Pfad speichern.
 let s:save_runtimepath = &runtimepath
 let s:save_diff = &diff
@@ -292,7 +277,7 @@ augroup vimrcEx
 	" Wenn wir allerdings eine git Commit Message editieren, springe
 	" gleich wieder zurück an den Start. Es ist ein wenig unschön, aber
 	" leider kann Vim keine Excludes auf Auto-Commands anwenden.
-	autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
+	autocmd BufReadPost *\(.git/COMMIT_EDITMSG\)\@<! exe "normal! gg"
 
 	" Im Falle von C und C++ sollen //-Kommentare nicht fortgesetzt
 	" werden, wenn die Zeile umgebrochen wird. Es sind halt einzeilige
@@ -443,6 +428,7 @@ let g:clang_periodic_quickfix=1
 " wird oder für einige Zeit nichts eingegeben wird. Wir definieren
 " diese Auto-Commands in der Gruppe clangcomplete.
 augroup clangcomplete
+	autocmd!
 	autocmd InsertLeave *.c,*.cpp,*.cxx,*.cc call g:ClangUpdateQuickFix()
 	autocmd CursorHoldI *.c,*.cpp,*.cxx,*.cc call g:ClangUpdateQuickFix()
 augroup END
