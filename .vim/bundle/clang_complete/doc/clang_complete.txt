@@ -55,7 +55,7 @@ some additional kinds of completion along with standard ones (see
 ==============================================================================
 4. Configuration				*clang_complete-configuration*
 
-Each project can have a .clang_complete at his root, containing the compiler
+Each project can have a .clang_complete at its root, containing the compiler
 options. This is useful if you're using some non-standard include paths or
 need to specify particular architecture type, frameworks to use, path to
 precompiled headers, precompiler definitions etc.
@@ -154,6 +154,14 @@ Note: This option is specific to clang_complete snippets engine.
 If equal to 1, clang_complete will add a trailing placeholder after functions
 to let you add you continue writing code faster.
 Default: 0
+
+       				       	*clang_complete-clang_restore_cr_imap*
+       				       	*g:clang_restore_cr_imap*
+This option is used for versions of Vim without the Dictionary version of
+|maparg()| introduced in 7.3.32. The variable is executed after completion to
+restore the insert-mode map of <CR>. Occurrences of "<SID>" in the variable
+are replaced with the appropriate "<SNR>" code based on the original map.
+Default: 'iunmap <buffer> <CR>'
 
        				       	*clang_close-preview*
        				       	*g:clang_close_preview*
