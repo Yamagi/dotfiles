@@ -197,7 +197,7 @@ set scrolloff=5
 
 " Kein Timeout auf Mappings, ewig darauf warten dass sie entweder
 " zuende getippt oder Escape gedrückt wird.
-set notimeout
+"set notimeout
 
 " ----
 
@@ -268,16 +268,18 @@ augroup vimrcEx
 	autocmd BufWritePost .vimrc source %
 
 	" Springe beim Öffnen einer Datei zur letzten bekannten Cursor-
-	" Position. Nutzt Daten aus der ~/.viminfo.
+	" Position, außer wir editieren einen git-Commit. Nutzt Daten aus
+    " der ~/.viminfo. 
 	autocmd BufReadPost *
-				\ if line("'\"") > 1 && line("'\"") <= line("$") |
+				\ if line("'\"") > 1 && line("'\"") <= line("$") && 
+				\ &filetype != "gitcommit" |
 				\   exe "normal! g`\"" |
 				\ endif
 
 	" Wenn wir allerdings eine git Commit Message editieren, springe
 	" gleich wieder zurück an den Start. Es ist ein wenig unschön, aber
 	" leider kann Vim keine Excludes auf Auto-Commands anwenden.
-	autocmd BufReadPost *\(.git/COMMIT_EDITMSG\)\@<! exe "normal! gg"
+	autocmd FileType gitcommit  exe "normal! gg"
 
 	" Im Falle von C und C++ sollen //-Kommentare nicht fortgesetzt
 	" werden, wenn die Zeile umgebrochen wird. Es sind halt einzeilige
