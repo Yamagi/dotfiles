@@ -14,6 +14,7 @@ URxvt*jumpScroll: true
 URxvt*scrollTtyOutput: false
 URxvt*scrollTtyKeypress: true
 URxvt*scrollWithBuffer: true
+URxvt*termName: rxvt-unicode-256color
 Xft*antialias: 1 
 Xft*hinting: 1 
 Xft*hintstyle: hintfull 
