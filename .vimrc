@@ -190,14 +190,10 @@ endif
 colorscheme yamagi256
 
 " Kein Scratchwindow, alle Informationen stattdessen inline anzeigen.
-set completeopt=menu,menuone,longest,preview
+set completeopt=menu,menuone,longest
 
 " Bereits 5 Zeilen vor dem Fensterende zu scrollen beginnen.
 set scrolloff=5
-
-" Kein Timeout auf Mappings, ewig darauf warten dass sie entweder
-" zuende getippt oder Escape gedrückt wird.
-"set notimeout
 
 " ----
 
