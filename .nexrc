@@ -1,7 +1,0 @@
-set autoindent
-set number
-set beautify
-set octal
-set ruler
-set showmatch
-set showmode
