@@ -1,8 +1,10 @@
 My Dotfiles
 -----------
-This is a small git repository, containing my dotfiles. It's supposed 
-to be directly checked out into ${HOME}. For a new install (into an 
-empty ${HOME}, existing directory may need some special treatment) do:
+This is a small git repository, containing my essential dotfiles. Just
+enough to get a basic system up and running, not all the fancy stuff
+which differs from host to host anyways. It's supposed to be directly
+checked out into ${HOME}. For a new install (into an empty ${HOME},
+existing directory may need some special treatment) do:
 
 1. Set an alias into yout tcsh:
  % alias dotfiles 'git --work-tree=${HOME} --git-dir=${HOME}/.dotfiles'
@@ -14,14 +16,14 @@ empty ${HOME}, existing directory may need some special treatment) do:
  % dotfiles config status.showuntrackedfiles no
 
 After a logout / login cycle you're done and the basic environment is
-set up. Please note that only basic tools and programs are covered and
-not big things like Chrome or the like. For a X11 setup its recommended
-to install the icons (have a look at http://deponie.yamagi.org/theme/).
+set up. Please note again, that only basic tools are covered and not big
+things like Chrome or the like. For a X11 setup its recommended to
+install some icons.
 
 # -------------------------------------------------------------------- #
 
 This dotfiles are build around my workflow. They may not fit yours! Do
-not complain to me if you don't like my decisions, feel free to clone 
+not complain to me if you don't like my decisions, feel free to fork 
 this repository. :) Nevertheless, if you have some cool ideas or even
 found a bug, do not hesitate to tell me at yamagi [at] yamagi [dot] org.
 
@@ -32,21 +34,15 @@ X, but I cannot guarantee that. You can do with this files whatever you
 want, but please note that they come WITHOUT ANY WARRANTY!
 
 - .Xsettings -> X11 resources, mainly the rxvt-unicode configuration
-- .alsoftrc -> openal-soft configuration
 - .gitcofig / .gitignore -> git configuration
 - .gtkrc-2.0 -> GTK 2.x configuration (theme and font)
 - .login / .logout -> tcsh login and logout scripts
 - .login_conf -> FreeBSD login(8) config (to set the locale)
-- .nexrc -> nvi configuration
 - .tcshrc -> tcsh configuration
 - .tmux.conf -> tmux terminal multiplexer configuration
-- .vimrc -> Vim editor configuration
 - .xinitrc -> X11 initalization script
 
 - .config/openbox -> OpenBox window manager configurations
 - .config/tint2 -> tint2 taskbar / panel
-- .system -> Special folder for system wide configuration files
 - .tcsh -> Additional tcsh configuration an runtime files
 - .themes -> X11 themes
-- .vim -> Vim plugins, color themes, dictionaries and the like
-
