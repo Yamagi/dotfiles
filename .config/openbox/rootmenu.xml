@@ -29,6 +29,15 @@
 	<!-- Development stuff -->
 	<menu id="devel" label="Development">
 
+		<!-- CLion -->
+		<item label="CLion">
+			<action name="Execute">
+				<execute>
+					clion
+				</execute>
+			</action>
+		</item>
+
 		<!-- GHex -->
 		<item label="GHex">
 			<action name="Execute">
@@ -109,11 +118,11 @@
 			</action>
 		</item>
   
-		<!-- Skype -->
-		<item label="Skype">
+		<!-- Pidgin -->
+		<item label="Pidgin">
 			<action name="Execute">
 				<execute>
-					skype
+					pidgin
 				</execute>
 			</action>
 		</item>
