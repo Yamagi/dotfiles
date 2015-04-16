@@ -1,6 +1,6 @@
 #!/bin/sh
 
-case $OSTYPE in
+case "$(uname -s)" in
 
 	FreeBSD)
 		# Settings
@@ -32,7 +32,7 @@ case $OSTYPE in
 
 		;;
 
-	linux)
+	Linux)
 		# Settings
 		/usr/bin/xrdb -merge ~/.Xsettings
 		/usr/bin/xset m 1 0
