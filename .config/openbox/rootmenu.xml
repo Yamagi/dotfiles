@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://openbox.org/
-	file:///usr/local/share/openbox/menu.xsd">
+	xsi:schemaLocation="http://openbox.org/ file:///usr/local/share/openbox/menu.xsd">
 
 	<!-- Office software -->
 	<menu id="buero" label="Buero">
@@ -38,15 +37,6 @@
 			</action>
 		</item>
 
-		<!-- GHex -->
-		<item label="GHex">
-			<action name="Execute">
-				<execute>
-					ghex2
-				</execute>
-			</action>
-		</item>
-		
 		<!-- Vim -->
 		<item label="Vim">
 			<action name="Execute">
@@ -99,7 +89,7 @@
 
 	<!-- Internet software -->
 	<menu id="internet" label="Internet">
- 
+
 		<!-- Chrome -->
 		<item label="Chrome">
 			<action name="Execute">
@@ -108,7 +98,7 @@
 				</execute>
 			</action>
 		</item>
-  
+
 		<!-- Firefox -->
 		<item label="Firefox">
 			<action name="Execute">
@@ -117,7 +107,7 @@
 				</execute>
 			</action>
 		</item>
-  
+
 		<!-- Pidgin -->
 		<item label="Pidgin">
 			<action name="Execute">
@@ -153,7 +143,7 @@
 
 	<!-- Misc. stuff -->
 	<menu id="zubehoer" label="Sonstiges">
- 
+
 		<!-- Galculator-->
 		<item label="Galculator">
 			<action name="Execute">
@@ -162,7 +152,7 @@
 				</execute>
 			</action>
 		</item>
- 
+
 		<!-- Nitrogen -->
 		<item label="Nitrogen">
 			<action name="Execute">

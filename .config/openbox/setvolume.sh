@@ -3,7 +3,7 @@
 mode=$1
 
 if [ $mode = "louder" ]; then
-	case $OSTYPE in
+	case "$(uname -s)" in
 		FreeBSD)
 			/usr/sbin/mixer vol +1 > /dev/null
 			;;
@@ -14,7 +14,7 @@ if [ $mode = "louder" ]; then
 
 	esac
 elif [ $mode = "quieter" ]; then
- 	case $OSTYPE in
+	case "$(uname -s)" in
 		FreeBSD)
 			/usr/sbin/mixer vol -1 > /dev/null
 			;;
@@ -24,4 +24,11 @@ elif [ $mode = "quieter" ]; then
 			;;
 
 	esac 
+elif [ $mode = "mute" ]; then
+	case "$(uname -s)" in
+		linux)
+			amixer sset Master toggle > /dev/null
+			;;
+
+	esac
 fi

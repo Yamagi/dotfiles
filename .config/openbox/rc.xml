@@ -82,7 +82,7 @@
 		<!-- Layout of the window title bar. Available
 			 characters are NDSLIMC, each can occur at
 			 most once:
-		      N: window icon
+			  N: window icon
 			  L: window label (AKA title).
 			  I: iconify
 			  M: maximize
@@ -360,17 +360,17 @@
 			</action>
 		</keybind>
 
-		<!-- Send current window to monitor 1 -->
+		<!-- Send current window to right monitor -->
 		<keybind key="A-Right">
 			<action name="MoveResizeTo">
-				<monitor>1</monitor>
+				<monitor>next</monitor>
 			</action>
 		</keybind>
 
-		<!-- Send current window to monitor 2 -->
+		<!-- Send current window to left monitor -->
 		<keybind key="A-Left">
 			<action name="MoveResizeTo">
-				<monitor>2</monitor>
+				<monitor>prev</monitor>
 			</action>
 		</keybind>
 
@@ -466,7 +466,7 @@
 			</action>
 		</keybind>
 
- 		<!-- Move window to the vertical
+		<!-- Move window to the vertical
 			 right 50% of the monitor -->
 		<keybind key="A-KP_6">
 			<action name="MoveResizeTo">
@@ -511,17 +511,42 @@
 			</action>
 		</keybind>
 
-		<!-- Lock screen by ctrl-alt-del -->
+		<!-- Lock screen -->
 		<keybind key="C-A-Delete">
 			<action name="Execute">
 				<execute>xscreensaver-command -lock</execute>
 			</action>
 		</keybind>
 
-		<!-- Toggle music playback on alt-space -->
+		<keybind key="XF86ScreenSaver">
+			<action name="Execute">
+				<execute>xscreensaver-command -lock</execute>
+			</action>
+		</keybind>
+
+		<!-- Toggle music playback -->
 		<keybind key="A-space">
 			<action name="Execute">
-				<execute>mpc -h serioussam@/usr/home/yamagi/.musicpd/socket toggle</execute>
+				<execute>mpc -h serioussam@/home/yamagi/.musicpd/socket toggle</execute>
+			</action>
+		</keybind>
+
+		<keybind key="XF86AudioPlay">
+			<action name="Execute">
+				<execute>mpc -h serioussam@/home/yamagi/.musicpd/socket toggle</execute>
+			</action>
+		</keybind>
+
+		<!-- Playback control -->
+		<keybind key="XF86AudioNext">
+			<action name="Execute">
+				<execute>mpc -h serioussam@/home/yamagi/.musicpd/socket next</execute>
+			</action>
+		</keybind>
+
+		<keybind key="XF86AudioPrev">
+			<action name="Execute">
+				<execute>mpc -h serioussam@/home/yamagi/.musicpd/socket prev</execute>
 			</action>
 		</keybind>
 
@@ -532,22 +557,48 @@
 			</action>
 		</keybind>
 
- 		<keybind key="XF86AudioLowerVolume">
+		<keybind key="XF86AudioLowerVolume">
 			<action name="Execute">
 				<execute>~/.config/openbox/setvolume.sh quieter</execute>
 			</action>
 		</keybind>
 
-		<!-- Raise sound volume by 1-->
+		<!-- Raise sound volume by 1 -->
 		<keybind key="A-KP_Add">
 			<action name="Execute">
 				<execute>~/.config/openbox/setvolume.sh louder</execute>
 			</action>
 		</keybind>
 
- 		<keybind key="XF86AudioRaiseVolume">
+		<keybind key="XF86AudioRaiseVolume">
 			<action name="Execute">
 				<execute>~/.config/openbox/setvolume.sh louder</execute>
+			</action>
+		</keybind>
+
+		<!-- Mute volume -->
+		<keybind key="KP_Multiply">
+			<action name="Execute">
+				<execute>~/.config/openbox/setvolume.sh mute</execute>
+			</action>
+		</keybind>
+
+		<keybind key="XF86AudioMute">
+			<action name="Execute">
+				<execute>~/.config/openbox/setvolume.sh mute</execute>
+			</action>
+		</keybind>
+
+		<!-- Backight control -->
+		<keybind key="XF86MonBrightnessDown">
+			<action name="Execute">
+				<execute>xbacklight -dec +5</execute>
+			</action>
+		</keybind>
+
+		<keybind key="XF86MonBrightnessUp">
+			<action name="Execute">
+				<execute>xbacklight -inc +5</execute>
 			</action>
 		</keybind>
 	</keyboard>
@@ -597,7 +648,7 @@
 				<action name="DesktopPrevious"/>
 			</mousebind>
 
-		    <!-- Next workspace on alt + mousewheel up -->
+			<!-- Next workspace on alt + mousewheel up -->
 			<mousebind button="A-Up" action="Click">
 				<action name="DesktopNext"/>
 			</mousebind>
@@ -841,12 +892,12 @@
 				<action name="DesktopPrevious"/>
 			</mousebind>
 
-		    <!-- Next workspace on mousewheel up -->
+			<!-- Next workspace on mousewheel up -->
 			<mousebind button="Up" action="Click">
 				<action name="DesktopNext"/>
 			</mousebind>
 
-		    <!-- Next workspace on alt + mousewheel up -->
+			<!-- Next workspace on alt + mousewheel up -->
 			<mousebind button="A-Up" action="Click">
 				<action name="DesktopNext"/>
 			</mousebind>
