@@ -23,6 +23,15 @@
 				</execute>
 			</action>
 		</item>
+
+		<!-- Plume Creator -->
+		<item label="Plume Creator">
+			<action name="Execute">
+				<execute>
+					plume-creator
+				</execute>
+			</action>
+		</item> 
 	</menu>
 
 	<!-- Development stuff -->
