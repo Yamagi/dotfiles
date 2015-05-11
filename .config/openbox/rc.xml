@@ -363,14 +363,14 @@
 		<!-- Send current window to right monitor -->
 		<keybind key="A-Right">
 			<action name="MoveResizeTo">
-				<monitor>next</monitor>
+				<monitor>prev</monitor>
 			</action>
 		</keybind>
 
 		<!-- Send current window to left monitor -->
 		<keybind key="A-Left">
 			<action name="MoveResizeTo">
-				<monitor>prev</monitor>
+				<monitor>next</monitor>
 			</action>
 		</keybind>
 
@@ -577,7 +577,7 @@
 		</keybind>
 
 		<!-- Mute volume -->
-		<keybind key="KP_Multiply">
+		<keybind key="A-KP_Multiply">
 			<action name="Execute">
 				<execute>~/.config/openbox/setvolume.sh mute</execute>
 			</action>
