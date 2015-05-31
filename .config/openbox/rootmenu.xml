@@ -31,7 +31,16 @@
 					plume-creator
 				</execute>
 			</action>
-		</item> 
+		</item>
+
+		<!-- Zim -->
+		<item label="Zim">
+			<action name="Execute">
+				<execute>
+					zim
+				</execute>
+			</action>
+		</item>
 	</menu>
 
 	<!-- Development stuff -->
