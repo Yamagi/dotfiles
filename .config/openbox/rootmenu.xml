@@ -24,15 +24,6 @@
 			</action>
 		</item>
 
-		<!-- Plume Creator -->
-		<item label="Plume Creator">
-			<action name="Execute">
-				<execute>
-					plume-creator
-				</execute>
-			</action>
-		</item>
-
 		<!-- Zim -->
 		<item label="Zim">
 			<action name="Execute">
