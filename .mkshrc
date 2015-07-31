@@ -86,8 +86,6 @@ unalias -a
 case "$(uname -s)" in
 	FreeBSD)
 		alias ls='ls -G'
-		alias pkglocked='pkg query -e "%k == 1" "%n-%v"'
-		alias pkguinst='pkg query -e "%a == 0" "%n-%v"'
 		alias startx='startx -- -retro'
 		alias X='X -retro'
 		;;

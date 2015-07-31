@@ -27,6 +27,7 @@ fi
 
 export EDITOR=vim
 export PAGER=less
+export LS_COLORS='di=01\;36'
 
 # -------------------------------------------------------------------- #
 
