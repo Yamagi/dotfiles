@@ -9,12 +9,6 @@ case "FreeBSD":
 	# Make ls colorfull
 	alias ls '/bin/ls -G'
 
-	# Displays all locked packages
-	alias pkglocked	'pkg query -e "%k == 1" "%n-%v"'
-
- 	# Displays all user installed pkg packages
-	alias pkguinst 'pkg query -e "%a == 0" "%n-%v"'
-
 	# Force su to a clean login environment
 	alias su '/usr/bin/su -l'
 	alias suc '/usr/bin/su'
