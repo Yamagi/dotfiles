@@ -21,7 +21,7 @@ border_color = #3c3c3c 0
 # PANEL
 #---------------------------------------------
 font_shadow = 0
-panel_monitor = 3
+panel_monitor = 2
 panel_position = top left horizontal
 panel_size = 100% 18
 panel_margin = 0 0
