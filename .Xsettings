@@ -2,7 +2,7 @@ URxvt*background: black
 URxvt*foreground: white
 URxvt*cursorColor: green
 URxvt*scrollBar: 0
-URxvt*saveLines: 2097152
+URxvt*saveLines: 65536
 URxvt*title: Terminal
 URxvt*font: xft:Terminus:pixelsize=14
 URxvt*url-launcher: chrome
