@@ -46,6 +46,15 @@
 			</action>
 		</item>
 
+		<!-- PyCharm -->
+		<item label="PyCharm">
+			<action name="Execute">
+				<execute>
+					pycharm
+				</execute>
+			</action>
+		</item>
+
 		<!-- Vim -->
 		<item label="Vim">
 			<action name="Execute">
