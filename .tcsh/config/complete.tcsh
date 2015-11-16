@@ -11,10 +11,14 @@ case "FreeBSD":
 	complete kldunload 'n@*@`kldstat | awk \{sub\(\/\.ko\/,\"\",\$NF\)\;print\ \$NF\} | grep -v Name`@'
 
 	# pkg
-	set pkg_cmds=(add annotate audit autoremove backup check clean \
-	    config convert create delete fetch help info install lock \
-	    plugins query register remove repo rquery search set ssh shell \
-		shlib stats unlock update updating upgrade version which)
+	set pkg_cmds=(add alias all-depends annotate annotations audit \
+		autoremove backup build-depends check cinfo clean comment config \
+		convert create csearch delete desc download fetch help iinfo info \
+		install isearch leaf list lock noauto options origin plugins \
+		prime-list provided-depends query raw register remove repo \
+		required-depends roptions rquery search set shared-depends show \
+		ssh shell shlib size stats unlock update updating upgrade version \
+		which)
 	complete pkg 'p/1/$pkg_cmds/' 'n/delete/`pkg query "%n-%v"`/' \
 		'n/help/$pkg_cmds/' 'n/install/`pkg rquery "%n-%v"`/' \
 		'n/remove/`pkg query "%n-%v"`/'
