@@ -77,7 +77,7 @@
 	<theme>
 
 		<!-- Name of the Theme to use. -->
-		<name>yamagi</name>
+		<name>breeze</name>
 
 		<!-- Layout of the window title bar. Available
 			 characters are NDSLIMC, each can occur at

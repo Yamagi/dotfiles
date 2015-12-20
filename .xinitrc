@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Our GTK+ 3 theme -_-
+export GTK_THEME=breeze
+
 case "$(uname -s)" in
 
 	FreeBSD)

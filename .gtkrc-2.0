@@ -1,4 +1,5 @@
 gtk-icon-theme-name = "yamagi"
 gtk-font-name = "Bitstream Vera Sans 10"
 
-include ".themes/yamagi/gtk-2.0/gtkrc"
+#include ".themes/yamagi/gtk-2.0/gtkrc"
+include ".themes/breeze/gtk-2.0/gtkrc"
