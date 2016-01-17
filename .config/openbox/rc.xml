@@ -504,10 +504,10 @@
 			</action>
 		</keybind>
 
-		<!-- Execute terminal with tmux on win-r -->
-		<keybind key="W-r">
+		<!-- Execute terminal with vim on win-v -->
+		<keybind key="W-v">
 			<action name="Execute">
-				<execute>urxvtc -e tmux -2</execute>
+				<execute>urxvtc -fn "xft:Inconsolata:size=11" --perl-ext-common '' -e vim</execute>
 			</action>
 		</keybind>
 
