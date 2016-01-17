@@ -12,5 +12,6 @@
 	ui = true
 [merge]
 	tool = gvimdiff
+	conflictstyle = diff3
 [push]
 	default = upstream
