@@ -52,11 +52,14 @@ function _prompt()
 	tty=$(tty)
 	tty=${tty#/dev/}
 
-	if [[ $PWD == $HOME* ]] ; then
-		dir=${PWD#$HOME}
+	pwd=$(realpath $PWD)
+	home=$(realpath $HOME)
+
+	if [[ $pwd == $home* ]] ; then
+		dir=${pwd#$home}
 		dir=~$dir
 	else
-		dir=$PWD
+		dir=$pwd
 	fi
 
 	slashes=${dir//[!\/]/}
