@@ -10,7 +10,7 @@
 
 if [[ -d /usr/opt ]] ; then
 	for dir in $(find /usr/opt -maxdepth 2 -name "bin" -type d) ; do
-		PATH=$PATH:$dir
+		PATH=$dir:$PATH
 	done
 fi
 
