@@ -1,7 +1,7 @@
 # This is a rather simple configuration file for mksh, designed to
 # imitate my somewhat more complex tcsh setup. This file should be
 # combined with my .profile and .mksh_logout script. You may do
-# whatever you want with this file, but please not that it comes
+# whatever you want with this file, but please note that it comes
 # WITHOUT ANY WARRANTY!
 
 # -------------------------------------------------------------------- #
@@ -43,6 +43,8 @@ bind ^X6~=down-history
 
 function _prompt()
 {
+	ret=$?
+
 	typeset dir
 	typeset slashes
 	typeset tty
@@ -69,7 +71,11 @@ function _prompt()
 	fi
 
 	REPLY="$(whoami)@$(hostname -s):$tty $dir:"
-	return 0
+
+	# Return the original value of $? so that the return code
+	# of the last pipeline is available to the user. Otherwise
+	# the return code of this function would overwrite it.
+	return $ret
 }
 
 PS1='${|_prompt} '
