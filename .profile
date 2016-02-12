@@ -1,7 +1,7 @@
 # Login script, to be used with my mkshrc. This file should work with
-# other sheels compatible to the Kornshell but I can't es that, of
-# course. Do with this file whatever you you wand, but please notice
-# that it comes WITHOUT ANY WARRANTY!
+# other shells compatible to the Kornshell but I can't guarantee that,
+# of course. Do with this file whatever you want, but please notice that
+# it comes WITHOUT ANY WARRANTY!
 
 # -------------------------------------------------------------------- #
 
@@ -27,7 +27,16 @@ fi
 
 export EDITOR=vim
 export PAGER=less
-export LS_COLORS='di=01\;36'
+
+case $(uname -s) in
+	FreeBSD)
+		export LSCOLORS=gxfxcxdxbxeeedabagacad
+		;;
+
+	Linux)
+		export LS_COLORS='di=01;36'
+		;;
+esac
 
 # -------------------------------------------------------------------- #
 
