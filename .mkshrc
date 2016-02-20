@@ -48,8 +48,8 @@ function _prompt()
 	tty=$(tty)
 	tty=${tty#/dev/}
 
-	pwd=$(realpath $PWD)
-	home=$(realpath $HOME)
+	pwd=$(realpath "$PWD")
+	home=$(realpath "$HOME")
 
 	if [[ $pwd == $home* ]] ; then
 		dir=${pwd#$home}
