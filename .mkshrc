@@ -43,11 +43,14 @@ bind ^X6~=down-history
 
 function _prompt()
 {
+	# Save original return code.
 	ret=$?
 
+	# Create tty name.
 	tty=$(tty)
 	tty=${tty#/dev/}
 
+	# Create path.
 	pwd=$(realpath "$PWD")
 	home=$(realpath "$HOME")
 
@@ -55,7 +58,7 @@ function _prompt()
 		dir=${pwd#$home}
 		dir=~$dir
 	else
-		dir=$pwd
+		dir=$PWD
 	fi
 
 	slashes=${dir//[!\/]/}
@@ -69,7 +72,12 @@ function _prompt()
 		dir=...$dir
 	fi
 
-	REPLY="$(whoami)@$(hostname -s):$tty $dir:"
+	# Create hostname.
+	host=$(hostname)
+	host=${host//.*/}
+
+	# Generate the prompt.
+	REPLY="$(whoami)@$host:$tty $dir:"
 
 	# Return the original value of $? so that the return code
 	# of the last pipeline is available to the user. Otherwise
