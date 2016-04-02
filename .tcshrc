@@ -122,17 +122,18 @@ set prompt3="CORRECT> %B%R%b (y|n|e)?"
 # number of lines merged into the hard copy is the difference
 # between the "history" and "savehist" values. Therefor
 # "history" must be greater than "savehist", otherwise the
-# persistant history will not work as expected! At this time
-# the history merge is racy between several tcsh instances
-# shutdown at the same time. The next version will feature
-# code to serialize the merging between several instances.
+# persistant history will not work as expected! In version
+# before 6.19.00 the history merge is racy between several
+# tcsh instancesshutdown at the same time. Newer version
+# feature code to serialize the merging between several
+# instances.
 
 # History length
 set history=6144
 
 # Save 4096 lines to hard disk and merge the in
 # memory history with the existing hard copy.
-set savehist=( 4096 merge )
+set savehist=( 4096 merge lock )
 
 # File to save the history to
 set histfile=~/.tcsh/run/history
