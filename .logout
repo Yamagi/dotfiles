@@ -78,8 +78,8 @@ if (${this_date} > (${last_date} + 59)) then
 	cp ${histfile} ${histfile}_${date}
 	cp ${dirsfile} ${dirsfile}_${date}
 
-	/usr/bin/find ~/.tcsh/run/ -name "history_*" -mtime +30d -exec rm {} \;
-	/usr/bin/find ~/.tcsh/run/ -name "dirstack_*" -mtime +30d -exec rm {} \;
+	/usr/bin/find ~/.tcsh/run/ -name "history_*" -mtime +30 -exec rm {} \;
+	/usr/bin/find ~/.tcsh/run/ -name "dirstack_*" -mtime +30 -exec rm {} \;
 endif
 
 # --------------------------------------------------------------------- #
