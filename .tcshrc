@@ -52,13 +52,13 @@ if !(${?loginsh}) then
 	dirs -L
 endif
 
-# Force an umask of "077" for unprivileged users.
+# Force an umask of "027" for unprivileged users.
 # root must have the standard umask, otherwise
 # packet installations and the like will f*ck up.
 if ($LOGNAME == "root") then
 	umask 022
 else
-	umask 077
+	umask 027
 endif
 
 # On Linux the LANG variable must be set at
@@ -124,7 +124,7 @@ set prompt3="CORRECT> %B%R%b (y|n|e)?"
 # "history" must be greater than "savehist", otherwise the
 # persistant history will not work as expected! In version
 # before 6.19.00 the history merge is racy between several
-# tcsh instancesshutdown at the same time. Newer version
+# tcsh instances shutdown at the same time. Newer version
 # feature code to serialize the merging between several
 # instances.
 
@@ -193,7 +193,7 @@ bindkey ^R i-search-fwd
 # --------------
 
 # As said above, some more complicated things are configured
-# in indiviual files. Read them. Further directories / files
+# in individual files. Read them. Further directories / files
 # should be added to the "cfiles" variable. Note that sub-
 # directories are traversed too!
 
@@ -245,7 +245,7 @@ set autoexpand
 unset autologout
 
 # Automatic rebuild the path hashtable.
-# (no more "rehash" necesarry with this)
+# (no more "rehash" necessary with this)
 set autorehash=always
 
 # Enables colored output for embedded commands
