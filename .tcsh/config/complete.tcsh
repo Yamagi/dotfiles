@@ -31,6 +31,13 @@ case "FreeBSD":
 	set portsnap_cmds = (extract fetch update)
 	complete portsnap 'p/1/$portsnap_cmds/'
 
+	# startvm
+	set startvm_cmds = (cons halt help kill list run status vnc)
+	complete startvm 'p/1/$startvm_cmds'/ 'n/cons*/`startvm plainlist`/' \
+	'n/halt/`startvm plainlist`/' 'n/kill/`startvm plainlist`/' \
+	'n/run/`startvm plainlist`/' 'n/status/`startvm plainlist`/' \
+	'n/vnc/`startvm plainlist`/'
+
 	# sysctl
 	complete sysctl 'n/*/`sysctl -Na`/'
 
