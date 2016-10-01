@@ -195,20 +195,20 @@
 
 		<separator label="FreeBSD"/>
 
+		<!-- emelFM2 -->
+		<item label="Filemanager">
+			<action name="Execute">
+				<execute>
+					emelfm2
+				</execute>
+			</action>
+		</item>
+
 		<!-- urxvtc -->
 		<item label="Terminal">
 			<action name="Execute">
 				<execute>
 					urxvtc
-				</execute>
-			</action>
-		</item>
-
-		<!-- Worker -->
-		<item label="Worker">
-			<action name="Execute">
-				<execute>
-					worker
 				</execute>
 			</action>
 		</item>

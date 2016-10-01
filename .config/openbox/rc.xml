@@ -524,6 +524,20 @@
 			</action>
 		</keybind>
 
+		<!-- Filemanager -->
+		<keybind key="W-e">
+			<action name="Execute">
+				<execute>emelfm2</execute>
+			</action>
+		</keybind>
+
+		<!-- Run launcher -->
+		<keybind key="W-Return">
+			<action name="Execute">
+				<execute>gmrun</execute>
+			</action>
+		</keybind>
+
 		<!-- Toggle music playback -->
 		<keybind key="A-space">
 			<action name="Execute">
