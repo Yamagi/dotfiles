@@ -60,7 +60,7 @@ systray_background_id = 1
 #---------------------------------------------
 # CLOCK
 #---------------------------------------------
-time1_format = %a. %d.%m.%Y %H:%M:%S
+time1_format = %a %d.%m.%Y %H:%M:%S
 time1_font = Bitstream Vera Sans 7
 clock_font_color = #ffffff 100
 clock_padding = 0
