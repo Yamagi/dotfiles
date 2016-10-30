@@ -21,7 +21,7 @@ case $(uname -s) in
 		;;
 
 
-	linux)
+	Linux)
 
 		# Make ls colorfull
 		alias ls='/bin/ls --color'
