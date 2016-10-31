@@ -6,6 +6,9 @@ if [[ ! -e ~/.zsh/run/completion_cache ]] ; then
 	mkdir -p ~/.zsh/run/completion_cache
 fi
 
+# Path to our custom completions
+fpath=(~/.zsh/completions $fpath)
+
 # Load the completion plugin
 autoload -U compinit
 
