@@ -7,6 +7,9 @@ HISTFILE=~/.zsh/run/history
 # Save last 4096 commands
 SAVEHIST=4096
 
+# Hold last 6144 commands in memory
+HISTSIZE=6144
+
 # Share history between instances
 setopt SHARE_HISTORY
 
