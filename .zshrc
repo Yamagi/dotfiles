@@ -1,5 +1,5 @@
 # No setup if not an interactive shell
-if [[ -z "$PS1" ]] ; then
+if [[ ! -o interactive ]] ; then
 	return
 fi
 

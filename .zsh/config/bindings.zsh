@@ -22,3 +22,6 @@ bindkey '^[[8~' end-of-line
 # Magic history completion on 'space'
 bindkey ' ' magic-space
 
+# Call 'man' on alt-h
+bindkey '^[h' run-help
+

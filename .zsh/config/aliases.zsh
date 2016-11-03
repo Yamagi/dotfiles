@@ -45,3 +45,5 @@ alias ll='ls -lha'
 # Set terminal title
 alias settitle='printf "\033]0;\!^\007"'
 
+# 'd' as 'dirs -v'
+alias d='dirs -v'
