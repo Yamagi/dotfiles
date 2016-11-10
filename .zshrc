@@ -14,7 +14,7 @@ fi
 
 # Create runtime dir
 if [[ ! -e ~/.zsh/run ]] ; then
-	mkdir -p ~/zsh/run
+	mkdir -p ~/.zsh/run
 fi
 
 # Now source the individual config files
