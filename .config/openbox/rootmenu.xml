@@ -180,11 +180,11 @@
 			</action>
 		</item>
 
-		<!-- VirtualBox -->
-		<item label="VirtualBox">
+		<!-- XScreensaver Settings -->
+		<item label="XScreensaver Settings">
 			<action name="Execute">
 				<execute>
-					VirtualBox
+					xscreensaver-demo
 				</execute>
 			</action>
 		</item>
@@ -193,13 +193,13 @@
 	<!-- The root menu -->
 	<menu id="root-menu" label="Openbox">
 
-		<separator label="FreeBSD"/>
+		<separator label="Openbox"/>
 
-		<!-- emelFM2 -->
+		<!-- Filemanager -->
 		<item label="Filemanager">
 			<action name="Execute">
 				<execute>
-					emelfm2
+					worker
 				</execute>
 			</action>
 		</item>
