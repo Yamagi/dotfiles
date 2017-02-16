@@ -28,6 +28,9 @@ unsetopt LIST_TYPES
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/completions
 
+# Rehash when after cache miss
+zstyle ':completion:*' rehash true
+
 # The same colors as in normal 'ls' output
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
