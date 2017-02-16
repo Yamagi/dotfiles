@@ -1,8 +1,4 @@
 #---------------------------------------------
-# TINT2 CONFIG FILE
-#---------------------------------------------
-
-#---------------------------------------------
 # BACKGROUND AND BORDER
 #---------------------------------------------
 
@@ -12,9 +8,10 @@ border_width = 0
 background_color = #3c3c3c 100
 border_color = #3c3c3c 0
 
+# Background 2 (Active Tasks)
 rounded = 0
 border_width = 0
-background_color = #c3c3c3 35
+background_color = #6b6b6b 100
 border_color = #3c3c3c 0
 
 #---------------------------------------------
@@ -45,7 +42,7 @@ task_text = 1
 task_maximum_size = 120 14
 task_centered = 1
 task_padding = 0 0 4
-task_font = Bitstream Vera Sans 7
+task_font = DejaVu Sans 7
 task_font_color = #ffffff 100
 task_active_font_color = #ffffff 100
 task_background_id = 1
@@ -61,7 +58,7 @@ systray_background_id = 1
 # CLOCK
 #---------------------------------------------
 time1_format = %a %d.%m.%Y %H:%M:%S
-time1_font = Bitstream Vera Sans 7
+time1_font = DejaVu Sans 7
 clock_font_color = #ffffff 100
 clock_padding = 0
 clock_background_id = 1
@@ -73,5 +70,4 @@ mouse_middle = none
 mouse_right = close
 mouse_scroll_up = toggle
 mouse_scroll_down = iconify
-
 
