@@ -13,7 +13,7 @@ fpath=(~/.zsh/completions $fpath)
 autoload -U compinit
 
 # And initialize completions
-compinit
+compinit -d ~/.zsh/run/compdump
 
 # Print a new prompt and don't reuse the last one
 unsetopt ALWAYS_LAST_PROMPT
@@ -26,7 +26,7 @@ unsetopt LIST_TYPES
 
 # Caching
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/completions
+zstyle ':completion:*' cache-path ~/.zsh/run/completion_cache
 
 # Rehash when after cache miss
 zstyle ':completion:*' rehash true
