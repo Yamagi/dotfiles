@@ -4,7 +4,7 @@ URxvt*cursorColor: green
 URxvt*scrollBar: 0
 URxvt*saveLines: 65536
 URxvt*title: Terminal
-URxvt*font: xft:xos4\ Terminus:pixelsize=14
+URxvt*font: xft:Inconsolata:pixelsize=12
 URxvt*url-launcher: firefox
 URxvt*matcher.button: 1
 URxvt*perl-ext-common: default,-selection,matcher,tabbed
