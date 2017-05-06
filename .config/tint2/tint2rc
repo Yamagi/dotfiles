@@ -42,7 +42,7 @@ task_text = 1
 task_maximum_size = 120 14
 task_centered = 1
 task_padding = 0 0 4
-task_font = DejaVu Sans 7
+task_font = Fira Sans 10
 task_font_color = #ffffff 100
 task_active_font_color = #ffffff 100
 task_background_id = 1
@@ -58,7 +58,7 @@ systray_background_id = 1
 # CLOCK
 #---------------------------------------------
 time1_format = %a %d.%m.%Y %H:%M:%S
-time1_font = DejaVu Sans 7
+time1_font = Fira Sans 10
 clock_font_color = #ffffff 100
 clock_padding = 0
 clock_background_id = 1

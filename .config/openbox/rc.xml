@@ -101,8 +101,8 @@
 		<!-- Font in which the title of an
 			 active window is drawn -->
 		<font place="ActiveWindow">
-			<name>DejaVu Sans</name>
-			<size>8</size>
+			<name>Fira Sans</name>
+			<size>10</size>
 			<weight>normal</weight>
 			<slant>normal</slant>
 		</font>
@@ -110,8 +110,8 @@
          <!-- Font in which the title of an
 			  active window is drawn -->
 		<font place="InactiveWindow">
-			<name>DejaVu Sans</name>
-			<size>8</size>
+			<name>Fira Sans</name>
+			<size>10</size>
 			<weight>normal</weight>
 			<slant>normal</slant>
 		</font>
@@ -119,8 +119,8 @@
 		<!-- Font in which the menu
 			 header is drawn -->
 		<font place="MenuHeader">
-			<name>DejaVu Sans</name>
-			<size>8</size>
+			<name>Fira Sans</name>
+			<size>10</size>
 			<weight>normal</weight>
 			<slant>normal</slant>
 		</font>
@@ -128,16 +128,16 @@
 		<!-- Font in which menu
 			 items are drawn -->
 		<font place="MenuItem">
-			<name>DejaVu Sans</name>
-			<size>9</size>
+			<name>Fira Sans</name>
+			<size>10</size>
 			<weight>normal</weight>
 			<slant>normal</slant>
 		</font>
 
 		<!-- Font which used in the OSD -->
 		<font place="OnScreenDisplay">
-			<name>DejaVu Sans</name>
-			<size>9</size>
+			<name>Fira Sans</name>
+			<size>10</size>
 			<weight>normal</weight>
 			<slant>normal</slant>
 		</font>
