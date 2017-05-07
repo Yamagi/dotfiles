@@ -1,68 +1,44 @@
 #!/bin/sh
 
-# Our GTK+ 3 theme -_-
-export GTK_THEME=breeze
+# ----
 
-case "$(uname -s)" in
+runcmd() {
+	command -v $1 >/dev/null 2>&1
 
-	FreeBSD)
-		# Settings
-		/usr/local/bin/xrdb -merge ~/.Xsettings
-		/usr/local/bin/xset m 1 0
-		/usr/local/bin/xset b off
-		/usr/local/bin/nvidia-settings --load-config-only
+	if [ $? -eq 0 ] ; then
+		$@ &
+	fi
+}
 
-		# Tools
-		/usr/local/bin/numlockx &
-		/usr/local/bin/xscreensaver -no-splash &
-		/usr/local/bin/nitrogen --restore
-		/usr/local/bin/tint2 &
-		/usr/local/bin/urxvtd -q -o -f &
+# ----
 
-		# Openbox
-		/usr/local/bin/openbox &
-		WMPID=$!
+# Settings
+runcmd xrdb -merge ~/.Xsettings
+runcmd xset m 1 0
+runcmd numlockx
 
-		# Wait for Openbox to exit
-		wait $WMPID
+# Background stuff
+runcmd urxvtd -q -o -f
+runcmd xscreensaver -no-splash
 
-		# Kill XScreensaver
-		/usr/local/bin/xscreensaver-command -exit
+# Desktop components
+runcmd tint2
+runcmd pcmanfm -d --desktop
 
-		# Wait 2 Seconds and quit
-		sleep 2
-		clear
+# Wait a little bit fir things to catch up
+sleep 1
 
-		;;
+# Openbox
+openbox &
+WMPID=$!
+wait $!
 
-	Linux)
-		# Settings
-		/usr/bin/xrdb -merge ~/.Xsettings
-		/usr/bin/xset m 1 0
-		/usr/bin/nvidia-settings --load-config-only
+# ----
 
-		# Tools
-		/usr/bin/numlockx &
-		/usr/bin/xscreensaver -no-splash &
-		/usr/bin/nitrogen --restore
-		/usr/bin/tint2 &
-		/usr/bin/urxvtd -q -o -f &
+# Kill xscreensaver
+runcmd xscreensaver-command -exit
 
-		# Openbox
-		/usr/bin/openbox &
-		WMPID=$!
-
-		# Wait for Openbox to exit
-		wait $WMPID
-
-		# Kill XScreensaver
-		/usr/bin/xscreensaver-command -exit
-
-		# Wait 2 Seconds and quit
-		sleep 2
-		clear
-
-		;;
- 
-esac
+# Wait 2 Seconds and quit
+sleep 2
+clear
 
