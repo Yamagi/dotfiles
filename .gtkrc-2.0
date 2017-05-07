@@ -1,4 +1,4 @@
-gtk-icon-theme-name = "yamagi"
+gtk-icon-theme-name = "breeze-icons"
 gtk-font-name = "Fira Sans 10"
 
 include ".themes/breeze/gtk-2.0/gtkrc"
