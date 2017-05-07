@@ -5,10 +5,10 @@ mode=$1
 if [ $mode = "louder" ]; then
 	case "$(uname -s)" in
 		FreeBSD)
-			/usr/sbin/mixer vol +1 > /dev/null
+			mixer vol +1 > /dev/null
 			;;
 
-		linux)
+		Linux)
 			amixer sset Master 1%+ > /dev/null
 			;;
 
@@ -16,17 +16,17 @@ if [ $mode = "louder" ]; then
 elif [ $mode = "quieter" ]; then
 	case "$(uname -s)" in
 		FreeBSD)
-			/usr/sbin/mixer vol -1 > /dev/null
+			mixer vol -1 > /dev/null
 			;;
 
-		linux)
+		Linux)
 			amixer sset Master 1%- > /dev/null
 			;;
 
 	esac 
 elif [ $mode = "mute" ]; then
 	case "$(uname -s)" in
-		linux)
+		Linux)
 			amixer sset Master toggle > /dev/null
 			;;
 
