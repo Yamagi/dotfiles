@@ -282,71 +282,127 @@
 			</action>
 		</keybind>
 
+		<!-- Change to desktop 9 -->
+		<keybind key="W-F9">
+			<action name="Desktop">
+				<desktop>9</desktop>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 10 -->
+		<keybind key="W-F10">
+			<action name="Desktop">
+				<desktop>10</desktop>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 11 -->
+		<keybind key="W-F11">
+			<action name="Desktop">
+				<desktop>11</desktop>
+			</action>
+		</keybind>
+
+		<!-- Change to desktop 12 -->
+		<keybind key="W-F12">
+			<action name="Desktop">
+				<desktop>12</desktop>
+			</action>
+		</keybind>
+
 		<!-- Send current window to desktop 1 -->
-		<keybind key="S-W-F1">
+		<keybind key="C-W-F1">
 			<action name="SendToDesktop">
 				<desktop>1</desktop>
 			</action>
 		</keybind>
 
 		<!-- Send current window to desktop 2 -->
-		<keybind key="S-W-F2">
+		<keybind key="C-W-F2">
 			<action name="SendToDesktop">
 				<desktop>2</desktop>
 			</action>
 		</keybind>
 
 		<!-- Send current window to desktop 3 -->
-		<keybind key="S-W-F3">
+		<keybind key="C-W-F3">
 			<action name="SendToDesktop">
 				<desktop>3</desktop>
 			</action>
 		</keybind>
 
 		<!-- Send current window to desktop 4 -->
-		<keybind key="S-W-F4">
+		<keybind key="C-W-F4">
 			<action name="SendToDesktop">
 				<desktop>4</desktop>
 			</action>
 		</keybind>
 
 		<!-- Send current window to desktop 5 -->
-		<keybind key="S-W-F5">
+		<keybind key="C-W-F5">
 			<action name="SendToDesktop">
 				<desktop>5</desktop>
 			</action>
 		</keybind>
 
 		<!-- Send current window to desktop 6 -->
-		<keybind key="S-W-F6">
+		<keybind key="C-W-F6">
 			<action name="SendToDesktop">
 				<desktop>6</desktop>
 			</action>
 		</keybind>
 
 		<!-- Send current window to desktop 7 -->
-		<keybind key="S-W-F7">
+		<keybind key="C-W-F7">
 			<action name="SendToDesktop">
 				<desktop>7</desktop>
 			</action>
 		</keybind>
 
 		<!-- Send current window to desktop 8 -->
-		<keybind key="S-W-F8">
+		<keybind key="C-W-F8">
 			<action name="SendToDesktop">
 				<desktop>8</desktop>
 			</action>
 		</keybind>
 
+		<!-- Send current window to desktop 9 -->
+		<keybind key="C-W-F9">
+			<action name="SendToDesktop">
+				<desktop>9</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 10 -->
+		<keybind key="C-W-F10">
+			<action name="SendToDesktop">
+				<desktop>10</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 11 -->
+		<keybind key="C-W-F11">
+			<action name="SendToDesktop">
+				<desktop>11</desktop>
+			</action>
+		</keybind>
+
+		<!-- Send current window to desktop 12 -->
+		<keybind key="C-W-F12">
+			<action name="SendToDesktop">
+				<desktop>12</desktop>
+			</action>
+		</keybind>
+
 		<!-- Send current window to right desktop -->
-		<keybind key="S-W-Right">
+		<keybind key="C-W-Right">
 			<action name="SendToDesktop">
 				<desktop>previous</desktop>
 			</action>
 		</keybind>
 
 		<!-- Send current window to left desktop -->
-		<keybind key="S-W-Left">
+		<keybind key="C-W-Left">
 			<action name="SendToDesktop">
 				<desktop>next</desktop>
 			</action>
@@ -517,7 +573,7 @@
 		</keybind>
 
 		<!-- Lock screen -->
-		<keybind key="S-W-l">
+		<keybind key="C-W-l">
 			<action name="Execute">
 				<execute>xscreensaver-command -lock</execute>
 			</action>
@@ -530,23 +586,23 @@
 		</keybind>
 
 		<!-- Exit / Quit -->
-		<keybind key="S-W-e">
+		<keybind key="C-W-e">
 			<action name="exit">
 				<prompt>yes</prompt>
 			</action>
 		</keybind>
 
 		<!-- Restart -->
-		<keybind key="S-W-r">
+		<keybind key="C-W-r">
 			<action name="restart">
 				<prompt>yes</prompt>
 			</action>
 		</keybind>
 
 		<!-- Run launcher -->
-		<keybind key="S-W-Return">
+		<keybind key="C-W-Return">
 			<action name="Execute">
-				<execute>~/.config/openbox/run_dmenu.sh</execute>
+				<execute>~/.config/openbox/scripts/dmenu.sh</execute>
 			</action>
 		</keybind>
 
@@ -579,52 +635,52 @@
 		<!-- Lower sound volume by 1 -->
 		<keybind key="W-KP_Subtract">
 			<action name="Execute">
-				<execute>~/.config/openbox/setvolume.sh quieter</execute>
+				<execute>~/.config/openbox/scripts/volume.sh quieter</execute>
 			</action>
 		</keybind>
 
 		<keybind key="XF86AudioLowerVolume">
 			<action name="Execute">
-				<execute>~/.config/openbox/setvolume.sh quieter</execute>
+				<execute>~/.config/openbox/scripts/volume.sh quieter</execute>
 			</action>
 		</keybind>
 
 		<!-- Raise sound volume by 1 -->
 		<keybind key="W-KP_Add">
 			<action name="Execute">
-				<execute>~/.config/openbox/setvolume.sh louder</execute>
+				<execute>~/.config/openbox/scripts/volume.sh louder</execute>
 			</action>
 		</keybind>
 
 		<keybind key="XF86AudioRaiseVolume">
 			<action name="Execute">
-				<execute>~/.config/openbox/setvolume.sh louder</execute>
+				<execute>~/.config/openbox/scripts/volume.sh louder</execute>
 			</action>
 		</keybind>
 
 		<!-- Mute volume -->
 		<keybind key="W-KP_Multiply">
 			<action name="Execute">
-				<execute>~/.config/openbox/setvolume.sh mute</execute>
+				<execute>~/.config/openbox/scripts/volume.sh mute</execute>
 			</action>
 		</keybind>
 
 		<keybind key="XF86AudioMute">
 			<action name="Execute">
-				<execute>~/.config/openbox/setvolume.sh mute</execute>
+				<execute>~/.config/openbox/scripts/volume.sh mute</execute>
 			</action>
 		</keybind>
 
 		<!-- Backight control -->
 		<keybind key="XF86MonBrightnessDown">
 			<action name="Execute">
-				<execute>xbacklight -dec +5</execute>
+				<execute>~/.config/openbox/scripts/backlight.sh down</execute>
 			</action>
 		</keybind>
 
 		<keybind key="XF86MonBrightnessUp">
 			<action name="Execute">
-				<execute>xbacklight -inc +5</execute>
+				<execute>~/.config/openbox/scripts/backlight.sh up</execute>
 			</action>
 		</keybind>
 	</keyboard>
@@ -928,47 +984,6 @@
 				<action name="DesktopNext"/>
 			</mousebind>
 		</context>
-
-		<!-- The desktop without any invisible
-			 application (like file managers)
-			 over it -->
-		<context name="Root">
-
-			<!-- Window list on middle + press -->
-			<mousebind button="Middle" action="Press">
-				<action name="ShowMenu">
-					<menu>client-list-combined-menu</menu>
-				</action>
-			</mousebind>
-
-			<!-- Root window -->
-			<mousebind button="Right" action="Press">
-				<action name="ShowMenu">
-					<menu>root-menu</menu>
-				</action>
-			</mousebind>
-		</context>
 	</mouse>
-
-	<!-- Menu settings -->
-	<menu>
-
-		<!-- Read the root menu from rootmenu.xml -->
-		<file>rootmenu.xml</file>
-
-		<!-- Do not center submenu relativ
-			 to their parent -->
-		<middle>no</middle>
-
-		<!-- Show a sub menu after 0 milliseconds -->
-		<submenuShowDelay>0</submenuShowDelay>
-
-		<!-- Display icons in the window list menu -->
-		<applicationIcons>yes</applicationIcons>
-
-		<!-- Do not manage Desktops in
-			 the window list menu -->
-		<manageDesktops>no</manageDesktops>
-	</menu>
 </openbox_config>
 
