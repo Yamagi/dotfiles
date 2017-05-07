@@ -4,7 +4,7 @@ URxvt*cursorColor: green
 URxvt*scrollBar: 0
 URxvt*saveLines: 65536
 URxvt*title: Terminal
-URxvt*font: xft:Inconsolata:pixelsize=12
+URxvt*font: xft:xos4 Terminus:size=11
 URxvt*url-launcher: firefox
 URxvt*matcher.button: 1
 URxvt*perl-ext-common: default,-selection,matcher,tabbed
@@ -16,3 +16,4 @@ URxvt*scrollTtyKeypress: true
 URxvt*scrollWithBuffer: true
 URxvt*termName: rxvt-unicode-256color
 Xcursor.theme: breeze-cursor
+Xcursor.size: 16

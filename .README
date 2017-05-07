@@ -1,16 +1,23 @@
 My Dotfiles
 -----------
+
 This is a small git repository, containing my essential dotfiles. Just
 enough to get a basic system up and running, not all the fancy stuff
 which differs from host to host anyways. It's supposed to be directly
 checked out into ${HOME}. For a new install (into an empty ${HOME},
-existing directory may need some special treatment) do:
+existing directory may require some special treatment) do:
 
-1. Set an alias into yout tcsh:
+1. Set an alias into your shell:
  % alias dotfiles 'git --work-tree=${HOME} --git-dir=${HOME}/.dotfiles'
 
 2. Clone:
  % dotfiles clone https://github.com/Yamagi/dotfiles.git
+
+3. Move the git directory:
+ % mv dotfiles/.git ~/.dotfiles
+
+4. Checkout:
+ % cd ~ ; dotfiles checkout .
 
 3. Tell git to exclude non tracked files:
  % dotfiles config status.showuntrackedfiles no
@@ -18,7 +25,7 @@ existing directory may need some special treatment) do:
 After a logout / login cycle you're done and the basic environment is
 set up. Please note again, that only basic tools are covered and not big
 things like Chrome or the like. For a X11 setup its recommended to
-install some icons.
+unpack the icons found in ~/.icons.
 
 # -------------------------------------------------------------------- #
 
@@ -33,16 +40,4 @@ this setup is somewhat FreeBSD centric. It may work on Linux and even OS
 X, but I cannot guarantee that. You can do with this files whatever you
 want, but please note that they come WITHOUT ANY WARRANTY!
 
-- .Xsettings -> X11 resources, mainly the rxvt-unicode configuration
-- .gitcofig / .gitignore -> git configuration
-- .gtkrc-2.0 -> GTK 2.x configuration (theme and font)
-- .login / .logout -> tcsh login and logout scripts
-- .login_conf -> FreeBSD login(8) config (to set the locale)
-- .tcshrc -> tcsh configuration
-- .tmux.conf -> tmux terminal multiplexer configuration
-- .xinitrc -> X11 initalization script
-
-- .config/openbox -> OpenBox window manager configurations
-- .config/tint2 -> tint2 taskbar / panel
-- .tcsh -> Additional tcsh configuration an runtime files
-- .themes -> X11 themes
+# -------------------------------------------------------------------- #

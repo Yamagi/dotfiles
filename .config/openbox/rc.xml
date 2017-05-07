@@ -991,6 +991,47 @@
 				<action name="DesktopNext"/>
 			</mousebind>
 		</context>
+
+		<!-- The desktop without any invisible
+			 application (like file managers)
+			 over it -->
+		<context name="Root">
+
+			<!-- Window list on middle + press -->
+			<mousebind button="Middle" action="Press">
+				<action name="ShowMenu">
+					<menu>client-list-combined-menu</menu>
+				</action>
+			</mousebind>
+
+			<!-- Root window -->
+			<mousebind button="Right" action="Press">
+				<action name="ShowMenu">
+					<menu>root-menu</menu>
+				</action>
+			</mousebind>
+		</context>
 	</mouse>
+
+	<!-- Menu settings -->
+	<menu>
+
+		<!-- Read the root menu from rootmenu.xml -->
+		<file>rootmenu.xml</file>
+
+		<!-- Do not center submenu relativ
+			 to their parent -->
+		<middle>no</middle>
+
+		<!-- Show a sub menu after 0 milliseconds -->
+		<submenuShowDelay>0</submenuShowDelay>
+
+		<!-- Display icons in the window list menu -->
+		<applicationIcons>yes</applicationIcons>
+
+		<!-- Do not manage Desktops in
+			 the window list menu -->
+		<manageDesktops>no</manageDesktops>
+	</menu>
 </openbox_config>
 
