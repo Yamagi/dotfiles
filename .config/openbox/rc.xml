@@ -572,6 +572,13 @@
 			</action>
 		</keybind>
 
+		<!-- pcmanfm -->
+		<keybind key="W-e">
+			<action name="Execute">
+				<execute>pcmanfm</execute>
+			</action>
+		</keybind>
+
 		<!-- Lock screen -->
 		<keybind key="C-W-l">
 			<action name="Execute">
