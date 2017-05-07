@@ -15,4 +15,4 @@ URxvt*scrollTtyOutput: false
 URxvt*scrollTtyKeypress: true
 URxvt*scrollWithBuffer: true
 URxvt*termName: rxvt-unicode-256color
-Xcursor.theme: openzone 
+Xcursor.theme: breeze-cursor
