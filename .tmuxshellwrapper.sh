@@ -1,3 +1,3 @@
 #!/bin/sh
 
-$SHELL -l
+exec $SHELL
