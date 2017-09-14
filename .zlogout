@@ -1,11 +1,9 @@
 # Stop SSH-Agent
 # --------------
 
-if [[ "${SSH_AGENT_THIS:-unset}" != unset ]] ; then
-	if [[ "${SSH_AGENT_PID:-unset}" != unset ]] ; then
-		ssh-add -D > /dev/null 2>&1
-		ssh-agent -k > /dev/null
-	fi
+if [[ $SSH_AGENT_SHELL == $$ ]] ; then
+	ssh-add -D > /dev/null 2>&1
+	ssh-agent -k > /dev/null
 fi
  
 # --------
@@ -20,19 +18,13 @@ case $(uname -s) in
 		;;
 
 	Linux)
-		mpdbin=mpd
+		typeset mpdbin=mpd
 		typeset mpdpath=/usr/bin
 		;;
 esac
 
-if [[ "${MUSICPD:-unset}" != unset ]] ; then
-	if [[ "$TERM" != "screen" ]] ; then
-		pgrep $mpdbin > /dev/null
-
-		if [[ $? == 0 ]] ; then
-			$mpdpath/$mpdbin --kill
-		fi
-	fi
+if [[ $MUSICPD_SHELL == $$ ]] ; then
+	$mpdpath/$mpdbin --kill
 fi
 
 unset mpdbin

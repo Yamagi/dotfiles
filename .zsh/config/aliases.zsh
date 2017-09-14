@@ -47,3 +47,6 @@ alias settitle='printf "\033]0;\!^\007"'
 
 # 'd' as 'dirs -v'
 alias d='dirs -v'
+
+# Reset the SSH socket variable in tmux
+alias fixssh='eval $(tmux showenv -s SSH_AUTH_SOCK)'
