@@ -1,5 +1,5 @@
-URxvt*background: black
-URxvt*foreground: white
+URxvt*background: #121212
+URxvt*foreground: #d7d7d7
 URxvt*cursorColor: green
 URxvt*scrollBar: 0
 URxvt*saveLines: 65536
