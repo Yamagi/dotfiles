@@ -15,16 +15,17 @@ bindkey '^i' expand-or-complete-prefix
 
 # Search history up and down on
 # the "up" and "down" arrow keys.
-bindkey '^[[A' history-beginning-search-backward-end
-bindkey '^[[B' history-beginning-search-forward-end
+bindkey "${terminfo[kcuu1]}" history-beginning-search-backward-end
+bindkey "${terminfo[kcud1]}" history-beginning-search-forward-end
 
 # Delete on 'del'
-bindkey '^[[3~' vi-delete-char
+bindkey "${terminfo[kdch1]}" vi-delete-char
 
-# Beginnig and end of line 
-# on 'home' and 'end'.
-bindkey '^[[7~' beginning-of-line
-bindkey '^[[8~' end-of-line
+# Beginnig and end of line on 'home'
+# and 'end'. For xterm, rxvt and the
+# screen / tmux terminal.
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
 
 # Magic history completion on 'space'
 bindkey ' ' magic-space
