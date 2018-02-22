@@ -29,15 +29,14 @@ unpack the icons found in ~/.icons.
 
 # -------------------------------------------------------------------- #
 
-This dotfiles are build around my workflow. They may not fit yours! Do
+These dotfiles are build around my workflow. They may not fit yours! Do
 not complain to me if you don't like my decisions, feel free to fork 
-this repository. :) Nevertheless, if you have some cool ideas or even
-found a bug, do not hesitate to tell me at yamagi [at] yamagi [dot] org.
+this repository. :)
 
 Some of the older configuration files are still commented in german.
-Maybe I'll translate them some day, but not now. Since I'm a FreeBSD guy
-this setup is somewhat FreeBSD centric. It may work on Linux and even OS
-X, but I cannot guarantee that. You can do with this files whatever you
+Maybe I'll translate them some day, but not now. Since I'm a FreeBSD
+and Linux guy this configuration is focused on that systems. They may
+or may not work on OS X or WSL. You can do with these files whatever you
 want, but please note that they come WITHOUT ANY WARRANTY!
 
 # -------------------------------------------------------------------- #
