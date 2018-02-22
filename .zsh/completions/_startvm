@@ -2,4 +2,3 @@
 
 _arguments "1: :(cons halt help kill list run status vnc)" \
 	"2: :($(startvm plainlist))"
-

@@ -21,4 +21,3 @@ fi
 for config in $(ls ~/.zsh/config/*.zsh) ; do
 	source $config
 done
-

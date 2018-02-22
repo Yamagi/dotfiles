@@ -43,4 +43,3 @@ _complete_files () {
 	_main_complete _files
 }
 compdef -k _complete_files complete-word '^x'
-

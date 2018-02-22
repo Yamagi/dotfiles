@@ -12,4 +12,3 @@ export EDITOR=vim
 
 # 'less' as default pager
 export PAGER=less
-

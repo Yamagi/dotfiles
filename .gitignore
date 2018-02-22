@@ -1,4 +1,14 @@
+# Vim swapfiles
 .*.sw?
-tags
+
+# Vim statefiles
+.vim*
+
+# Local build settings
 .config
+
+# Jetbrains IDEA IDEs
 .idea
+
+# Cmake stuff created by Clion
+cmake-build-debug/

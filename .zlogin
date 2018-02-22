@@ -8,7 +8,7 @@ fi
 if [[ -f ~/.ssh/ssh-agent-info ]] ; then
 	. ~/.ssh/ssh-agent-info
 
-	if [[ -v SSH_AGENT_PID ]] ; then
+	if (( ${+SSH_AGENT_PID} )) ; then
 		ps ax | grep $SSH_AGENT_PID | grep ssh-agent > /dev/null 2>&1
 
 		if [[ $? != 0 ]] ; then
@@ -30,29 +30,25 @@ fi
 
 case $(uname -s) in
 	FreeBSD)
-		mpdbin=musicpd
-		mpdpath=/usr/local/bin
+		typeset mpdbin=musicpd
 		;;
 
 	Linux)
-		mpdbin=mpd
-		mpdpath=/usr/bin
+		typeset mpdbin=mpd
 		;;
 esac
 
 pgrep $mpdbin > /dev/null
 
 if [[ $? != 0 ]] ; then
-	if [[ -e $mpdpath/$mpdbin && -s ~/.mpdconf ]] ; then
+	if [[ -e $mpdbin && -s ~/.mpdconf ]] ; then
 		if [[ ! -e ~/.musicpd/playlists ]] ; then
 			mkdir -p ~/.musicpd/playlists
 		fi
 
-		$mpdpath/$mpdbin
+		$mpdbin >/dev/null 2>&1
 		export MUSICPD_SHELL=$$
 	fi
 fi
 
 unset mpdbin
-unset mpdpath
-

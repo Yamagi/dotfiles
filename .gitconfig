@@ -5,7 +5,7 @@
 	name = Yamagi Burmeister
 	email = yamagi@yamagi.org
 [core]
-	safecrlf = true
+	safecrlf = warn
 	autocrlf = input
 	excludesfile = ~/.gitignore
 [color]

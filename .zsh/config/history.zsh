@@ -30,4 +30,3 @@ setopt HIST_REDUCE_BLANKS
 
 # Don't beep when reaching the histories end
 setopt NO_HIST_BEEP
-

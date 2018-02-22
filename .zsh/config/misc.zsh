@@ -13,4 +13,3 @@ REPORTTIME=5
 
 # Print exitcode if it's non-zero
 setopt PRINT_EXIT_VALUE
-

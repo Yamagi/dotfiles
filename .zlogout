@@ -14,17 +14,15 @@ fi
 case $(uname -s) in
 	FreeBSD)
 		typeset mpdbin=musicpd
-		typeset mpdpath=/usr/local/bin
 		;;
 
 	Linux)
 		typeset mpdbin=mpd
-		typeset mpdpath=/usr/bin
 		;;
 esac
 
 if [[ $MUSICPD_SHELL == $$ ]] ; then
-	$mpdpath/$mpdbin --kill
+	$mpdbin --kill
 fi
 
 unset mpdbin

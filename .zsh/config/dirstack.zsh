@@ -15,4 +15,3 @@ setopt PUSHDSILENT
 
 # Push '~' when no parameter is given
 setopt PUSHDTOHOME
-

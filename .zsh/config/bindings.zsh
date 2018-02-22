@@ -18,11 +18,10 @@ zle -N history-beginning-search-forward-end history-search-end
 # the cursor for completion
 bindkey '^i' expand-or-complete-prefix
 
-# Search history up and down on
-# the "up" and "down" arrow keys
-# and on "k" and "j" in vi normal
-# mode. Also bind the raw key
-# sequences to work around broken
+# Search history up and down on the "up"
+# and "down" arrow keys and on "k" and
+# "j" in vi normal mode. Also bind the 
+# raw key sequences to work around broken
 # terminfo entries.
 bindkey "${terminfo[kcuu1]}" history-beginning-search-backward-end
 bindkey "^[[A" history-beginning-search-backward-end
@@ -45,4 +44,3 @@ bindkey ' ' magic-space
 
 # Call 'man' on alt-h
 bindkey '^[h' run-help
-
