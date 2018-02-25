@@ -30,11 +30,11 @@ fi
 
 case $(uname -s) in
 	FreeBSD)
-		typeset mpdbin=musicpd
+		mpdbin=musicpd
 		;;
 
 	Linux)
-		typeset mpdbin=mpd
+		mpdbin=mpd
 		;;
 esac
 
