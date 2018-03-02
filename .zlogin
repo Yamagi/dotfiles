@@ -31,24 +31,27 @@ fi
 case $(uname -s) in
 	FreeBSD)
 		mpdbin=musicpd
+		mpdpath=/usr/local/bin
 		;;
 
 	Linux)
 		mpdbin=mpd
+		mpdpath=/usr/bin
 		;;
 esac
 
 pgrep $mpdbin > /dev/null
 
 if [[ $? != 0 ]] ; then
-	if [[ -e $mpdbin && -s ~/.mpdconf ]] ; then
+	if [[ -e $mpdpath/$mpdbin && -s ~/.mpdconf ]] ; then
 		if [[ ! -e ~/.musicpd/playlists ]] ; then
 			mkdir -p ~/.musicpd/playlists
 		fi
 
-		$mpdbin >/dev/null 2>&1
+		$mpdpath/$mpdbin
 		export MUSICPD_SHELL=$$
 	fi
 fi
 
 unset mpdbin
+unset mpdpath
