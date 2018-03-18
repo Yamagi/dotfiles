@@ -565,17 +565,17 @@
 			</action>
 		</keybind>
 
-		<!-- Execute terminal with vim -->
+		<!-- Execute (g)vim -->
 		<keybind key="W-v">
 			<action name="Execute">
-				<execute>urxvtc -fn "xft:Inconsolata:size=11" --perl-ext-common '' -e vim</execute>
+				<execute>gvim</execute>
 			</action>
 		</keybind>
 
-		<!-- pcmanfm -->
+		<!-- Worker (file manager) -->
 		<keybind key="W-e">
 			<action name="Execute">
-				<execute>pcmanfm</execute>
+				<execute>worker</execute>
 			</action>
 		</keybind>
 
