@@ -3,7 +3,7 @@
 # ----
 
 # Screenlockger background image.
-LOCKIMG="/path/to/lock.img"
+LOCKIMG="/home/yamagi/medien/bilder/hintergrundbilder/girl_lying.png"
 
 # Operating system
 OS=$(uname -s)
@@ -20,13 +20,18 @@ runcmd() {
 
 # ----
 
+# HiDPI Stuff
+runcmd xrandr --dpi 144
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
 # Settings
 runcmd numlockx
 runcmd nitrogen --restore
+runcmd xcalib ~/.config/color_profile/LP140QH2_SPB1_01.icm
 runcmd xrdb -merge ~/.Xsettings
 runcmd xset b off
 runcmd xset +dpms
-runcmd xset dpms 0 0 180
+runcmd xset dpms 0 0 60
 runcmd xset m 1 0
 
 # Background tools
@@ -44,7 +49,7 @@ fi
 sleep 1
 
 # Openbox
-openbox &
+/usr/opt/openbox/bin/openbox &
 WMPID=$!
 wait $!
 

@@ -706,6 +706,13 @@
 			</action>
 		</keybind>
 
+		<!-- Switch touchpad -->
+		<keybind key="W-C-t">
+			<action name="Execute">
+				<execute>~/.config/openbox/scripts/touchpad.sh</execute>
+			</action>
+		</keybind>
+
 		<!-- Suspend -->
 		<keybind key="W-C-s">
 			<action name="Execute">
