@@ -30,3 +30,7 @@ setopt HIST_REDUCE_BLANKS
 
 # Don't beep when reaching the histories end
 setopt NO_HIST_BEEP
+
+# Don't save command prependet with a
+# space into the history.
+setopt HIST_IGNORE_SPACE
