@@ -3,7 +3,7 @@
 # ----
 
 # Screenlockger background image.
-LOCKIMG="/path/to/lock.img"
+LOCKIMG="/home/yamagi/data/archiv/wallpaper/city_girl.png"
 
 # Operating system
 OS=$(uname -s)
@@ -27,7 +27,6 @@ runcmd xrdb -merge ~/.Xsettings
 runcmd xset b off
 runcmd xset +dpms
 runcmd xset dpms 0 0 180
-runcmd xset m 1 0
 
 # Background tools
 runcmd tint2
@@ -44,7 +43,7 @@ fi
 sleep 1
 
 # Openbox
-openbox &
+/usr/opt/openbox-yamagi/bin/openbox &
 WMPID=$!
 wait $!
 
