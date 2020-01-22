@@ -13,9 +13,6 @@ case "FreeBSD":
 	alias su '/usr/bin/su -l'
 	alias suc '/usr/bin/su'
 
-	# Force 256 colors in tmux
-	alias tmux '/usr/local/bin/tmux -2'
-
 	# Start X.org in retro mode
 	alias startx '/usr/local/bin/startx -- -retro'
 	alias X	'/usr/local/bin/X -retro'
@@ -30,9 +27,6 @@ case "linux":
 	# Force su to a clean login environment
 	alias su '/usr/bin/su -l'
 	alias suc '/usr/bin/su'
-
-	# Force 256 colors in tmux
-	alias tmux '/usr/bin/tmux -2'
 
 	breaksw
 

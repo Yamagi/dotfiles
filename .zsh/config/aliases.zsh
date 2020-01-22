@@ -40,6 +40,3 @@ alias settitle='printf "\033]0;\!^\007"'
 # Force su to a clean login environment
 alias su='su -l'
 alias suc='su'
-
-# Force 256 colors in tmux
-alias tmux='tmux -2'
