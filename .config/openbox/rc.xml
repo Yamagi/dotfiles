@@ -418,6 +418,15 @@
 			<action name="ToggleAlwaysOnBottom"/>
 		</keybind>
 
+		<!-- Set current window to fullscreen -->
+		<keybind key="W-comma">
+			<action name="ToggleFullscreen"/>
+		</keybind>
+
+		<keybind key="W-KP_Separator">
+			<action name="ToggleFullscreen"/>
+		</keybind>
+
 		<!-- Maximize current window -->
 		<keybind key="W-KP_5">
 			<action name="ToggleMaximize"/>
