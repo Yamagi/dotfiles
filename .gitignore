@@ -12,3 +12,6 @@
 
 # Cmake stuff created by Clion
 cmake-build-debug/
+
+# Compiler Databases
+compile_commands.json
