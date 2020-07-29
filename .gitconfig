@@ -2,7 +2,7 @@
 	ci = commit
 	co = checkout
 [user]
-	name = Yamagi Burmeister
+	name = Yamagi
 	email = yamagi@yamagi.org
 [core]
 	safecrlf = warn
