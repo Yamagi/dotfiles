@@ -9,16 +9,16 @@ if [[ -f ~/.ssh/ssh-agent-info ]] ; then
 	. ~/.ssh/ssh-agent-info
 
 	if (( ${+SSH_AGENT_PID} )) ; then
-		ps ax | grep $SSH_AGENT_PID | grep ssh-agent > /dev/null 2>&1
+		ps ax | grep $SSH_AGENT_PID | grep ssh-agent >/dev/null 2>&1
 
 		if [[ $? != 0 ]] ; then
 			ssh-agent | head -n 2 > ~/.ssh/ssh-agent-info
-			source ~/.ssh/ssh-agent-info > /dev/null
+			source ~/.ssh/ssh-agent-info >/dev/null
 			export SSH_AGENT_SHELL=$$
 		fi
 	fi
 else
-	ssh-agent | head -n 2 > ~/.ssh/ssh-agent-info
+	ssh-agent | head -n 2 >~/.ssh/ssh-agent-info
 	source ~/.ssh/ssh-agent-info
 	export SSH_AGENT_SHELL=$$
 fi 
@@ -38,7 +38,7 @@ case $(uname -s) in
 		;;
 esac
 
-pgrep $mpdbin > /dev/null
+pgrep $mpdbin >/dev/null
 
 if [[ $? != 0 ]] ; then
 	command -v $mpdbin >/dev/null 2>&1
@@ -57,3 +57,22 @@ fi
 
 unset mpdbin
 unset mpdpath
+
+# --------
+
+# Start mdserve
+# -------------
+
+pgrep mdserve >/dev/null
+
+if [[ $? != 0 ]] ; then
+	command -v mdserve >/dev/null
+
+	if [[ $? == 0 ]] ; then
+		if [[ -d ~/sonstiges/mdserve ]] ; then
+			(mdserve -q -d ~/sonstiges/mdserve &)
+		fi
+	fi
+fi
+
+# --------
