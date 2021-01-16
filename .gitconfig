@@ -1,19 +1,18 @@
 [alias]
 	ci = commit
 	co = checkout
+[color]
+	ui = true
+[core]
+	autocrlf = input
+	excludesfile = ~/.gitignore
+	safecrlf = warn
+[init]
+	defaultBranch = master
+[pull]
+	ff = only
+[push]
+	default = upstream
 [user]
 	name = Yamagi
 	email = yamagi@yamagi.org
-[core]
-	safecrlf = warn
-	autocrlf = input
-	excludesfile = ~/.gitignore
-[color]
-	ui = true
-[merge]
-	tool = gvimdiff
-	conflictstyle = diff3
-[push]
-	default = upstream
-[pull]
-	ff = only
