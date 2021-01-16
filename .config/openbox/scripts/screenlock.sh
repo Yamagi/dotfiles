@@ -6,7 +6,7 @@
 . ~/.config/openbox/scripts/openbox.subr
 
 # Sleep a moment, otherwise the key up
-# event may trigger thge unlock dialog.
+# event may trigger the unlock dialog.
 sleep 1
 
 case "$(uname -s)" in

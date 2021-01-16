@@ -409,12 +409,12 @@
 		</keybind>
 
 		<!-- Current window always on top -->
-		<keybind key="W-Prior">
+		<keybind key="C-W-Prior">
 			<action name="ToggleAlwaysOnTop"/>
 		</keybind>
 
 		<!-- Current window always on bottom -->
-		<keybind key="W-Next">
+		<keybind key="C-W-Next">
 			<action name="ToggleAlwaysOnBottom"/>
 		</keybind>
 
@@ -697,6 +697,13 @@
 		<keybind key="XF86MonBrightnessUp">
 			<action name="Execute">
 				<execute>~/.config/openbox/scripts/backlight.sh up</execute>
+			</action>
+		</keybind>
+
+		<!-- Suspend -->
+		<keybind key="W-C-s">
+			<action name="Execute">
+				<execute>~/.config/openbox/scripts/suspend.sh</execute>
 			</action>
 		</keybind>
 	</keyboard>

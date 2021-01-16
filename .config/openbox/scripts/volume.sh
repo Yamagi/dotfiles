@@ -5,9 +5,9 @@
 
 . ~/.config/openbox/scripts/openbox.subr
 
-mode=$1
+MODE=$1
 
-if [ $mode = "louder" ]; then
+if [ $MODE = "louder" ]; then
 	case "$(uname -s)" in
 		FreeBSD)
 			runcmd mixer vol +1 > /dev/null
@@ -19,7 +19,7 @@ if [ $mode = "louder" ]; then
 			;;
 
 	esac
-elif [ $mode = "quieter" ]; then
+elif [ $MODE = "quieter" ]; then
 	case "$(uname -s)" in
 		FreeBSD)
 			runcmd mixer vol -1 > /dev/null
@@ -31,7 +31,7 @@ elif [ $mode = "quieter" ]; then
 			;;
 
 	esac 
-elif [ $mode = "mute" ]; then
+elif [ $MODE = "mute" ]; then
 	case "$(uname -s)" in
 		Linux)
 			runcmd pactl set-sink-mute @DEFAULT_SINK@ toggle >/dev/null

@@ -4,12 +4,28 @@
 
 . ~/.config/openbox/scripts/openbox.subr
 
-mode=$1
+MODE=$1
 
-if [ $mode = "up" ]; then
-	runcmd xbacklight -inc 2
-	runcmd light -A 2
-elif [ $mode = "down" ]; then
-	runcmd xbacklight -dec 2
-	runcmd light -U 2
+if [ $MODE = "up" ]; then
+	case "$(uname -s)" in
+		FreeBSD)
+			runcmd xbacklight -inc 2
+			;;
+
+		Linux)
+			runcmd light -A 2
+			;;
+
+	esac
+elif [ $MODE = "down" ]; then
+	case "$(uname -s)" in
+		FreeBSD)
+			runcmd xbacklight -dec 2
+			;;
+
+		Linux)
+			runcmd light -U 2
+			;;
+
+	esac
 fi
