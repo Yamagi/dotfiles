@@ -1,7 +1,7 @@
 # Directories.
 ncmpcpp_directory = ~/.local/share/ncmpcpp
 lyrics_directory = ~/.lyrics
-mpd_music_dir = ~/musik/bibliothek
+mpd_music_dir = /mnt/data1/medien/musik/bibliothek
 
 # mpd connection.
 mpd_host = secmpdpw@/home/yamagi/.local/share/mpd/socket

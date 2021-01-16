@@ -2,8 +2,8 @@
 
 # ----
 
-# Screenlockger background image.
-LOCKIMG="/path/to/lock.img"
+# Screenlocker background image.
+LOCKIMG="/mnt/data/archiv/wallpaper/clouds2.png"
 
 # Operating system
 OS=$(uname -s)
@@ -44,7 +44,7 @@ fi
 sleep 1
 
 # Openbox
-openbox &
+/usr/opt/openbox-yamagi/bin/openbox &
 WMPID=$!
 wait $!
 
