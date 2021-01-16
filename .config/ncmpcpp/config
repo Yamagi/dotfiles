@@ -1,0 +1,43 @@
+# Directories.
+ncmpcpp_directory = ~/.local/share/ncmpcpp
+lyrics_directory = ~/.lyrics
+mpd_music_dir = ~/musik/bibliothek
+
+# mpd connection.
+mpd_host = secmpdpw@/home/yamagi/.local/share/mpd/socket
+
+# Visualizer.
+visualizer_fifo_path = /home/yamagi/.local/share/mpd/visualizer.fifo
+visualizer_type = wave_filled
+visualizer_look = ●▮
+visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
+
+# Highlight and message delays.
+playlist_disable_highlight_delay = 3
+message_delay_time = 3
+
+# Alternative colors for the song columns.
+song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
+
+# Display some additional data.
+clock_display_seconds = yes
+display_bitrate = yes
+display_remaining_time = yes
+playlist_show_remaining_time = yes
+playlist_separate_albums = yes
+
+# Center the mode.
+autocenter_mode = yes
+
+# The newer and more fancy user interface.
+user_interface = alternative
+
+# Scroll the song title if necessary.
+cyclic_scrolling = yes
+
+# Mouse support is annoying.
+mouse_support = no
+
+# vim as external editor.
+external_editor = vim
+use_console_editor = yes
