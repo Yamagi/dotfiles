@@ -1,13 +1,20 @@
 #!/bin/sh
 
-runcmd() {
-	command -v $1 >/dev/null 2>&1
+# Locks the screen through xautolock (on FreeBSD)
+# or indirectly through xss-lock (on Linux).
 
-	if [ $? -eq 0 ] ; then
-		$@
-	fi
-}
+. ~/.config/openbox/scripts/openbox.subr
 
+# Sleep a moment, otherwise the key up
+# event may trigger thge unlock dialog.
 sleep 1
-runcmd xscreensaver-command -lock
 
+case "$(uname -s)" in
+	FreeBSD)
+		runcmd xautolock -locknow
+		;;
+
+	Linux)
+		runcmd xset dpms force off
+		;;
+esac
