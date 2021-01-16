@@ -7,7 +7,7 @@ mpd_music_dir = ~/musik/bibliothek
 mpd_host = secmpdpw@/home/yamagi/.local/share/mpd/socket
 
 # Visualizer.
-visualizer_fifo_path = /home/yamagi/.local/share/mpd/visualizer.fifo
+visualizer_data_source = /home/yamagi/.local/share/mpd/visualizer.fifo
 visualizer_type = wave_filled
 visualizer_look = ●▮
 visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
