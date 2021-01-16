@@ -1,3 +1,6 @@
+# Create XDG_RUNTIME_DIR
+# ----------------------
+
 RTDIR=/tmp/rt-$(id -u)
 
 if [[ -z "$XDG_RUNTIME_DIR" ]] ; then
