@@ -28,8 +28,8 @@ alias d='dirs -v'
 # Git for our dotfiles
 alias dotfiles='git --work-tree=${HOME} --git-dir=${HOME}/.dotfiles'
 
-# Reset the SSH socket variable in tmux
-alias fixssh='eval $(tmux showenv -s SSH_AUTH_SOCK)'
+# Get an up to date env from tmux.
+alias fixenv='eval $(tmux showenv -s)'
 
 # 'll' as "long ls"
 alias ll='ls -lha'
