@@ -35,9 +35,9 @@ runcmd urxvtd -q -o -f
 
 # The locker is OS dependent
 if [ "$OS" == "FreeBSD" ] ; then
-	xautolock -time 3 -locker "i3lock -i $LOCKIMG -n -t"
+	xautolock -time 3 -locker "i3lock -i $LOCKIMG -n -t" &
 elif [ "$OS" == "Linux" ] ; then
-	xss-lock -- i3lock -i $LOCKIMG -n -t
+	xss-lock -- i3lock -i $LOCKIMG -n -t &
 fi
 
 # Wait a little bit for things to catch up
