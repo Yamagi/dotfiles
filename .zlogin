@@ -1,3 +1,19 @@
+RTDIR=/tmp/rt-$(id -u)
+
+if [[ -z "$XDG_RUNTIME_DIR" ]] ; then
+	if [[ -e $RTDIR ]] ; then
+		if [[ -d $RTDIR ]] ; then
+			export XDG_RUNTIME_DIR=$RTDIR
+		fi
+	else
+		mkdir -p $RTDIR
+		chmod 700 $RTDIR
+		export XDG_RUNTIME_DIR=$RTDIR
+	fi
+fi
+
+# --------
+
 # Start SSH-Agent
 # ---------------
 
