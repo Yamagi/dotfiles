@@ -60,9 +60,9 @@ if [[ $? != 0 ]] ; then
 	command -v $mpdbin >/dev/null 2>&1
 
 	if [[ $? == 0 ]] ; then
-		if [[ -s ~/.mpdconf ]] ; then
-			if [[ ! -e ~/.musicpd/playlists ]] ; then
-				mkdir -p ~/.musicpd/playlists
+		if [[ -s ~/.config/mpd/mpd.conf ]] ; then
+			if [[ ! -e ~/.local/share/mpd/playlists ]] ; then
+				mkdir -p ~/.local/share/mpd/playlists
 			fi
 
 			$mpdbin >/dev/null 2>&1
