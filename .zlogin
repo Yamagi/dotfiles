@@ -87,6 +87,7 @@ if [[ $? != 0 ]] ; then
 	if [[ $? == 0 ]] ; then
 		if [[ -d ~/sonstiges/mdserve ]] ; then
 			(mdserve -q -d ~/sonstiges/mdserve &)
+			MDSERVE_SHELL=$$
 		fi
 	fi
 fi

@@ -29,3 +29,10 @@ unset mpdbin
 unset mpdpath 
 
 # --------
+
+# Stop mdserve
+# ------------
+
+if [[ $MDSERVE_SHELL == $$ ]] ; then
+	killall -u $(id -u) -q mdserve
+fi
