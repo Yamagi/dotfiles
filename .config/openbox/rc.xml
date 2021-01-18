@@ -625,26 +625,26 @@
 		<!-- Toggle music playback -->
 		<keybind key="W-space">
 			<action name="Execute">
-				<execute>mpc -h serioussam@/home/yamagi/.musicpd/socket toggle</execute>
+				<execute>mpc -h secmpdpw@/home/yamagi/.local/share/mpd/socket toggle</execute>
 			</action>
 		</keybind>
 
 		<keybind key="XF86AudioPlay">
 			<action name="Execute">
-				<execute>mpc -h serioussam@/home/yamagi/.musicpd/socket toggle</execute>
+				<execute>mpc -h secmpdpw@/home/yamagi/.local/share/mpd/socket toggle</execute>
 			</action>
 		</keybind>
 
 		<!-- Playback control -->
 		<keybind key="XF86AudioNext">
 			<action name="Execute">
-				<execute>mpc -h serioussam@/home/yamagi/.musicpd/socket next</execute>
+				<execute>mpc -h secmpdpw@/home/yamagi/.local/share/mpd/socket next</execute>
 			</action>
 		</keybind>
 
 		<keybind key="XF86AudioPrev">
 			<action name="Execute">
-				<execute>mpc -h serioussam@/home/yamagi/.musicpd/socket prev</execute>
+				<execute>mpc -h secmpdpw@/home/yamagi/.local/share/mpd/socket prev</execute>
 			</action>
 		</keybind>
 
