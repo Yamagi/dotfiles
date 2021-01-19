@@ -35,7 +35,7 @@ wm_menu = 0
 panel_dock = 0
 panel_position = top center horizontal
 panel_layer = normal
-panel_monitor = 2
+panel_monitor = 1
 primary_monitor_first = 0
 panel_shrink = 0
 autohide = 0
@@ -49,6 +49,7 @@ mouse_effects = 0
 font_shadow = 0
 mouse_hover_icon_asb = 100 0 10
 mouse_pressed_icon_asb = 100 0 0
+scale_relative_to_dpi = 133
 
 #-------------------------------------
 # Taskbar

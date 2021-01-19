@@ -3,7 +3,7 @@
 # ----
 
 # Screenlockger background image.
-LOCKIMG="/path/to/lock.img"
+LOCKIMG="/home/yamagi/medien/wallpaper/gray_hair.png"
 
 # Operating system
 OS=$(uname -s)
@@ -19,6 +19,10 @@ runcmd() {
 }
 
 # ----
+
+# HiDPI Stuff
+runcmd xrandr --dpi 128
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 # Settings
 runcmd numlockx
@@ -44,7 +48,7 @@ fi
 sleep 1
 
 # Openbox
-openbox &
+/usr/opt/openbox/bin/openbox &
 WMPID=$!
 wait $!
 

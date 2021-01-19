@@ -17,3 +17,4 @@ URxvt*scrollWithBuffer: true
 URxvt*termName: rxvt-unicode-256color
 Xcursor.theme: breeze-cursor
 Xcursor.size: 16
+Xft.dpi: 128
