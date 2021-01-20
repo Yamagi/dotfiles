@@ -4,3 +4,4 @@ def_key "2"
 
 def_key "4"
   show_browser
+  change_browse_mode
