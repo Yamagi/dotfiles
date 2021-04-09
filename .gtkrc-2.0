@@ -1,4 +1,0 @@
-gtk-icon-theme-name = "adwaita-icons"
-gtk-font-name = "Fira Sans 10"
-
-include ".themes/breeze/gtk-2.0/gtkrc"
