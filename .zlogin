@@ -85,11 +85,11 @@ unset mpdpath
 pgrep mdserve >/dev/null
 
 if [[ $? != 0 ]] ; then
-	command -v mdserve >/dev/null
+	command -v /usr/opt/misc/bin/mdserve >/dev/null
 
 	if [[ $? == 0 ]] ; then
 		if [[ -d ~/sonstiges/mdserve ]] ; then
-			(mdserve -q -d ~/sonstiges/mdserve &)
+			(/usr/opt/misc/bin/mdserve -q -d ~/sonstiges/mdserve &)
 			export MDSERVE_SHELL=$$
 		fi
 	fi
