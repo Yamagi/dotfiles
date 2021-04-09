@@ -28,7 +28,9 @@ bindkey "${terminfo[kdch1]}" vi-delete-char
 # and 'end'. For xterm, rxvt and the
 # screen / tmux terminal.
 bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "^[[H" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
+bindkey "^[[F" end-of-line
 
 # Magic history completion on 'space'
 bindkey ' ' magic-space
