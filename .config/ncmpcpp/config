@@ -6,12 +6,6 @@ mpd_music_dir = ~/musik/bibliothek
 # mpd connection.
 mpd_host = secmpdpw@/home/yamagi/.local/share/mpd/socket
 
-# Visualizer.
-visualizer_data_source = /home/yamagi/.local/share/mpd/visualizer.fifo
-visualizer_type = wave_filled
-visualizer_look = ●▮
-visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
-
 # Highlight and message delays.
 playlist_disable_highlight_delay = 3
 message_delay_time = 3
