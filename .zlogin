@@ -96,3 +96,19 @@ if [[ $? != 0 ]] ; then
 fi
 
 # --------
+
+# Start syncthing
+# ---------------
+
+pgrep syncthing >/dev/null
+
+if [[ $? != 0 ]] ; then
+	command -v syncthing >/dev/null
+
+	if [[ $? == 0 ]] ; then
+		(syncthing -no-browser >/dev/null &)
+		export SYNCTHING_SHELL=$$
+	fi
+fi
+
+# --------

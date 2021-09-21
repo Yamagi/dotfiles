@@ -33,6 +33,17 @@ unset mpdpath
 # Stop mdserve
 # ------------
 
-if [[ $MDSERVE_SHELL == $$ ]] ; then
-	killall -u $(id -u) -q mdserve
+if [[ $MDSERVE_SHELL -eq $$ ]] ; then
+	killall -u $(id -nu) -q mdserve
 fi
+
+# --------
+
+# Stop syncthing
+# --------------
+
+if [[ $SYNCTHING_SHELL -eq $$ ]] ; then
+	killall -u $(id -nu) -q syncthing
+fi
+
+# --------
