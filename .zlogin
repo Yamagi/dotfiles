@@ -96,7 +96,7 @@ if [[ $? != 0 ]] ; then
 
 	if [[ $? == 0 ]] ; then
 		if [[ -d ~/sonstiges/mdserve ]] ; then
-			(mdserve -q -d ~/sonstiges/mdserve &)
+			(mdserve -c -q -d ~/sonstiges/mdserve &)
 			export MDSERVE_SHELL=$$
 		fi
 	fi
