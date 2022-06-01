@@ -4,19 +4,10 @@
 # vi mode, of course :)
 bindkey -v
 
-# The standard key timeout is 0.4 seconds
-# which is really annoying. Reduce it to
-# 0.1 seconds.
-export KEYTIMEOUT=1
-
 # Widgets for tcsh like history behavior
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-
-# Don't require an whitespace after
-# the cursor for completion
-bindkey '^i' expand-or-complete-prefix
 
 # Search history up and down on the "up"
 # and "down" arrow keys and on "k" and
@@ -44,3 +35,8 @@ bindkey ' ' magic-space
 
 # Call 'man' on alt-h
 bindkey '^[h' run-help
+
+# Edit the current command line in $EDITOR.
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey -a "^v" edit-command-line
