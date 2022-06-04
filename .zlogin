@@ -112,3 +112,11 @@ if [[ $? != 0 ]] ; then
 fi
 
 # --------
+
+# Global environment variables
+# ----------------------------
+
+# Mozilla applications should prefer Wayland
+export MOZ_ENABLE_WAYLAND=1
+
+# --------
