@@ -1,6 +1,19 @@
-# Create XDG_RUNTIME_DIR
-# ----------------------
+# Ensure that our $PATH is correct. This is necessary because some login
+# managers don't execute ~/.zshrc. The $PATH needs to be saved before
+# messing with it and reset below, because we don't want to change the
+# global $PATH in the login script. We'll leave that to the interactive
+# shell configuration.
+OLDPATH=$PATH
 
+if [[ -d /usr/opt ]] ; then
+	for dir in $(find /usr/opt -maxdepth 2 -name "bin" -type d) ; do
+		path+=($dir)
+	done
+fi
+
+# --------
+
+# Create XDG_RUNTIME_DIR if necessary.
 RTDIR=/tmp/rt-$(id -u)
 
 if [[ -z "$XDG_RUNTIME_DIR" ]] ; then
@@ -17,9 +30,7 @@ fi
 
 # --------
 
-# Start SSH-Agent
-# ---------------
-
+# Start SSH-Agent.
 if [[ ! -d ~/.ssh ]] ; then
 	mkdir ~/.ssh
 fi
@@ -44,9 +55,7 @@ fi
 
 # --------
 
-# Start MPD
-# ---------
-
+# Start MPD.
 case $(uname -s) in
 	FreeBSD)
 		typeset mpdbin=musicpd
@@ -79,9 +88,7 @@ unset mpdpath
 
 # --------
 
-# Start mdserve
-# -------------
-
+# Start mdserve.
 pgrep mdserve >/dev/null
 
 if [[ $? != 0 ]] ; then
@@ -97,9 +104,7 @@ fi
 
 # --------
 
-# Start syncthing
-# ---------------
-
+# Start syncthing.
 pgrep syncthing >/dev/null
 
 if [[ $? != 0 ]] ; then
@@ -113,10 +118,10 @@ fi
 
 # --------
 
-# Global environment variables
-# ----------------------------
-
-# Mozilla applications should prefer Wayland
+# Mozilla applications should prefer Wayland.
 export MOZ_ENABLE_WAYLAND=1
 
 # --------
+
+# Reset to standard $PATH.
+PATH=$OLDPATH
