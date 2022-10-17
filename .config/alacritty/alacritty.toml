@@ -65,5 +65,5 @@ dynamic_padding = true
 
 # Initial window size.
 [window.dimensions]
-columns = 79
-lines = 24
+columns = 180
+lines = 60
