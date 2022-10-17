@@ -1,0 +1,102 @@
+[org/gnome/desktop/calendar]
+show-weekdate=true
+
+[org/gnome/desktop/input-sources]
+per-window=false
+sources=[('xkb', 'de+nodeadkeys')]
+xkb-options=['lv3:ralt_switch']
+
+[org/gnome/desktop/interface]
+clock-show-seconds=true
+clock-show-weekday=true
+color-scheme='default'
+document-font-name='Fira Sans 11'
+font-antialiasing='grayscale'
+font-hinting='slight'
+font-name='Fira Sans 11'
+monospace-font-name='Kiwi Mono 11'
+
+[org/gnome/desktop/media-handling]
+autorun-never=true
+
+[org/gnome/desktop/peripherals/keyboard]
+numlock-state=true
+
+[org/gnome/desktop/peripherals/touchpad]
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/privacy]
+old-files-age=uint32 7
+recent-files-max-age=-1
+remove-old-temp-files=false
+remove-old-trash-files=true
+
+[org/gnome/desktop/session]
+idle-delay=uint32 180
+
+[org/gnome/desktop/sound]
+event-sounds=true
+theme-name='__custom'
+
+[org/gnome/desktop/wm/keybindings]
+move-to-workspace-1=['<Shift><Super>F1']
+move-to-workspace-10=['<Shift><Super>F11']
+move-to-workspace-11=['<Shift><Super>F11']
+move-to-workspace-12=['<Shift><Super>F12']
+move-to-workspace-2=['<Shift><Super>F2']
+move-to-workspace-3=['<Shift><Super>F3']
+move-to-workspace-4=['<Shift><Super>F4']
+move-to-workspace-5=['<Shift><Super>F5']
+move-to-workspace-6=['<Shift><Super>F6']
+move-to-workspace-7=['<Shift><Super>F7']
+move-to-workspace-8=['<Shift><Super>F8']
+move-to-workspace-9=['<Shift><Super>F9']
+switch-to-workspace-1=['<Super>F1']
+switch-to-workspace-10=['<Super>F10']
+switch-to-workspace-11=['<Super>F11']
+switch-to-workspace-12=['<Super>F12']
+switch-to-workspace-2=['<Super>F2']
+switch-to-workspace-3=['<Super>F3']
+switch-to-workspace-4=['<Super>F4']
+switch-to-workspace-5=['<Super>F5']
+switch-to-workspace-6=['<Super>F6']
+switch-to-workspace-7=['<Super>F7']
+switch-to-workspace-8=['<Super>F8']
+switch-to-workspace-9=['<Super>F9']
+
+[org/gnome/desktop/wm/preferences]
+focus-mode='sloppy'
+resize-with-right-button=true
+titlebar-font='Fira Sans Bold 11'
+
+[org/gnome/mutter]
+experimental-features=['scale-monitor-framebuffer']
+focus-change-on-pointer-rest=true
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
+help=@as []
+volume-down=['<Super>KP_Subtract']
+volume-step=2
+volume-up=['<Super>KP_Add']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>Return'
+command='gnome-terminal --window'
+name='Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>e'
+command='nautilus'
+name='Nautilus'
+
+[org/gnome/settings-daemon/plugins/power]
+power-button-action='suspend'
+sleep-inactive-ac-type='nothing'
+
+[org/gnome/shell]
+welcome-dialog-last-shown-version='40.0'
+
+[org/gnome/shell/weather]
+automatic-location=true
+locations=[<(uint32 2, <('Hamburg', 'EDDH', true, [(0.93607824966852793, 0.17453292519943295)], [(0.93462381444296339, 0.17453292519943295)])>)>]

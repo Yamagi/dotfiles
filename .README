@@ -29,6 +29,13 @@ unpack the icons found in ~/.icons.
 
 # -------------------------------------------------------------------- #
 
+Some additional stuff like a list of all applications and Gnome dconf
+dumps can be found in the .misc/ directory. Some machines have several
+individual config files or changes to existing configuration files.
+These can be found in branches under the machine/ namespace.
+
+# -------------------------------------------------------------------- #
+
 These dotfiles are build around my workflow. They may not fit yours! Do
 not complain to me if you don't like my decisions, feel free to fork 
 this repository. :)
