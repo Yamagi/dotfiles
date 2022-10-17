@@ -89,5 +89,5 @@ decorations_theme_variant = "Light"
 dynamic_padding = true
 
 [window.dimensions]
-columns = 79
-lines = 24
+columns = 180
+lines = 60
