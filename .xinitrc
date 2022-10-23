@@ -3,7 +3,7 @@
 # ----
 
 # Screenlockger background image.
-LOCKIMG="/path/to/lock.img"
+LOCKIMG="/home/yamagi/medien/wallpaper/bluehaired.png"
 
 # Operating system
 OS=$(uname -s)
@@ -44,7 +44,7 @@ fi
 sleep 1
 
 # Openbox
-openbox &
+/usr/opt/openbox-yamagi/bin/openbox &
 WMPID=$!
 wait $!
 
