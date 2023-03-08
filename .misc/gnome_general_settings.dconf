@@ -16,6 +16,9 @@ font-hinting='slight'
 font-name='Fira Sans 11'
 monospace-font-name='Kiwi Mono 11'
 
+[org/gnome/desktop/notifications]
+show-in-lock-screen=false
+
 [org/gnome/desktop/media-handling]
 autorun-never=true
 
