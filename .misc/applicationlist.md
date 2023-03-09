@@ -20,6 +20,7 @@ Additional tools on some hosts:
 * drill
 * dd_rescue
 * gptfdisk
+* gnupg
 * lftp
 * minicom
 * mosh
@@ -119,10 +120,12 @@ Openbox:
 
 ## Desktop Applications
 
+* argos-translate
 * avidemux
 * cantata
 * easytag
 * evince
+* ffmpeg
 * firefox
 * fontforge
 * gaupol
@@ -143,9 +146,11 @@ Openbox:
 * steam
 * stellarium
 * thunderbird
+* upscayl
 * virt-manager
 * vivaldi
 * vivaldi-ffmpeg-codecs
+* vosk-transcriber
 * wine with dxvk
 
 ## Accessories
