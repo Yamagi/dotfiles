@@ -1,0 +1,39 @@
+# Force an umask of "027" for unprivileged users.
+# root must have the standard umask, otherwise
+# packet installations and the like will f*ck up.
+if [ "$LOGNAME" == "root" ] ; then
+	umask 022
+else
+	umask 027
+fi
+
+# Create runtime directory.
+if [ ! -e $HOME/.sh ] ; then
+	mkdir $HOME/.sh
+fi
+
+# Setup history.
+HISTFILE=$HOME/.sh/history
+export HISTFILE
+HISTSIZE=4096
+export HISTSIZE
+
+# tcsh like history behavior.
+bind ^[[A ed-search-prev-history
+bind ^[[B ed-search-next-history
+
+# home/del for most terminals.
+bind ^[[5~ ed-move-to-beg
+bind ^[[6~ ed-move-to-end
+
+# Prompt.
+PS1="\u@\h:\w : "
+
+# Aliases.
+alias dotfiles='git --work-tree=${HOME} --git-dir=${HOME}/.dotfiles'
+alias fixenv='eval $(tmux showenv -s)'
+alias ls='ls -G'
+alias ll='ls -lha'
+alias settitle='printf "\033]0;\!^\007"'
+alias su='su -l'
+alias suc='su'
