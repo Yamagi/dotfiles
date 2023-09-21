@@ -1,5 +1,5 @@
 # Add tools in /usr/obj to the PATH.
-if [ -d /usr/obj ] ; then
+if [ -d /usr/opt ] ; then
 	for DIR in $(find /usr/opt -maxdepth 2 -name "bin" -type d) ; do
 		PATH="$PATH:$DIR"
 	done
