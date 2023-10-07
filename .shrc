@@ -1,7 +1,7 @@
 # Force an umask of "027" for unprivileged users.
 # root must have the standard umask, otherwise
 # packet installations and the like will f*ck up.
-if [ "$LOGNAME" == "root" ] ; then
+if [ "$USER" == "root" ] ; then
 	umask 022
 else
 	umask 027
