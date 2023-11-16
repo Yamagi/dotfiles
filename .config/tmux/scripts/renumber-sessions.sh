@@ -3,7 +3,7 @@
 # Renumbers tmux sessions if one was closed.
 
 sessions=$(tmux list-sessions -F '#S' | grep '^[0-9]\+$' | sort -n)
-new=1
+new=0
 
 for old in $sessions ; do
 	if [ $old -ne $new ] ; then
