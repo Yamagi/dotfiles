@@ -574,6 +574,12 @@
 			</action>
 		</keybind>
 
+		<keybind key="C-W-Return">
+			<action name="Execute">
+				<execute>alacritty</execute>
+			</action>
+		</keybind>
+
 		<!-- Execute (g)vim -->
 		<keybind key="W-v">
 			<action name="Execute">
