@@ -574,7 +574,7 @@
 			</action>
 		</keybind>
 
-		<keybind key="S-W-Return">
+		<keybind key="W-a">
 			<action name="Execute">
 				<execute>alacritty</execute>
 			</action>
