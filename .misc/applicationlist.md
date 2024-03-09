@@ -40,7 +40,8 @@ Daemons and services:
 
 Backend for libvirt:
 * edk2-ovmf
-* qemu
+* qemu-full
+* swtpm
 
 
 ## Development
@@ -108,6 +109,7 @@ X11:
 * xorg-server
 
 Openbox:
+* alacritty
 * i3lock
 * nitrogen
 * numlockx
@@ -118,11 +120,36 @@ Openbox:
 * xss-lock (Linux)
 
 
+## Plasma
+
+Plasma and basic tools:
+* alacritty
+* ark
+* dolphin
+* firewalld
+* hunspell-de
+* mpd
+* noto-fonts
+* packagekit-qt6
+* plasma-meta
+* syncthing
+
+kio Backends:
+* kio-extras
+* kio-fuse
+
+Pipewire:
+* pipewire
+* pipewire-jack
+* pipewire-pulse
+* wireplumber
+
+
 ## Desktop Applications
 
 * argos-translate
 * avidemux
-* cantata
+* calibre
 * easytag
 * evince
 * ffmpeg
@@ -133,16 +160,20 @@ Openbox:
 * ghex
 * gimp
 * google-earth
+* gwenview
 * inkscape
 * languagetool
 * libreoffice
 * mkvtoolnix-gui
 * mpv
+* mutt
 * ncmpcpp
+* okular
 * pandoc
 * qalculate
 * rawtherapee
 * rdesktop
+* sigil
 * steam
 * stellarium
 * thunderbird
@@ -157,9 +188,10 @@ Openbox:
 
 Packaged:
 * ctags (Universal ctags!)
-* ccls
-* python-lsp-server
+* gamescope
 * gopls
+* mono / libgdiplus
+* python-lsp-server
 
 Custom build:
 * mdserve (https://github.com/Yamagi/mdserve/)
