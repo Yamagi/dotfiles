@@ -53,7 +53,7 @@ hide_when_typing = true
 history = 0
 
 # Start tmux together with the terminal.
-[shell]
+[terminal.shell]
 program = "/usr/bin/tmux"
 args = ["new"]
 
