@@ -4,8 +4,8 @@ My Dotfiles
 This is a small git repository, containing my essential dotfiles. Just
 enough to get a basic system up and running, not all the fancy stuff
 which differs from host to host anyways. It's supposed to be directly
-checked out into ${HOME}. For a new install (into an empty ${HOME},
-existing directory may require some special treatment) do:
+checked out into $HOME. For a new install (into an empty $HOME, existing
+directory may require some special treatment) do:
 
 1. Set an alias into your shell:
  % alias dotfiles 'git --work-tree=${HOME} --git-dir=${HOME}/.dotfiles'
@@ -23,9 +23,8 @@ existing directory may require some special treatment) do:
  % dotfiles config status.showuntrackedfiles no
 
 After a logout / login cycle you're done and the basic environment is
-set up. Please note again, that only basic tools are covered and not big
-things like Chrome or the like. For a X11 setup its recommended to
-unpack the icons found in ~/.icons.
+set up. Please note again, that only basic tools are covered. Not the
+big ones like Firefox or Plasma with it's convoluted configuration.
 
 # -------------------------------------------------------------------- #
 
