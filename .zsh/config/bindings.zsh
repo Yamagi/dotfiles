@@ -21,6 +21,17 @@ bindkey "${terminfo[kcud1]}" history-beginning-search-forward-end
 bindkey "^[[B" history-beginning-search-forward-end
 bindkey -a "j" history-beginning-search-forward-end
 
+# Bash-like incremental search on 'ctrl-r'
+# in Insert mode. The same triggered on '/'
+# in command mode. `up` and `down' for
+# navigation.
+bindkey -M viins '^R' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-backward
+bindkey -M isearch "${terminfo[kcuu1]}" history-incremental-search-backward
+bindkey -M isearch "^[[A" history-incremental-search-backward
+bindkey -M isearch "${terminfo[kcud1]}" history-incremental-search-backward
+bindkey -M isearch "^[[B" history-incremental-search-forward
+
 # Delete on 'del'
 bindkey "${terminfo[kdch1]}" vi-delete-char
 
