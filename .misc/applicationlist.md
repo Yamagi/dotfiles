@@ -98,28 +98,6 @@ XDG Portal:
 * xdg-desktop-portal-gtk
 
 
-## Openbox
-
-X11:
-* xauth
-* xinit
-* xrdb
-* xset
-* xf86-input-libinput
-* xorg-server
-
-Openbox:
-* alacritty
-* i3lock
-* nitrogen
-* numlockx
-* openbox (https://github.com/yamagi/openbox)
-* rxvt-unicode
-* tint2
-* xautolock (FreeBSD)
-* xss-lock (Linux)
-
-
 ## Plasma
 
 Plasma and basic tools:
@@ -183,6 +161,7 @@ Pipewire:
 * vivaldi-ffmpeg-codecs
 * vosk-transcriber
 * wine with dxvk
+
 
 ## Accessories
 

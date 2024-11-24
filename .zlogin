@@ -118,10 +118,5 @@ fi
 
 # --------
 
-# Mozilla applications should prefer Wayland.
-export MOZ_ENABLE_WAYLAND=1
-
-# --------
-
 # Reset to standard $PATH.
 PATH=$OLDPATH
