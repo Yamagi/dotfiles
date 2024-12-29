@@ -35,3 +35,6 @@ mouse_support = no
 # vim as external editor.
 external_editor = vim
 use_console_editor = yes
+
+# Sort the library by the 'Album Artist' tag.
+media_library_primary_tag = album_artist
