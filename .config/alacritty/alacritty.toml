@@ -76,7 +76,7 @@ history = 0
 # Always start tmux in new terminals.
 
 [terminal.shell]
-program = "/usr/bin/tmux"
+program = "/usr/opt/tmux-3d2b26d/bin/tmux"
 args = ["new"]
 
 # --------

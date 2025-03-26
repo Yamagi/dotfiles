@@ -7,7 +7,7 @@ lyrics_directory = ~/.lyrics
 
 # The music directory of it's on the same machine as ncmpcpp.
 # Used to edit tags and to read additional data like lyrics.
-mpd_music_dir = ~/musik/bibliothek
+mpd_music_dir = ~/medien/musik/bibliothek
 
 # ----
 
