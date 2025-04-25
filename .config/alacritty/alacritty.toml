@@ -1,12 +1,18 @@
 # Alacritty configuration for terminals overlayed by tmux sessions.
 
+# --------
+
 # Visual bell animation.
+
 [bell]
 animation = "EaseOutQuint"
 color = "#d7d7d7"
 duration = 5
 
-# Standard colors, matching rxvt.
+# --------
+
+# Colors matching the rxvt-unicode default.
+
 [colors.primary]
 background = "#121212"
 foreground = "#d7d7d7"
@@ -31,12 +37,19 @@ red = "#cd0000"
 white = "#faebd7"
 yellow = "#cdcd00"
 
-# alacritty as TERM requires the
-# termcap entry to be available.
+# --------
+
+# Set the TERM variable to 'alacritty'. 'alacritty is required
+# for all feature but might not be available on all systems.
+# One example is FreeBSD bevor 15.0.
+
 [env]
 TERM = "alacritty"
 
-# Font family.
+# --------
+
+# Fonts.
+
 [font]
 size = 11.0
 
@@ -44,26 +57,37 @@ size = 11.0
 family = "Kiwi Mono"
 style = "Regular"
 
-# No mouse cursor when typing.
+# --------
+
+# Hide the cursor when typing.
+
 [mouse]
 hide_when_typing = true
 
-# No back buffer, it's handled by tmux.
+# --------
+
+# Disable the back buffer. tmux buffers for us.
+
 [scrolling]
 history = 0
 
-# Start tmux together with the terminal.
+# --------
+
+# Always start tmux in new terminals.
+
 [terminal.shell]
 program = "/usr/bin/tmux"
 args = ["new"]
 
-# Light window decorations.
-# Center the terminal contents.
+# --------
+
+# Light window decorations and a somehwat useable default 
+# window size.
+
 [window]
 decorations_theme_variant = "Light"
 dynamic_padding = true
 
-# Initial window size.
 [window.dimensions]
 columns = 79
 lines = 24
