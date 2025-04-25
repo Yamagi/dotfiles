@@ -1,49 +1,40 @@
-# Stop SSH-Agent
-# --------------
+# PATH.
+path=($_local_path $path)
 
-if [[ $SSH_AGENT_SHELL == $$ ]] ; then
-	ssh-add -D > /dev/null 2>&1
-	ssh-agent -k > /dev/null
-fi
- 
 # --------
 
-# Stop MPD
+# Stop SSH-Agent.
+() {
+	if [[ $SSH_AGENT_SHELL == $$ ]] ; then
+		ssh-add -D > /dev/null 2>&1
+		ssh-agent -k > /dev/null
+	fi
+}
+
 # --------
 
-case $(uname -s) in
-	FreeBSD)
+# Stop MPD.
+() {
+	if [[ $_os == "FreeBSD" ]] ; then
 		typeset mpdbin=musicpd
-		;;
-
-	Linux)
+	else
 		typeset mpdbin=mpd
-		;;
-esac
-
-if [[ $MUSICPD_SHELL == $$ ]] ; then
-	$mpdbin --kill
-fi
-
-unset mpdbin
-unset mpdpath 
+	fi
+	if [[ $MUSICPD_SHELL == $$ ]] ; then
+		$mpdbin --kill
+	fi
+}
 
 # --------
 
-# Stop mdserve
-# ------------
-
+# Stop mdserve.
 if [[ $MDSERVE_SHELL -eq $$ ]] ; then
 	killall -u $(id -nu) -q mdserve
 fi
 
 # --------
 
-# Stop syncthing
-# --------------
-
+# Stop syncthing.
 if [[ $SYNCTHING_SHELL -eq $$ ]] ; then
 	killall -u $(id -nu) -q syncthing
 fi
-
-# --------
