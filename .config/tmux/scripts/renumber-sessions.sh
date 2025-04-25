@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Renumbers tmux sessions if one was added or closed.
+# Renumbers existing tmux sessions if one was added or closed.
 
 SESSIONS=$(tmux list-sessions -F '#S' | grep '^[0-9]\+$' | sort -n)
 NEW=1
