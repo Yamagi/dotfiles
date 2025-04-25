@@ -1,4 +1,4 @@
-# Switch 'media library' and 'browser'.
+# Switch 'media library' and 'browser' keys.
 def_key "2"
   show_media_library
 

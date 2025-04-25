@@ -1,36 +1,32 @@
-# Directories.
+# Runtime directory.
 ncmpcpp_directory = ~/.local/share/ncmpcpp
+
+# Lyrics directory. The format of the lyric files is more or
+# less standardized, so this can be shared with other players.
 lyrics_directory = ~/.lyrics
+
+# The music directory of it's on the same machine as ncmpcpp.
+# Used to edit tags and to read additional data like lyrics.
 mpd_music_dir = ~/musik/bibliothek
 
-# mpd connection.
+# ----
+
+# Default connection to mpd. Can be overridden via command line.
 mpd_host = secmpdpw@/home/yamagi/.local/share/mpd/socket
 
-# Highlight and message delays.
-playlist_disable_highlight_delay = 3
-message_delay_time = 3
+# ----
 
-# Alternative colors for the song columns.
-song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
+# Try to center the current song in the playlist.
+autocenter_mode = yes
 
-# Display some additional data.
+# Display some additional data which is disabled by default.
 clock_display_seconds = yes
 display_bitrate = yes
 display_remaining_time = yes
 playlist_show_remaining_time = yes
-playlist_separate_albums = yes
 
-# Center the mode.
-autocenter_mode = yes
-
-# The newer and more fancy user interface.
-user_interface = alternative
-
-# Scroll the song title if necessary.
+# Scroll the song title if it doesn't fit.
 cyclic_scrolling = yes
-
-# Mouse support is annoying.
-mouse_support = no
 
 # vim as external editor.
 external_editor = vim
@@ -38,3 +34,22 @@ use_console_editor = yes
 
 # Sort the library by the 'Album Artist' tag.
 media_library_primary_tag = album_artist
+
+# Show messages for 3 seconds.
+message_delay_time = 3
+
+# Disable mouse support.
+mouse_support = no
+
+# After playlist interactions highlight the selected title
+# for 3 seconds.
+playlist_disable_highlight_delay = 3
+
+# Alternative colors for the song columns.
+song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
+
+# Print a horizontal line between albums in the playlist.
+playlist_separate_albums = yes
+
+# The newer and more fancy user interface.
+user_interface = alternative
