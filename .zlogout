@@ -1,4 +1,4 @@
-# PATH.
+# Set the final $PATH.
 path=($_local_path $path)
 
 # --------

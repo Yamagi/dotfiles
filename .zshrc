@@ -10,7 +10,7 @@ if [[ "$LOGNAME" != "root" ]] ; then
 	umask 022
 fi
 
-# Set the final PATH.
+# Set the final $PATH.
 path=($_local_path $path)
 
 # --------
@@ -28,10 +28,10 @@ path=($_local_path $path)
 
 	# ----
 
-	# Save the last 8 dir on the dir stack.
+	# Save the last 8 dirs on the dir stack.
 	DIRSTACKSIZE=8
 
-	# 'cd' should push to dir stack, just like 'pushd'.
+	# 'cd' should push to the dir stack, just like 'pushd'.
 	setopt AUTOPUSHD
 
 	# Swap meaning of 'cd +1' and 'cd -1'.
@@ -72,19 +72,19 @@ path=($_local_path $path)
 		alias ls='ls --color'
 	fi
 
-	# 'd' as shortcut to 'dirs -v'
+	# 'd' as shortcut for 'dirs -v'
 	alias d='dirs -v'
 
 	# Special git tree for the dotfiles.
 	alias dotfiles='git --work-tree=${HOME} --git-dir=${HOME}/.dotfiles'
 
-	# Get an up to date env from tmux.
+	# Get an up to date environment from tmux.
 	alias fixenv='eval $(tmux showenv -s)'
 
 	# 'll' as a convenient long ls.
 	alias ll='ls -lha'
 
-	# Force su to always start in a clean environment.
+	# Force 'su' to always start with a clean environment.
 	alias su='su -l'
 }
 
@@ -104,7 +104,7 @@ path=($_local_path $path)
 	zstyle ':completion:*' cache-path ~/.zsh/run/completion_cache
 
 	# Rehash before executing external completions.
-	# Ensures that all directory in PATH are up to
+	# Ensures that all directory in$ PATH are up to
 	# date.
 	zstyle ':completion:*' rehash true
 
@@ -164,8 +164,9 @@ path=($_local_path $path)
 	# use it to change the cursor shape depending
 	# on the current keymap and to track the last
 	# selected mode. If the selected keymap is
-	# 'vicmd' we are in command mode. Otherwise
-	# input mode is assumed.
+	# 'vicmd', we are in command mode. Otherwise
+	# input mode is assumed. The other modes
+	# don't matter for zsh.
 	function zle-keymap-select {
 		if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
 			_set_block_cursor
@@ -208,23 +209,23 @@ path=($_local_path $path)
 	HISTFILE=~/.zsh/run/history
 
 	# Save up to 8192 commands in the history file. Keep
-	# 8192 + 2048 = 10240 in memory. Excessive commands are
-	# lost when the shell process exists.
+	# 8192 + 2048 = 10240 commands in memory. Excessive
+	# commands are lost when the shell process exists.
 	SAVEHIST=8192
 	HISTSIZE=10240
 
 	# Don't beep when trying to access a nonexistent entry.
-	# An example is the beep when the end of the history is
-	# reached.
+	# An example is the beep when reaching the end of the
+	# history.
 	unsetopt HIST_BEEP
 
-	# When searching the history show duplicated entries
+	# When searching the history, show duplicated entries
 	# only once at first match. This is effectively a no-
 	# op, because we trim duplicate commands from the
 	# history.
 	setopt HIST_FIND_NO_DUPS
 
-	# If a new command line being added to the history
+	# If a new command line added to the history
 	# duplicates an older one, the older command is
 	# removed.
 	setopt HIST_IGNORE_ALL_DUPS
@@ -263,7 +264,8 @@ path=($_local_path $path)
 
 	# Bash-like incremental search on 'ctrl-r' in insert mode. The
 	# same behavior is triggered on '/' in command mode. 'up' and
-	# `down' arrow keys for navigation.
+	# `down' arrow keys for navigation. Again the raw key sequences
+	# are also bound.
 	bindkey -M viins '^R' history-incremental-search-backward
 	bindkey -M vicmd '/' history-incremental-search-backward
 	bindkey -M isearch "${terminfo[kcuu1]}" history-incremental-search-backward
@@ -275,8 +277,7 @@ path=($_local_path $path)
 	bindkey "${terminfo[kdch1]}" vi-delete-char
 
 	# Beginning and end of line on 'home' and 'end'. As above also
-	# bind the raw key·sequences to work around broken terminfo
-	# entries.
+	# bind the raw key·sequences.
 	bindkey "${terminfo[khome]}" beginning-of-line
 	bindkey '^[[H' beginning-of-line
 	bindkey "${terminfo[kend]}" end-of-line
@@ -291,7 +292,7 @@ path=($_local_path $path)
 # Prompt.
 () {
 	# First level prompt. It's always preceded by the
-	# OSC 133 prompt marker sequence. It can be used
+	# OSC 133 prompt marker sequence. that can be used
 	# by the terminal for integrations like 'jump to
 	# previous or next prompt'.
 	PS1=$'%{\e]133;A\e\\%}'

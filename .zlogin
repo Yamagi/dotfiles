@@ -1,11 +1,11 @@
-# PATH.
+# Set the final $PATH.
 path=($_local_path $path)
 
 # --------
 
-# Create XDG_RUNTIME_DIR and export it in case that it wasn't
-# provided to us by the environment. This may be necessary on
-# systems without systemd / logind.
+# Create XDG_RUNTIME_DIR and export it in case that it wasn't set
+# by the environment. This may be necessary on systems without
+# systemd / logind.
 () {
 	typeset rtdir=/tmp/rt-$(id -u)
 	if [[ -z "$XDG_RUNTIME_DIR" ]] ; then
@@ -24,8 +24,7 @@ path=($_local_path $path)
 # --------
 
 # If ssh-agent is already running, source it's configuration and
-# propagate it into the environment. If it's not running, start
-# it.
+# propagate it. If it's not running, start it.
 () {
 	if [[ ! -d ~/.ssh ]] ; then
 		mkdir ~/.ssh
