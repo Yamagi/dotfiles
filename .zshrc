@@ -17,6 +17,9 @@ path=($_local_path $path)
 
 # General settings.
 () {
+	# 'vim' as default editor.
+	export EDITOR=vim
+
 	# Blue directories are hard to read. Change them
 	# to cyan. BSD, Linux and commercial Unixes have
 	# different variables for that.
@@ -25,6 +28,9 @@ path=($_local_path $path)
 	else
 		export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=34;1;43:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 	fi
+
+	# 'less' as default pager.
+	export PAGER=less
 
 	# ----
 
