@@ -20,6 +20,12 @@ path=($_local_path $path)
 	# 'vim' as default editor.
 	export EDITOR=vim
 
+	# Faster escape sequences. Starting with version
+	# 3.5 tmux sets 10 milliseconds as default. Since
+	# zsh is mostly running under tmux, do the same
+	# here.
+	export KEYTIMEOUT=1
+
 	# Blue directories are hard to read. Change them
 	# to cyan. BSD, Linux and commercial Unixes have
 	# different variables for that.
