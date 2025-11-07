@@ -23,26 +23,33 @@ path=($_local_path $path)
 
 # --------
 
-# If ssh-agent is already running, source it's configuration and
-# propagate it. If it's not running, start it.
+# Start or ingest ssh-agent:
+# * If $SSH_AUTH_SOCK is set, someone tries to inject an ssh-agent into
+#   the session. Do nothing, because starting a local agent would break
+#   things like agent forwarding.
+# * If ssh-agent is already running, source it's configuration and
+#   propagate it.
+# * If it's not running, start it.
 () {
-	if [[ ! -d ~/.ssh ]] ; then
-		mkdir ~/.ssh
-	fi
-	if [[ -f ~/.ssh/ssh-agent-info ]] ; then
-		. ~/.ssh/ssh-agent-info
-		if (( ${+SSH_AGENT_PID} )) ; then
-			ps ax | grep $SSH_AGENT_PID | grep ssh-agent >/dev/null 2>&1
-			if [[ $? != 0 ]] ; then
-				ssh-agent | head -n 2 > ~/.ssh/ssh-agent-info
-				source ~/.ssh/ssh-agent-info >/dev/null
-				export SSH_AGENT_SHELL=$$
-			fi
+	if [[ -z "$SSH_AUTH_SOCK" ]] ; then
+		if [[ ! -d ~/.ssh ]] ; then
+			mkdir ~/.ssh
 		fi
-	else
-		ssh-agent | head -n 2 >~/.ssh/ssh-agent-info
-		source ~/.ssh/ssh-agent-info
-		export SSH_AGENT_SHELL=$$
+		if [[ -f ~/.ssh/ssh-agent-info ]] ; then
+			. ~/.ssh/ssh-agent-info
+			if (( ${+SSH_AGENT_PID} )) ; then
+				ps ax | grep $SSH_AGENT_PID | grep ssh-agent >/dev/null 2>&1
+				if [[ $? != 0 ]] ; then
+					ssh-agent | head -n 2 > ~/.ssh/ssh-agent-info
+					source ~/.ssh/ssh-agent-info >/dev/null
+					export SSH_AGENT_SHELL=$$
+				fi
+			fi
+		else
+			ssh-agent | head -n 2 >~/.ssh/ssh-agent-info
+			source ~/.ssh/ssh-agent-info
+			export SSH_AGENT_SHELL=$$
+		fi
 	fi
 }
 
