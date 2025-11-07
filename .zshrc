@@ -226,6 +226,12 @@ path=($_local_path $path)
 	SAVEHIST=8192
 	HISTSIZE=10240
 
+	# Write the history in extended format. Necessary for
+	# SHARE_HISTORY to work not only between the currently
+	# running shells, but also with log entry written by
+	# exited shells.
+	setopt EXTENDED_HISTORY
+
 	# Don't beep when trying to access a nonexistent entry.
 	# An example is the beep when reaching the end of the
 	# history.
@@ -247,7 +253,7 @@ path=($_local_path $path)
 	setopt HIST_REDUCE_BLANKS
 
 	# Share the history between all running instances.
-	# Implies EXTENDED_HISTORY and INC_APPEND_HISTORY.
+	# Implies INC_APPEND_HISTORY.
 	setopt SHARE_HISTORY
 }
 
