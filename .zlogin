@@ -38,7 +38,7 @@ path=($_local_path $path)
 		if [[ -f ~/.ssh/ssh-agent-info ]] ; then
 			. ~/.ssh/ssh-agent-info
 			if [[ ! -z "$SSH_AGENT_PID" ]] ; then
-				ps ax -u "$USER" | grep "$SSH_AGENT_PID" \
+				ps ax -U "$USER" | grep "$SSH_AGENT_PID" \
 					| grep ssh-agent >/dev/null 2>&1
 				if [[ $? != 0 ]] ; then
 					_startsshagent
