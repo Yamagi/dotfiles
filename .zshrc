@@ -248,6 +248,10 @@ path=($_local_path $path)
 	# removed.
 	setopt HIST_IGNORE_ALL_DUPS
 
+	# Don't add a line to the history if it's prefixed
+	# by a whitespace.
+	setopt HIST_IGNORE_SPACE
+
 	# Remove superfluous blanks from each command added
 	# to the history.
 	setopt HIST_REDUCE_BLANKS
